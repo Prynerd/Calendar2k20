@@ -1,0 +1,403 @@
+2020-01-09 14:23:01.930  INFO 8880 --- [main] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 8880 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 14:23:01.931 DEBUG 8880 --- [main] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 14:23:01.931  INFO 8880 --- [main] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 14:23:02.431  INFO 8880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 14:23:02.436  INFO 8880 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 14:23:02.437  INFO 8880 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 14:23:02.490  INFO 8880 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 14:23:02.490  INFO 8880 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 534 ms
+2020-01-09 14:23:02.584  INFO 8880 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:23:02.819  INFO 8880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 14:23:02.823  INFO 8880 --- [main] com.calendar.Calendar2k20                : Started Calendar2k20 in 1.14 seconds (JVM running for 1.663)
+2020-01-09 14:23:33.060  INFO 17520 --- [main] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 17520 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 14:23:33.062 DEBUG 17520 --- [main] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 14:23:33.063  INFO 17520 --- [main] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 14:23:33.535  INFO 17520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 14:23:33.540  INFO 17520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 14:23:33.541  INFO 17520 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 14:23:33.586  INFO 17520 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 14:23:33.586  INFO 17520 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 499 ms
+2020-01-09 14:23:33.686  INFO 17520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:23:33.906  INFO 17520 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-09 14:23:33.911  INFO 17520 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-09 14:23:33.914 ERROR 17520 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-01-09 14:23:33.916  INFO 17520 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:26:09.816  INFO 18264 --- [main] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 18264 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 14:26:09.818 DEBUG 18264 --- [main] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 14:26:09.818  INFO 18264 --- [main] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 14:26:10.271  INFO 18264 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 14:26:10.276  INFO 18264 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 14:26:10.276  INFO 18264 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 14:26:10.324  INFO 18264 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 14:26:10.324  INFO 18264 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 484 ms
+2020-01-09 14:26:10.424  INFO 18264 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:26:10.649  INFO 18264 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-09 14:26:10.654  INFO 18264 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-09 14:26:10.657 ERROR 18264 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-01-09 14:26:10.658  INFO 18264 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:29:35.211  INFO 15464 --- [main] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 15464 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 14:29:35.213 DEBUG 15464 --- [main] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 14:29:35.213  INFO 15464 --- [main] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 14:29:35.679  INFO 15464 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 14:29:35.684  INFO 15464 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 14:29:35.685  INFO 15464 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 14:29:35.735  INFO 15464 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 14:29:35.735  INFO 15464 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 500 ms
+2020-01-09 14:29:35.831  INFO 15464 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:29:36.056  INFO 15464 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-09 14:29:36.061  INFO 15464 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-09 14:29:36.064 ERROR 15464 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-01-09 14:29:36.065  INFO 15464 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:29:54.548  INFO 8880 --- [RMI TCP Connection(19)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-09 14:29:54.554  INFO 8880 --- [RMI TCP Connection(19)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:30:03.373  INFO 22040 --- [main] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 22040 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 14:30:03.374 DEBUG 22040 --- [main] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 14:30:03.375  INFO 22040 --- [main] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 14:30:03.839  INFO 22040 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 14:30:03.845  INFO 22040 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 14:30:03.845  INFO 22040 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 14:30:03.890  INFO 22040 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 14:30:03.890  INFO 22040 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 492 ms
+2020-01-09 14:30:03.989  INFO 22040 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:30:04.221  INFO 22040 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 14:30:04.224  INFO 22040 --- [main] com.calendar.Calendar2k20                : Started Calendar2k20 in 1.049 seconds (JVM running for 1.503)
+2020-01-09 14:30:50.127  INFO 22040 --- [RMI TCP Connection(12)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-09 14:30:50.130  INFO 22040 --- [RMI TCP Connection(12)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:56:24.472  INFO 14428 --- [main] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 14428 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 14:56:24.473 DEBUG 14428 --- [main] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 14:56:24.473  INFO 14428 --- [main] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 14:56:24.928  INFO 14428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 14:56:24.933  INFO 14428 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 14:56:24.934  INFO 14428 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 14:56:24.985  INFO 14428 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 14:56:24.985  INFO 14428 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 489 ms
+2020-01-09 14:56:25.077  INFO 14428 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 14:56:25.310  INFO 14428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 14:56:25.313  INFO 14428 --- [main] com.calendar.Calendar2k20                : Started Calendar2k20 in 1.053 seconds (JVM running for 1.515)
+2020-01-09 14:56:40.322  INFO 14428 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-09 14:56:40.323  INFO 14428 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-09 14:56:40.328  INFO 14428 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2020-01-09 15:01:17.953  INFO 14428 --- [RMI TCP Connection(15)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-09 15:01:17.956  INFO 14428 --- [RMI TCP Connection(15)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 15:25:31.222  INFO 22412 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 22412 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 15:25:31.224 DEBUG 22412 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 15:25:31.225  INFO 22412 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 15:25:31.252  INFO 22412 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\urban.attila\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-01-09 15:25:31.253  INFO 22412 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-01-09 15:25:31.253  INFO 22412 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-01-09 15:25:31.706  INFO 22412 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-09 15:25:31.740  INFO 22412 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 0 JPA repository interfaces.
+2020-01-09 15:25:31.941  INFO 22412 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-09 15:25:32.145  INFO 22412 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 15:25:32.151  INFO 22412 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 15:25:32.152  INFO 22412 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 15:25:32.240  INFO 22412 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 15:25:32.241  INFO 22412 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 988 ms
+2020-01-09 15:25:32.283  WARN 22412 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+2020-01-09 15:25:32.284  INFO 22412 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-09 15:25:32.296  INFO 22412 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-09 15:25:32.303 ERROR 22412 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:539) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1108) ~[spring-context-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:868) ~[spring-context-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at com.calendar.Calendar2k20.main(Calendar2k20.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:656) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1287) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1207) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	... 26 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	... 40 common frames omitted
+Caused by: java.lang.IllegalStateException: Cannot load driver class: com.mysql.jdbc.Driver
+	at org.springframework.util.Assert.state(Assert.java:94) ~[spring-core-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.determineDriverClassName(DataSourceProperties.java:222) ~[spring-boot-autoconfigure-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.initializeDataSourceBuilder(DataSourceProperties.java:174) ~[spring-boot-autoconfigure-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration.createDataSource(DataSourceConfiguration.java:43) ~[spring-boot-autoconfigure-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari.dataSource(DataSourceConfiguration.java:85) ~[spring-boot-autoconfigure-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.2.2.RELEASE.jar:5.2.2.RELEASE]
+	... 41 common frames omitted
+
+2020-01-09 16:05:48.241  INFO 8604 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 8604 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 16:05:48.243 DEBUG 8604 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 16:05:48.243  INFO 8604 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 16:05:48.269  INFO 8604 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\urban.attila\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-01-09 16:05:48.269  INFO 8604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-01-09 16:05:48.269  INFO 8604 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-01-09 16:05:48.649  INFO 8604 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-09 16:05:48.680  INFO 8604 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26ms. Found 0 JPA repository interfaces.
+2020-01-09 16:05:48.849  INFO 8604 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-09 16:05:49.023  INFO 8604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 16:05:49.028  INFO 8604 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 16:05:49.029  INFO 8604 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 16:05:49.096  INFO 8604 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 16:05:49.096  INFO 8604 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 827 ms
+2020-01-09 16:05:49.193  INFO 8604 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-09 16:05:49.237  INFO 8604 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-01-09 16:05:49.302  INFO 8604 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-09 16:05:49.357  INFO 8604 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-09 16:05:49.359  WARN 8604 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-01-09 16:05:49.603  INFO 8604 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-09 16:05:49.612  INFO 8604 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-01-09 16:05:49.994 DEBUG 8604 --- [restartedMain] org.hibernate.SQL                        : create table tbl_user (id integer not null auto_increment, primary key (id)) engine=InnoDB
+2020-01-09 16:05:50.040  INFO 8604 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-09 16:05:50.044  INFO 8604 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:05:50.063  INFO 8604 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-09 16:05:50.094  WARN 8604 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-09 16:05:50.169  INFO 8604 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:05:50.285  INFO 8604 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 0d2ff312-d7ee-46c1-af77-454c46fd7bbd
+
+2020-01-09 16:05:50.336  INFO 8604 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@903049c, org.springframework.security.web.context.SecurityContextPersistenceFilter@24144c76, org.springframework.security.web.header.HeaderWriterFilter@1dcc0404, org.springframework.security.web.csrf.CsrfFilter@4c3aceff, org.springframework.security.web.authentication.logout.LogoutFilter@50b17caf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6c49cdf3, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3ff9b52e, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4429bd94, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1be5483f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@540d1b98, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1834532a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@30c273bc, org.springframework.security.web.session.SessionManagementFilter@3cea20af, org.springframework.security.web.access.ExceptionTranslationFilter@19cf1588, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7f537fa1]
+2020-01-09 16:05:50.511  INFO 8604 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 16:05:50.513  INFO 8604 --- [restartedMain] com.calendar.Calendar2k20                : Started Calendar2k20 in 2.463 seconds (JVM running for 3.059)
+2020-01-09 16:07:43.414  INFO 8604 --- [RMI TCP Connection(13)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-09 16:07:43.418  INFO 8604 --- [RMI TCP Connection(13)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:07:43.418  INFO 8604 --- [RMI TCP Connection(13)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:07:43.422  INFO 8604 --- [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-09 16:07:43.432  INFO 8604 --- [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-01-09 16:08:06.435  INFO 16848 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 16848 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 16:08:06.436 DEBUG 16848 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 16:08:06.437  INFO 16848 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 16:08:06.462  INFO 16848 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\urban.attila\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-01-09 16:08:06.462  INFO 16848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-01-09 16:08:06.463  INFO 16848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-01-09 16:08:06.824  INFO 16848 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-09 16:08:06.856  INFO 16848 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26ms. Found 0 JPA repository interfaces.
+2020-01-09 16:08:07.024  INFO 16848 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-09 16:08:07.211  INFO 16848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 16:08:07.217  INFO 16848 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 16:08:07.217  INFO 16848 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 16:08:07.291  INFO 16848 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 16:08:07.291  INFO 16848 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 828 ms
+2020-01-09 16:08:07.379  INFO 16848 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-09 16:08:07.418  INFO 16848 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-01-09 16:08:07.489  INFO 16848 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-09 16:08:07.547  INFO 16848 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-09 16:08:07.549  WARN 16848 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-01-09 16:08:07.777  INFO 16848 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-09 16:08:07.785  INFO 16848 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-01-09 16:08:08.163  INFO 16848 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-09 16:08:08.167  INFO 16848 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:08:08.187  INFO 16848 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-09 16:08:08.215  WARN 16848 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-09 16:08:08.293  INFO 16848 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:08:08.416  INFO 16848 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 37eb4991-f579-41d0-8bbb-c71c8e7a7551
+
+2020-01-09 16:08:08.465  INFO 16848 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d292a40, org.springframework.security.web.context.SecurityContextPersistenceFilter@d3ea0f0, org.springframework.security.web.header.HeaderWriterFilter@26106710, org.springframework.security.web.csrf.CsrfFilter@14577df2, org.springframework.security.web.authentication.logout.LogoutFilter@47167280, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7163d033, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@24fa8089, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@582f7528, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@15e00898, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3246e995, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b664f76, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51ccc9f1, org.springframework.security.web.session.SessionManagementFilter@83bc1a7, org.springframework.security.web.access.ExceptionTranslationFilter@5ab59b5a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1401243b]
+2020-01-09 16:08:08.654  INFO 16848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 16:08:08.655  INFO 16848 --- [restartedMain] com.calendar.Calendar2k20                : Started Calendar2k20 in 2.413 seconds (JVM running for 2.981)
+2020-01-09 16:09:33.330  INFO 16848 --- [Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:09:33.332  INFO 16848 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:09:33.335  INFO 16848 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-09 16:09:33.345  INFO 16848 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-01-09 16:09:33.532  INFO 16848 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 16848 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 16:09:33.532 DEBUG 16848 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 16:09:33.532  INFO 16848 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 16:09:33.658  INFO 16848 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-09 16:09:33.659  INFO 16848 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 JPA repository interfaces.
+2020-01-09 16:09:33.698  INFO 16848 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-09 16:09:33.718  WARN 16848 --- [restartedMain] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2020-01-09 16:09:33.730  INFO 16848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 16:09:33.730  INFO 16848 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 16:09:33.730  INFO 16848 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 16:09:33.759  INFO 16848 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 16:09:33.759  INFO 16848 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 225 ms
+2020-01-09 16:09:33.785  INFO 16848 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-09 16:09:33.789  INFO 16848 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-01-09 16:09:33.833  INFO 16848 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-01-09 16:09:33.834  INFO 16848 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-01-09 16:09:33.858  INFO 16848 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-09 16:09:33.858  INFO 16848 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:09:33.864  INFO 16848 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-09 16:09:33.876  WARN 16848 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-09 16:09:33.900  INFO 16848 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:09:33.937  INFO 16848 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6df3c988-918b-4512-8be3-25837af80b0c
+
+2020-01-09 16:09:33.944  INFO 16848 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@75fc160f, org.springframework.security.web.context.SecurityContextPersistenceFilter@7325513e, org.springframework.security.web.header.HeaderWriterFilter@eb2677, org.springframework.security.web.csrf.CsrfFilter@ec8d49a, org.springframework.security.web.authentication.logout.LogoutFilter@444e6452, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5a33ffc7, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@2cac8a6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2ae86a29, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@41646448, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@698ecc11, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@308f97c9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6fe06574, org.springframework.security.web.session.SessionManagementFilter@3b812ed0, org.springframework.security.web.access.ExceptionTranslationFilter@2d66eae9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e822930]
+2020-01-09 16:09:33.962  INFO 16848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 16:09:33.962  INFO 16848 --- [restartedMain] com.calendar.Calendar2k20                : Started Calendar2k20 in 0.453 seconds (JVM running for 88.288)
+2020-01-09 16:09:33.964  INFO 16848 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-01-09 16:09:34.766  INFO 19812 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 19812 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 16:09:34.768 DEBUG 19812 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 16:09:34.768  INFO 19812 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 16:09:34.792  INFO 19812 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\urban.attila\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-01-09 16:09:34.793  INFO 19812 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-01-09 16:09:34.793  INFO 19812 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-01-09 16:09:35.162  INFO 19812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-09 16:09:35.195  INFO 19812 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 0 JPA repository interfaces.
+2020-01-09 16:09:35.369  INFO 19812 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-09 16:09:35.543  INFO 19812 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 16:09:35.549  INFO 19812 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 16:09:35.549  INFO 19812 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 16:09:35.620  INFO 19812 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 16:09:35.620  INFO 19812 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 827 ms
+2020-01-09 16:09:35.705  INFO 19812 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-09 16:09:35.744  INFO 19812 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-01-09 16:09:35.807  INFO 19812 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-09 16:09:35.861  INFO 19812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-09 16:09:36.083  INFO 19812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-09 16:09:36.091  INFO 19812 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-01-09 16:09:36.437  INFO 19812 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-09 16:09:36.441  INFO 19812 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:09:36.458  WARN 19812 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2020-01-09 16:09:36.487  WARN 19812 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-09 16:09:36.568  INFO 19812 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:09:36.685  INFO 19812 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c87593aa-8e32-4e1f-922b-99a5539ef0e1
+
+2020-01-09 16:09:36.733  INFO 19812 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f76fec8, org.springframework.security.web.context.SecurityContextPersistenceFilter@3d9e35e3, org.springframework.security.web.header.HeaderWriterFilter@9151a32, org.springframework.security.web.csrf.CsrfFilter@5a92230d, org.springframework.security.web.authentication.logout.LogoutFilter@12d08df1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@126b14ab, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1bd8e944, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2e4ad48f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5f2fda2f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@bea16cf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7525f9ad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@38938e59, org.springframework.security.web.session.SessionManagementFilter@6dc8dbdc, org.springframework.security.web.access.ExceptionTranslationFilter@1f046521, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@66b2d76f]
+2020-01-09 16:09:36.907  INFO 19812 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-01-09 16:09:36.911  INFO 19812 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-01-09 16:09:36.913 ERROR 19812 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2020-01-09 16:09:36.915  INFO 19812 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:09:36.915  INFO 19812 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:09:36.917  INFO 19812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-09 16:09:36.926  INFO 19812 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-01-09 16:09:49.804  INFO 16848 --- [RMI TCP Connection(14)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2020-01-09 16:09:49.807  INFO 16848 --- [RMI TCP Connection(14)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:09:49.808  INFO 16848 --- [RMI TCP Connection(14)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:09:49.809  INFO 16848 --- [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-01-09 16:09:49.816  INFO 16848 --- [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2020-01-09 16:10:09.349  INFO 7380 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on DESKTOP-P61FVCD with PID 7380 (started by urban.attila in C:\Users\urban.attila\STS workspace\Calendar2k20)
+2020-01-09 16:10:09.352 DEBUG 7380 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-09 16:10:09.352  INFO 7380 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
+2020-01-09 16:10:09.375  INFO 7380 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\urban.attila\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/urban.attila/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-01-09 16:10:09.376  INFO 7380 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-01-09 16:10:09.376  INFO 7380 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-01-09 16:10:09.722  INFO 7380 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-09 16:10:09.748  INFO 7380 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 0 JPA repository interfaces.
+2020-01-09 16:10:09.912  INFO 7380 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-09 16:10:10.087  INFO 7380 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-01-09 16:10:10.093  INFO 7380 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-09 16:10:10.093  INFO 7380 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-09 16:10:10.158  INFO 7380 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-09 16:10:10.158  INFO 7380 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 782 ms
+2020-01-09 16:10:10.244  INFO 7380 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-09 16:10:10.281  INFO 7380 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-01-09 16:10:10.345  INFO 7380 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-09 16:10:10.400  INFO 7380 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-09 16:10:10.621  INFO 7380 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-09 16:10:10.629  INFO 7380 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-01-09 16:10:10.977  INFO 7380 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-09 16:10:10.980  INFO 7380 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-09 16:10:10.999  INFO 7380 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-01-09 16:10:11.027  WARN 7380 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-09 16:10:11.107  INFO 7380 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-09 16:10:11.222  INFO 7380 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 79e436c8-df2c-4ca5-932f-d540c5b1b0d1
+
+2020-01-09 16:10:11.270  INFO 7380 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1b9eb4c9, org.springframework.security.web.context.SecurityContextPersistenceFilter@425515a6, org.springframework.security.web.header.HeaderWriterFilter@73d5d92d, org.springframework.security.web.csrf.CsrfFilter@6872676d, org.springframework.security.web.authentication.logout.LogoutFilter@5b65b853, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@d91c7a0, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@67de4e54, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@626b306f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3d8b773, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2825f22c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2142f78a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2adc8536, org.springframework.security.web.session.SessionManagementFilter@5bd1948c, org.springframework.security.web.access.ExceptionTranslationFilter@5f7a87be, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1027793]
+2020-01-09 16:10:11.462  INFO 7380 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-01-09 16:10:11.464  INFO 7380 --- [restartedMain] com.calendar.Calendar2k20                : Started Calendar2k20 in 2.304 seconds (JVM running for 2.859)
