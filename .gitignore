@@ -26,6 +26,46 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
+nbactions.xml
+nb-configuration.xml
+/logs/
 
 ### VS Code ###
 .vscode/
+
+#
+# Project specific excludes
+#
+
+tomcat
+
+#
+# Default excludes
+#
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+*.pdf
+
+# Maven 
+target/
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
