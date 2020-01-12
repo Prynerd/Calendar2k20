@@ -44,6 +44,8 @@ public class User implements UserDetails {
 		this.password = password;
 		this.validateToken = validateToken;
 
+		this.registrationTime = LocalDateTime.now();
+		
 		isValidated = false;
 		isDeleted = false;
 	}

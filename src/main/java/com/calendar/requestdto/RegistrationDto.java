@@ -18,7 +18,7 @@ public class RegistrationDto {
 	private String email;
 	
 	@NotNull
-	@Size(min = 6, max = 20, message = "notInRange")
+	@Size(min = 5, max = 20, message = "notInRange")
 	private String password;
 
 	public RegistrationDto() {
