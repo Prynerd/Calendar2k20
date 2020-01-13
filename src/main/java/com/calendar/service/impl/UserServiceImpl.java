@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.calendar.domain.User;
+import com.calendar.exceptions.EmailAlreadyExistsException;
 import com.calendar.exceptions.UserDeletedException;
 import com.calendar.repository.UserRepository;
 import com.calendar.requestdto.RegistrationDto;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void createUser(RegistrationDto regDto) {
 		if (userRepository.existsByEmail(regDto.getEmail())) {
-			//to do
+			throw new EmailAlreadyExistsException("Email already exists");
 		}
 		User user = new User(
 				regDto.getEmail(), 
