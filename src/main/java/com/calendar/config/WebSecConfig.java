@@ -25,11 +25,18 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 	    	.cors()
 	    	.and()
 	    	.authorizeRequests()
-	    	.antMatchers(
+	    		.antMatchers(
                     "/login", 
                     "/registration"
                     )
-	    	.permitAll();
+	    		.permitAll()
+	    		.and()
+	    	.formLogin()
+	    		.loginPage("/login")
+	    		.permitAll()
+	    		.and()
+	    	.logout()
+	    		.permitAll();
 	}
 	
 	@Bean
