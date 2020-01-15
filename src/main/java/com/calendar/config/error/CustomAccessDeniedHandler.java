@@ -10,10 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.stereotype.Component;
 
 import com.calendar.responsedto.ApiError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler{
 
 	@Override

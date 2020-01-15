@@ -14,12 +14,14 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationSu
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.calendar.domain.User;
 import com.calendar.responsedto.UserResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Component
 public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
 	
 	private RequestCache requestCache = new HttpSessionRequestCache();
@@ -31,24 +33,23 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
             Authentication authentication)
             throws ServletException, IOException {
 
-//        PrintWriter writer = response.getWriter();
-//
-//        ObjectMapper om = new ObjectMapper();
-//
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//        String writeValueAsString = om.writeValueAsString(new UserResponseDto(
-//                user.getId(),
-//                user.getEmail(),
-//                user.isValidated(),
-//                user.getAuthority()
-//        ));
-//
-//        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-//
-//        writer.append(writeValueAsString);
-//        writer.flush();
-//        writer.close();
+        PrintWriter writer = response.getWriter();
+
+        ObjectMapper om = new ObjectMapper();
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String writeValueAsString = om.writeValueAsString(new UserResponseDto(
+                user.getId(),
+                user.getEmail(),
+                user.isValidated()
+        ));
+
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
+        writer.append(writeValueAsString);
+        writer.flush();
+        writer.close();
 
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
