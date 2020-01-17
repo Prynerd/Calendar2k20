@@ -2,12 +2,16 @@ package com.calendar.domain;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +30,12 @@ public class User implements UserDetails {
 
 	@Column(nullable = false)
 	private String password;
+
+	@OneToMany(
+            mappedBy = "user",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+	private List<Entry> entryList;
 
 	private LocalDateTime registrationTime;
 
@@ -80,6 +90,29 @@ public class User implements UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Entry> getEntryList() {
+		return entryList;
+	}
+
+	public void setEntryList(List<Entry> entryList) {
+		this.entryList = entryList;
+	}
+	
+	public void addEntry(Entry entry) {
+		entryList.add(entry);
+	}
+	
+	public void removeEntry(int id) {
+		for (Entry entry : entryList) {
+			if(entry.getId() == id) {
+				int index = entryList.indexOf(entry);
+				entryList.remove(index);
+				return;
+			}
+		}
+		throw new IndexOutOfBoundsException();
 	}
 
 	@Override
