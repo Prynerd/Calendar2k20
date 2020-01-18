@@ -73,23 +73,6 @@ public class UserServiceImpl implements UserService {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return user;
 	}
-	
-	@Override
-	public void deleteUser(int id) {
-		User user = getFullUser();
-//		if (user.getAuthority() == Authority.ADMIN) {
-//
-//            User userById = userRepository.findById(id)
-//                    .orElseThrow(() -> new IdNotFoundException(""));
-//
-//            if (!userById.isDeleted()) {
-//                userById.setIsDeleted(true);
-//            } else {
-//                userById.setIsDeleted(false);
-//            }
-//        } else {
-//            throw new AccessDeniedException("");
-//        }
 		
-	}
+	
 }

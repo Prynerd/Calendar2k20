@@ -11,7 +11,5 @@ public interface UserService extends UserDetailsService{
 	
 	public String validationTokenGeneration();
 	
-	public void deleteUser(int id);
-	
 	public User getFullUser();
 }

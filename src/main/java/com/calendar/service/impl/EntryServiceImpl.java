@@ -26,18 +26,18 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public void makeFirstEntry(EntryDto entryDto) {
+	public void createFirstEntry(EntryDto entryDto) {
 		
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userServiceImpl.getFullUser();
 		
-		Entry entry = new Entry(entryDto.getTitle(), entryDto.getDescription(), entryDto.getDate(), entryDto.getDuration(), entryDto.getTermin(), 
-				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()), 1);
+		Entry entry = createEntryWithLvlOfHierarchy(entryDto, 1);
 		entry.setUserId(user.getId());
 		user.addEntry(entry);
 		
 		entryRepository.save(entry);
 	}
 
+	@Override
 	public EntryResponseDto getEntries() {
 		
 		EntryResponseDto entryResponseDto = new EntryResponseDto();
@@ -47,6 +47,14 @@ public class EntryServiceImpl implements EntryService {
 		entryResponseDto.setEntryList(user.getEntryList());
 		
 		return entryResponseDto;
+	}
+	
+//	creates a new Entry from EntryDto with a number in hierarchy
+	private Entry createEntryWithLvlOfHierarchy(EntryDto entryDto, int lvl) {
+		Entry entry = new Entry(entryDto.getTitle(), entryDto.getDescription(), entryDto.getDate(), entryDto.getDuration(), entryDto.getTermin(), 
+				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()), 
+				lvl);
+		return entry;
 	}
 	
 }

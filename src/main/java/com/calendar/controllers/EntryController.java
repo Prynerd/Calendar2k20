@@ -23,15 +23,21 @@ public class EntryController {
 	public EntryController(EntryServiceImpl entryServiceImpl) {
 		this.entryServiceImpl = entryServiceImpl;
 	}
-
-	@PostMapping("/firstentry")
-	public void makeFirstEntry(@Valid @RequestBody EntryDto entryDto) {
-		entryServiceImpl.makeFirstEntry(entryDto);
-	}
 	
 	@GetMapping("/getentries")
 	public EntryResponseDto getEntries() {
 		
 		return entryServiceImpl.getEntries();
 	}
+
+	@PostMapping("/firstentry")
+	public void makeFirstEntry(@Valid @RequestBody EntryDto entryDto) {
+		entryServiceImpl.createFirstEntry(entryDto);
+	}
+	
+	@PostMapping("/addsamelevelentry")
+	public void addSameLevelEntry(@Valid @RequestBody EntryDto entryDto){
+		
+	}
+	
 }
