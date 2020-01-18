@@ -22,8 +22,8 @@ public class Entry {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-	private User user;
+	
+	private int userId;
 	
 	@NotNull
 	private String title;
@@ -33,7 +33,7 @@ public class Entry {
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime date;
 
-	@JsonFormat(pattern = "HH:mm")
+	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime duration;
 
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
@@ -123,12 +123,12 @@ public class Entry {
 		return id;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getPlaceInHierarchy() {

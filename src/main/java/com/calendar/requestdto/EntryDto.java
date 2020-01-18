@@ -22,7 +22,7 @@ public class EntryDto {
 	private LocalDateTime date;
 
 	@NotNull
-	@JsonFormat(pattern = "HH:mm")
+	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime duration;
 
 	@NotNull
