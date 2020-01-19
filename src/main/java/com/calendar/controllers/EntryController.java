@@ -35,9 +35,5 @@ public class EntryController {
 		entryServiceImpl.createFirstEntry(entryDto);
 	}
 	
-	@PostMapping("/addsamelevelentry")
-	public void addSameLevelEntry(@Valid @RequestBody EntryDto entryDto){
-		
-	}
 	
 }

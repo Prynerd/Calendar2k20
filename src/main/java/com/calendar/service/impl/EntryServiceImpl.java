@@ -1,5 +1,7 @@
 package com.calendar.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -30,14 +32,21 @@ public class EntryServiceImpl implements EntryService {
 		
 		User user = userServiceImpl.getFullUser();
 		
-		Entry entry = createEntryWithLvlOfHierarchy(entryDto, 1);
+		Entry entry = new Entry(entryDto.getTitle(), entryDto.getDescription(), entryDto.getDate(), entryDto.getDuration(), entryDto.getTermin(), 
+				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()));
 		entry.setUserId(user.getId());
+		
+		if (entryDto.getAddedEntryId() != null) {
+			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
+		}
+		
 		user.addEntry(entry);
 		
 		entryRepository.save(entry);
 	}
 
 	@Override
+	@Transactional
 	public EntryResponseDto getEntries() {
 		
 		EntryResponseDto entryResponseDto = new EntryResponseDto();
@@ -47,14 +56,6 @@ public class EntryServiceImpl implements EntryService {
 		entryResponseDto.setEntryList(user.getEntryList());
 		
 		return entryResponseDto;
-	}
-	
-//	creates a new Entry from EntryDto with a number in hierarchy
-	private Entry createEntryWithLvlOfHierarchy(EntryDto entryDto, int lvl) {
-		Entry entry = new Entry(entryDto.getTitle(), entryDto.getDescription(), entryDto.getDate(), entryDto.getDuration(), entryDto.getTermin(), 
-				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()), 
-				lvl);
-		return entry;
 	}
 	
 }

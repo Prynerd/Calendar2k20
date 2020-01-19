@@ -1,19 +1,25 @@
 package com.calendar.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+import javax.persistence.JoinColumn;
 
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
 
 @Entity
 public class Entry {
@@ -21,7 +27,6 @@ public class Entry {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	
 	private int userId;
 	
@@ -45,14 +50,28 @@ public class Entry {
 	@Enumerated(EnumType.STRING)
 	private EntryPhase entryPhase;
 	
-	private int placeInHierarchy;
+	@JoinTable(name = "Entry_Connection", joinColumns = {
+		    @JoinColumn(name = "ADDING_ENTRY", referencedColumnName = "ID", nullable =   false)}, inverseJoinColumns = {
+		    @JoinColumn(name = "ADDED_Entry", referencedColumnName = "ID", nullable = false)})
+	@ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+	private List<Entry> entryConnections;
+	
+	@ManyToMany(mappedBy = "entryConnections",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+	private List<Entry> addEntry;
 	
 	public Entry() {
 		
 	}
 
 	public Entry(String title, String description, LocalDateTime date, LocalDateTime duration, 
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, int placeInHierarchy) {
+			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase) {
+		this.entryConnections = new ArrayList<Entry>();
+		this.addEntry = new ArrayList<Entry>();
+		
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -60,7 +79,28 @@ public class Entry {
 		this.termin = termin;
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
-		this.placeInHierarchy = placeInHierarchy;
+	}
+	
+	
+
+	public List<Entry> getEntryConnections() {
+		return entryConnections;
+	}
+
+	public void setEntryConnections(List<Entry> entryConnections) {
+		this.entryConnections = entryConnections;
+	}
+	
+	public void addEntryConnection(Entry entryConnection) {
+		this.entryConnections.add(entryConnection);
+	}
+
+	public List<Entry> getAddEntry() {
+		return addEntry;
+	}
+
+	public void AddEntry(List<Entry> addEntry) {
+		this.addEntry = addEntry;
 	}
 
 	public String getTitle() {
@@ -129,14 +169,6 @@ public class Entry {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-
-	public int getPlaceInHierarchy() {
-		return placeInHierarchy;
-	}
-
-	public void setPlaceInHierarchy(int placeInHierarchy) {
-		this.placeInHierarchy = placeInHierarchy;
 	}
 	
 	

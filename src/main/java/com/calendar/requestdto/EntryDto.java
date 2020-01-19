@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
 public class EntryDto {
+	
+	private Integer addedEntryId;
 
 	@NotNull
 	private String title;
@@ -39,9 +41,10 @@ public class EntryDto {
 		
 	}
 
-	public EntryDto(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
+	public EntryDto(Integer addedEntryId, String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
 			String entryType, String entryPhase) {
 		super();
+		this.addedEntryId = addedEntryId;
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -49,6 +52,14 @@ public class EntryDto {
 		this.termin = termin;
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
+	}
+
+	public Integer getAddedEntryId() {
+		return addedEntryId;
+	}
+
+	public void setAddedEntryId(int addedEntryId) {
+		this.addedEntryId = addedEntryId;
 	}
 
 	public String getTitle() {
