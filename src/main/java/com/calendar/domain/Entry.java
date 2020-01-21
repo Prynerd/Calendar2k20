@@ -58,10 +58,10 @@ public class Entry {
             cascade = CascadeType.ALL)
 	private List<Entry> entryConnections;
 	
-	@ManyToMany(mappedBy = "entryConnections",
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-	private List<Entry> addEntry;
+//	@ManyToMany(mappedBy = "entryConnections",
+//            fetch = FetchType.EAGER,
+//            cascade = CascadeType.ALL)
+//	private List<Entry> addEntry;
 	
 	public Entry() {
 		
@@ -70,7 +70,7 @@ public class Entry {
 	public Entry(String title, String description, LocalDateTime date, LocalDateTime duration, 
 			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase) {
 		this.entryConnections = new ArrayList<Entry>();
-		this.addEntry = new ArrayList<Entry>();
+//		this.addEntry = new ArrayList<Entry>();
 		
 		this.title = title;
 		this.description = description;
@@ -95,13 +95,13 @@ public class Entry {
 		this.entryConnections.add(entryConnection);
 	}
 
-	public List<Entry> getAddEntry() {
-		return addEntry;
-	}
-
-	public void AddEntry(List<Entry> addEntry) {
-		this.addEntry = addEntry;
-	}
+//	public List<Entry> getAddEntry() {
+//		return addEntry;
+//	}
+//
+//	public void AddEntry(List<Entry> addEntry) {
+//		this.addEntry = addEntry;
+//	}
 
 	public String getTitle() {
 		return title;

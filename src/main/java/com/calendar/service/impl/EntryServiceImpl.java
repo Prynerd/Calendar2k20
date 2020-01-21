@@ -28,6 +28,7 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
+	@Transactional
 	public void createFirstEntry(EntryDto entryDto) {
 		
 		User user = userServiceImpl.getFullUser();
@@ -39,6 +40,12 @@ public class EntryServiceImpl implements EntryService {
 		if (entryDto.getAddedEntryId() != null) {
 			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
 		}
+		
+//		if (entryDto.getAddedEntryId() != null) {
+//			Entry oldEntry = entryRepository.getOne(entryDto.getAddedEntryId());
+//			oldEntry.addEntryConnection(entry);
+//		}
+		
 		
 		user.addEntry(entry);
 		
