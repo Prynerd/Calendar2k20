@@ -1,5 +1,8 @@
 package com.calendar.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import com.calendar.data.enums.EntryType;
 import com.calendar.domain.Entry;
 import com.calendar.domain.User;
 import com.calendar.repository.EntryRepository;
+import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.service.EntryService;
@@ -19,17 +23,20 @@ import com.calendar.service.EntryService;
 public class EntryServiceImpl implements EntryService {
 
 	private EntryRepository entryRepository;
+	private CustomEntryRepository customEntryRepository;
 	private UserServiceImpl userServiceImpl;
 
 	@Autowired
-	public EntryServiceImpl(EntryRepository entryRepository, UserServiceImpl userServiceImpl) {
+	public EntryServiceImpl(EntryRepository entryRepository, UserServiceImpl userServiceImpl
+			, CustomEntryRepository customEntryRepository) {
 		this.entryRepository = entryRepository;
 		this.userServiceImpl = userServiceImpl;
+		this.customEntryRepository = customEntryRepository;
 	}
 
 	@Override
 	@Transactional
-	public void createFirstEntry(EntryDto entryDto) {
+	public void createEntry(EntryDto entryDto) {
 		
 		User user = userServiceImpl.getFullUser();
 		
@@ -37,17 +44,14 @@ public class EntryServiceImpl implements EntryService {
 				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()));
 		entry.setUserId(user.getId());
 		
-		if (entryDto.getAddedEntryId() != null) {
-			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
-		}
-		
 //		if (entryDto.getAddedEntryId() != null) {
-//			Entry oldEntry = entryRepository.getOne(entryDto.getAddedEntryId());
-//			oldEntry.addEntryConnection(entry);
+//			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
 //		}
 		
-		
-		user.addEntry(entry);
+		if (entryDto.getAddedEntryId() != null) {
+			Entry oldEntry = entryRepository.getOne(entryDto.getAddedEntryId());
+			oldEntry.addEntryConnection(entry);
+		}
 		
 		entryRepository.save(entry);
 	}
@@ -58,9 +62,11 @@ public class EntryServiceImpl implements EntryService {
 		
 		EntryResponseDto entryResponseDto = new EntryResponseDto();
 		
-		User user = userServiceImpl.getFullUser();
 		
-		entryResponseDto.setEntryList(user.getEntryList());
+		User user = userServiceImpl.getFullUser();
+		List<Entry> entryList = new ArrayList<Entry>();
+		entryList = customEntryRepository.getEntitiesByUserId(user.getId());
+		entryResponseDto.setEntryList(entryList);
 		
 		return entryResponseDto;
 	}

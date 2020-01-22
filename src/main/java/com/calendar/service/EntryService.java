@@ -5,7 +5,7 @@ import com.calendar.responsedto.EntryResponseDto;
 
 public interface EntryService {
 
-	public void createFirstEntry(EntryDto entryDto);
+	public void createEntry(EntryDto entryDto);
 	
 	public EntryResponseDto getEntries();
 }

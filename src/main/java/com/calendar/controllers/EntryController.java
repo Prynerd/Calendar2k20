@@ -30,9 +30,9 @@ public class EntryController {
 		return entryServiceImpl.getEntries();
 	}
 
-	@PostMapping("/firstentry")
+	@PostMapping
 	public void makeFirstEntry(@Valid @RequestBody EntryDto entryDto) {
-		entryServiceImpl.createFirstEntry(entryDto);
+		entryServiceImpl.createEntry(entryDto);
 	}
 	
 	
