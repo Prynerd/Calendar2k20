@@ -16,6 +16,7 @@ import com.calendar.repository.EntryRepository;
 import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
 import com.calendar.responsedto.EntryResponseDto;
+import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.EntryService;
 
 @Service
@@ -64,6 +65,14 @@ public class EntryServiceImpl implements EntryService {
 		entryResponseDto.setEntryList(entryList);
 		
 		return entryResponseDto;
+	}
+	
+	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isfinished) {
+		
+		
+		
+		return null;
+		
 	}
 	
 }
