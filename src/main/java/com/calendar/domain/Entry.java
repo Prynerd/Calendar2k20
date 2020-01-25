@@ -1,25 +1,26 @@
 package com.calendar.domain;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotNull;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 
 @Entity
 public class Entry {
@@ -50,18 +51,15 @@ public class Entry {
 	@Enumerated(EnumType.STRING)
 	private EntryPhase entryPhase;
 	
-	@JoinTable(name = "Entry_Connection", joinColumns = {
-		    @JoinColumn(name = "ADDING_ENTRY", referencedColumnName = "ID", nullable =   false)}, inverseJoinColumns = {
-		    @JoinColumn(name = "ADDED_Entry", referencedColumnName = "ID", nullable = false)})
-	@ManyToMany(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-	private List<Entry> entryConnections;
+	private boolean isChild;
 	
-//	@ManyToMany(mappedBy = "entryConnections",
-//            fetch = FetchType.EAGER,
-//            cascade = CascadeType.ALL)
-//	private List<Entry> addEntry;
+	@JsonBackReference
+	@JoinColumn(name="entry_id")
+	@ManyToOne
+	private Entry entryConnections;
+	
+	@OneToMany(mappedBy = "entryConnections")
+	private Set<Entry> addEntry;
 	
 	public Entry() {
 		
@@ -69,8 +67,7 @@ public class Entry {
 
 	public Entry(String title, String description, LocalDateTime date, LocalDateTime duration, 
 			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase) {
-		this.entryConnections = new ArrayList<Entry>();
-//		this.addEntry = new ArrayList<Entry>();
+		this.addEntry = new HashSet<Entry>();
 		
 		this.title = title;
 		this.description = description;
@@ -79,29 +76,30 @@ public class Entry {
 		this.termin = termin;
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
+		this.isChild = false;
 	}
 	
 	
 
-	public List<Entry> getEntryConnections() {
+	public Entry getEntryConnections() {
 		return entryConnections;
 	}
 
-	public void setEntryConnections(List<Entry> entryConnections) {
+	public void setEntryConnections(Entry entryConnections) {
 		this.entryConnections = entryConnections;
 	}
 	
 	public void addEntryConnection(Entry entryConnection) {
-		this.entryConnections.add(entryConnection);
+		this.entryConnections = entryConnection;
 	}
 
-//	public List<Entry> getAddEntry() {
-//		return addEntry;
-//	}
-//
-//	public void AddEntry(List<Entry> addEntry) {
-//		this.addEntry = addEntry;
-//	}
+	public Set<Entry> getAddEntry() {
+		return addEntry;
+	}
+
+	public void AddEntry(Set<Entry> addEntry) {
+		this.addEntry = addEntry;
+	}
 
 	public String getTitle() {
 		return title;
@@ -170,6 +168,13 @@ public class Entry {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
+
+	public boolean isChild() {
+		return isChild;
+	}
+
+	public void setChild(boolean isChild) {
+		this.isChild = isChild;
+	}
 	
 }

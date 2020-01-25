@@ -6,7 +6,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.calendar.data.enums.EntryPhase;
@@ -44,13 +43,9 @@ public class EntryServiceImpl implements EntryService {
 				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()));
 		entry.setUserId(user.getId());
 		
-//		if (entryDto.getAddedEntryId() != null) {
-//			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
-//		}
-		
 		if (entryDto.getAddedEntryId() != null) {
-			Entry oldEntry = entryRepository.getOne(entryDto.getAddedEntryId());
-			oldEntry.addEntryConnection(entry);
+			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
+			entry.setChild(true);
 		}
 		
 		entryRepository.save(entry);
@@ -65,7 +60,7 @@ public class EntryServiceImpl implements EntryService {
 		
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
-		entryList = customEntryRepository.getEntitiesByUserId(user.getId());
+		entryList = customEntryRepository.getEntriesByUserId(user.getId());
 		entryResponseDto.setEntryList(entryList);
 		
 		return entryResponseDto;

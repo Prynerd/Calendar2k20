@@ -17,10 +17,11 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 	EntityManager em;
 	
 	@Override
-	public List<Entry> getEntitiesByUserId(int userId) {
+	public List<Entry> getEntriesByUserId(int userId) {
 		return em
-        	.createQuery("SELECT e FROM Entry e WHERE e.userId = :id", Entry.class)
+        	.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC", Entry.class)
         	.setParameter("id", userId)
+        	.setParameter("isC", false)
         	.getResultList();
 	}
 

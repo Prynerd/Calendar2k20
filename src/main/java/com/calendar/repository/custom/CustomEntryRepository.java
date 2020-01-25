@@ -6,6 +6,6 @@ import com.calendar.domain.Entry;
 
 public interface CustomEntryRepository {
 
-	List<Entry> getEntitiesByUserId(int userId);
+	List<Entry> getEntriesByUserId(int userId);
 	
 }
