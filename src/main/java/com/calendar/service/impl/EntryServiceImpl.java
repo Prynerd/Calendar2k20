@@ -16,6 +16,7 @@ import com.calendar.repository.EntryRepository;
 import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
 import com.calendar.responsedto.EntryResponseDto;
+import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.EntryService;
 
 @Service
@@ -64,6 +65,23 @@ public class EntryServiceImpl implements EntryService {
 		entryResponseDto.setEntryList(entryList);
 		
 		return entryResponseDto;
+	}
+	
+	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isFinished) {
+		
+		User user = userServiceImpl.getFullUser();
+		List<Entry> entryList = new ArrayList<Entry>();
+		entryList = customEntryRepository.getEntriesByUserIdAndStatus(user.getId(), isFinished);
+		
+		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList();
+		for (int i = 0; i < entryList.size(); i++) {
+			Entry entry = entryList.get(i);
+			ProjektEntriesResponseDto perDto = new ProjektEntriesResponseDto(entry.getId(), entry.getTitle(), entry.getEntryPhase());
+			perDtoList.add(perDto);
+		}
+		
+		return perDtoList;
+		
 	}
 	
 }
