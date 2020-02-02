@@ -1,10 +1,7 @@
 package com.calendar.responsedto;
 
-import javax.persistence.Entity;
-
 import com.calendar.data.enums.EntryPhase;
 
-@Entity
 public class ProjektEntriesResponseDto {
 	
 	private int entryId;

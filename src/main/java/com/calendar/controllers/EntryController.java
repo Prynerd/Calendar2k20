@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +40,9 @@ public class EntryController {
 		entryServiceImpl.createEntry(entryDto);
 	}
 	
-	@GetMapping("/projekts")
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(@RequestParam boolean isfinished){
-		return entryServiceImpl.getProjekts(isfinished);
+	@GetMapping("/projects{finished}")
+	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isFinished){
+		return entryServiceImpl.getProjekts(isFinished);
 	}
 	
 }

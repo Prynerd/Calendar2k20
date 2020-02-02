@@ -67,11 +67,20 @@ public class EntryServiceImpl implements EntryService {
 		return entryResponseDto;
 	}
 	
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isfinished) {
+	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isFinished) {
 		
+		User user = userServiceImpl.getFullUser();
+		List<Entry> entryList = new ArrayList<Entry>();
+		entryList = customEntryRepository.getEntriesByUserIdAndStatus(user.getId(), isFinished);
 		
+		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList();
+		for (int i = 0; i < entryList.size(); i++) {
+			Entry entry = entryList.get(i);
+			ProjektEntriesResponseDto perDto = new ProjektEntriesResponseDto(entry.getId(), entry.getTitle(), entry.getEntryPhase());
+			perDtoList.add(perDto);
+		}
 		
-		return null;
+		return perDtoList;
 		
 	}
 	
