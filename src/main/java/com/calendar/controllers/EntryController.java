@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.calendar.requestdto.EntryDto;
+import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.impl.EntryServiceImpl;
@@ -30,7 +31,7 @@ public class EntryController {
 	}
 	
 	@GetMapping("/getentries")
-	public EntryResponseDto getEntries() {
+	public EntryListResponseDto getEntries() {
 		
 		return entryServiceImpl.getEntries();
 	}
@@ -43,6 +44,11 @@ public class EntryController {
 	@GetMapping("/projects{finished}")
 	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isFinished){
 		return entryServiceImpl.getProjekts(isFinished);
+	}
+	
+	@GetMapping("/entry{id}")
+	public EntryResponseDto getEntryById(@RequestParam int id) {
+		return entryServiceImpl.getEntryById(id);
 	}
 	
 }

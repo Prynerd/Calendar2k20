@@ -15,6 +15,7 @@ import com.calendar.domain.User;
 import com.calendar.repository.EntryRepository;
 import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
+import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.EntryService;
@@ -54,9 +55,9 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	@Transactional
-	public EntryResponseDto getEntries() {
+	public EntryListResponseDto getEntries() {
 		
-		EntryResponseDto entryResponseDto = new EntryResponseDto();
+		EntryListResponseDto entryResponseDto = new EntryListResponseDto();
 		
 		
 		User user = userServiceImpl.getFullUser();
@@ -82,6 +83,17 @@ public class EntryServiceImpl implements EntryService {
 		
 		return perDtoList;
 		
+	}
+
+	@Override
+	@Transactional
+	public EntryResponseDto getEntryById(int id) {
+		
+		Entry e = entryRepository.getOne(id);		
+		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(), 
+				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished());
+		
+		return erDto;
 	}
 	
 }
