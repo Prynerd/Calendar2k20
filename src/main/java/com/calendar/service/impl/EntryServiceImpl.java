@@ -2,6 +2,7 @@ package com.calendar.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -17,6 +18,7 @@ import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
+import com.calendar.responsedto.FullProjectResponseDto;
 import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.EntryService;
 
@@ -54,7 +56,6 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	@Transactional
 	public EntryListResponseDto getEntries() {
 		
 		EntryListResponseDto entryResponseDto = new EntryListResponseDto();
@@ -68,6 +69,7 @@ public class EntryServiceImpl implements EntryService {
 		return entryResponseDto;
 	}
 	
+	@Override
 	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isFinished) {
 		
 		User user = userServiceImpl.getFullUser();
@@ -82,18 +84,26 @@ public class EntryServiceImpl implements EntryService {
 		}
 		
 		return perDtoList;
-		
 	}
 
 	@Override
-	@Transactional
 	public EntryResponseDto getEntryById(int id) {
 		
-		Entry e = entryRepository.getOne(id);		
+		Optional<Entry> entry = entryRepository.findById(id);
+		Entry e = entry.get();		
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(), 
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished());
 		
 		return erDto;
+	}
+	
+	@Override
+	public FullProjectResponseDto getFullProjectById(int id) {
+		
+		Optional<Entry> entry = entryRepository.findById(id);
+		Entry e = entry.get();
+		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(), e.getDuration(),
+				e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(), e.getAddEntry());
 	}
 	
 }

@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.calendar.requestdto.EntryDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
+import com.calendar.responsedto.FullProjectResponseDto;
 import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.impl.EntryServiceImpl;
 
@@ -46,9 +46,14 @@ public class EntryController {
 		return entryServiceImpl.getProjekts(isFinished);
 	}
 	
-	@GetMapping("/entry{id}")
+	@GetMapping("/by{id}")
 	public EntryResponseDto getEntryById(@RequestParam int id) {
 		return entryServiceImpl.getEntryById(id);
+	}
+	
+	@GetMapping("/by/project{id}")
+	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
+		return entryServiceImpl.getFullProjectById(id);
 	}
 	
 }
