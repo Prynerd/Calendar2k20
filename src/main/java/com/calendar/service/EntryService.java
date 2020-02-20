@@ -22,4 +22,6 @@ public interface EntryService {
 	public EntryResponseDto getEntryById(int id);
 	
 	public FullProjectResponseDto getFullProjectById(int id);
+	
+	public void deleteEntryById(int id);
 }

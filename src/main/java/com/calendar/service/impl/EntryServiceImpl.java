@@ -120,5 +120,13 @@ public class EntryServiceImpl implements EntryService {
 				e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(), e.getAddEntry());
 	}
 
+	@Override
+	@Transactional
+	public void deleteEntryById(int id) {
+		Optional<Entry> entry = entryRepository.findById(id); 
+		entry.get().setDeleted(true);
+		entryRepository.save(entry.get());
+	}
+
 	
 }

@@ -55,6 +55,8 @@ public class Entry {
 	
 	private boolean isFinished;
 	
+	private boolean isDeleted;
+	
 	@JsonBackReference
 	@JoinColumn(name="entry_id")
 	@ManyToOne
@@ -80,6 +82,7 @@ public class Entry {
 		this.entryPhase = entryPhase;
 		this.isChild = false;
 		this.isFinished = false;
+		this.isDeleted = false;
 	}
 	
 	
@@ -186,6 +189,14 @@ public class Entry {
 
 	public void setFinished(boolean isFinished) {
 		this.isFinished = isFinished;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 		
 }
