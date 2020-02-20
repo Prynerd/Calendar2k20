@@ -5,9 +5,7 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
-public class EntryDto {
-	
-	private Integer addedEntryId;
+public class ProjectDto {
 
 	@NotNull
 	private String title;
@@ -32,13 +30,12 @@ public class EntryDto {
 	@NotNull
 	private String entryPhase;
 	
-	public EntryDto() {
+	public ProjectDto() {
 		
 	}
 
-	public EntryDto(Integer addedEntryId, String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
+	public ProjectDto(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
 			String entryType, String entryPhase) {
-		this.addedEntryId = addedEntryId;
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -46,14 +43,6 @@ public class EntryDto {
 		this.termin = termin;
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
-	}
-
-	public Integer getAddedEntryId() {
-		return addedEntryId;
-	}
-
-	public void setAddedEntryId(int addedEntryId) {
-		this.addedEntryId = addedEntryId;
 	}
 
 	public String getTitle() {
@@ -111,6 +100,4 @@ public class EntryDto {
 	public void setEntryPhase(String entryPhase) {
 		this.entryPhase = entryPhase;
 	}
-	
-	
 }
