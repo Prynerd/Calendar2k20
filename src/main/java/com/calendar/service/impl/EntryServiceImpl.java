@@ -16,6 +16,7 @@ import com.calendar.domain.User;
 import com.calendar.repository.EntryRepository;
 import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
+import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.FullProjectResponseDto;
@@ -36,6 +37,21 @@ public class EntryServiceImpl implements EntryService {
 		this.userServiceImpl = userServiceImpl;
 		this.customEntryRepository = customEntryRepository;
 	}
+	
+	@Override
+	@Transactional
+	public void createProject(ProjectDto projectDto) {
+		
+		User user = userServiceImpl.getFullUser();
+		
+		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), projectDto.getDate(), projectDto.getDuration(), projectDto.getTermin(), 
+				EntryType.valueOf(projectDto.getEntryType()) , EntryPhase.valueOf(projectDto.getEntryPhase()));
+		
+		entry.setUserId(user.getId());
+		
+		entryRepository.save(entry);
+		
+	}
 
 	@Override
 	@Transactional
@@ -45,13 +61,11 @@ public class EntryServiceImpl implements EntryService {
 		
 		Entry entry = new Entry(entryDto.getTitle(), entryDto.getDescription(), entryDto.getDate(), entryDto.getDuration(), entryDto.getTermin(), 
 				EntryType.valueOf(entryDto.getEntryType()) , EntryPhase.valueOf(entryDto.getEntryPhase()));
+		
 		entry.setUserId(user.getId());
-		
-		if (entryDto.getAddedEntryId() != null) {
-			entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
-			entry.setChild(true);
-		}
-		
+		entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
+		entry.setChild(true);
+
 		entryRepository.save(entry);
 	}
 
@@ -105,5 +119,6 @@ public class EntryServiceImpl implements EntryService {
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(), e.getDuration(),
 				e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(), e.getAddEntry());
 	}
+
 	
 }
