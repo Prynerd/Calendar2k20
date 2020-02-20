@@ -100,4 +100,5 @@ public class ProjectDto {
 	public void setEntryPhase(String entryPhase) {
 		this.entryPhase = entryPhase;
 	}
+	
 }

@@ -37,11 +37,11 @@ public class EntryServiceImpl implements EntryService {
 		this.userServiceImpl = userServiceImpl;
 		this.customEntryRepository = customEntryRepository;
 	}
-
+	
 	@Override
 	@Transactional
 	public void createProject(ProjectDto projectDto) {
-
+		
 		User user = userServiceImpl.getFullUser();
 		
 		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), projectDto.getDate(), projectDto.getDuration(), projectDto.getTermin(), 
@@ -52,7 +52,7 @@ public class EntryServiceImpl implements EntryService {
 		entryRepository.save(entry);
 		
 	}
-	
+
 	@Override
 	@Transactional
 	public void createEntry(EntryDto entryDto) {
@@ -65,7 +65,7 @@ public class EntryServiceImpl implements EntryService {
 		entry.setUserId(user.getId());
 		entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
 		entry.setChild(true);
-		
+
 		entryRepository.save(entry);
 	}
 
@@ -120,5 +120,5 @@ public class EntryServiceImpl implements EntryService {
 				e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(), e.getAddEntry());
 	}
 
-
+	
 }
