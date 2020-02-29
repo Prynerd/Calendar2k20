@@ -52,12 +52,12 @@ public class EntryController {
 		return entryServiceImpl.getProjekts(isFinished);
 	}
 	
-	@GetMapping("entry{id}")
+	@GetMapping("/entry{id}")
 	public EntryResponseDto getEntryById(@RequestParam int id) {
 		return entryServiceImpl.getEntryById(id);
 	}
 	
-	@GetMapping("project{id}")
+	@GetMapping("/project{id}")
 	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
 		return entryServiceImpl.getFullProjectById(id);
 	}

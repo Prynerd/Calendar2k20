@@ -10,4 +10,6 @@ public interface CustomEntryRepository {
 	
 	List<Entry> getEntriesByUserIdAndStatus(int userId, boolean isFinished);
 	
+	void removeEntry(Entry entry);
+	
 }

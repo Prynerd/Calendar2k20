@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -62,7 +63,7 @@ public class Entry {
 	@ManyToOne
 	private Entry entryConnections;
 	
-	@OneToMany(mappedBy = "entryConnections")
+	@OneToMany(mappedBy = "entryConnections", cascade = CascadeType.REMOVE)
 	private Set<Entry> addEntry;
 	
 	public Entry() {
