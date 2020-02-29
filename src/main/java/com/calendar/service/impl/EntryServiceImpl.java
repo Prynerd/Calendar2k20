@@ -1,10 +1,8 @@
 package com.calendar.service.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -92,7 +90,7 @@ public class EntryServiceImpl implements EntryService {
 		List<Entry> entryList = new ArrayList<Entry>();
 		entryList = customEntryRepository.getEntriesByUserIdAndStatus(user.getId(), isFinished);
 
-		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList();
+		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList<ProjektEntriesResponseDto>();
 		for (int i = 0; i < entryList.size(); i++) {
 			Entry entry = entryList.get(i);
 			ProjektEntriesResponseDto perDto = new ProjektEntriesResponseDto(entry.getId(), entry.getTitle(),
@@ -131,70 +129,9 @@ public class EntryServiceImpl implements EntryService {
 
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
-
-//		List<Integer> toDeleteList = new ArrayList<>();
-//
-//		getAddedEntryIds(e, toDeleteList);
-//
-//		if (toDeleteList.size() != 0) {
-//			for (Integer idToDelete : toDeleteList) {
-//				entryRepository.deleteById(idToDelete);
-//			}
-//		}
-//		
-//		entryRepository.deleteById(id);
 		
 		customEntryRepository.removeEntry(e);
 		
-		/*
-		 * List<Integer> toDeleteList= new ArrayList<>();
-		 * 
-		 * while (e.getAddEntry().size() != 0) { Entry alt = e;
-		 * 
-		 * // int actualAltEntryNumber = alt.getAddEntry().size(); int counter = 0;
-		 * 
-		 * // while (alt.getAddEntry().size() != 0) { while (alt.getAddEntry().size() ==
-		 * counter) {
-		 * 
-		 * for (Entry altEntry : alt.getAddEntry()) {
-		 * toDeleteList.add(altEntry.getId()); alt = altEntry; } counter++; }
-		 * toDeleteList.add(alt.getId()); // entryRepository.deleteById(alt.getId()); }
-		 * for (Integer idToDelete : toDeleteList) {
-		 * entryRepository.deleteById(idToDelete); } entryRepository.deleteById(id);
-		 */
-	}
-
-	public List<Integer> hierarhicalIterator(Entry e, List<Integer> idList) {
-
-		int size = idList.size();
-
-		for (Entry entry : e.getAddEntry()) {
-			idList.add(entry.getId());
-		}
-
-		if (size < idList.size()) {
-			return idList;
-		}
-
-//		Set<Entry> set = e.getAddEntry();
-//	    Iterator<Entry> entry = set.iterator();
-//	    while(entry.hasNext()) {
-//	        idList.add(entry.next().getId());
-//	        hierarhicalIterator(entry.next());
-//	        
-//	    }
-		return null;
-	}
-
-	public List<Integer> getAddedEntryIds(Entry e, List<Integer> toDeleteList) {
-		List<Integer> actIdList = hierarhicalIterator(e, toDeleteList);
-
-		if (actIdList != null) {
-			return actIdList;
-			
-		}		
-		return toDeleteList;
-
 	}
 
 }
