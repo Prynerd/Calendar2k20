@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
 public class EntryDto {
-	
+
+	@NotNull
 	private Integer addedEntryId;
 
 	@NotNull
@@ -14,22 +15,17 @@ public class EntryDto {
 
 	private String description;
 
-	@NotNull
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime date;
 
-	@NotNull
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime duration;
 
-	@NotNull
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime termin;
 
-	@NotNull
 	private String entryType;
 
-	@NotNull
 	private String entryPhase;
 	
 	public EntryDto() {

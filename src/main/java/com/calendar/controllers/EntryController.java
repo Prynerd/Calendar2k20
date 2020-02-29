@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,14 +52,18 @@ public class EntryController {
 		return entryServiceImpl.getProjekts(isFinished);
 	}
 	
-	@GetMapping("entry{id}")
+	@GetMapping("/entry{id}")
 	public EntryResponseDto getEntryById(@RequestParam int id) {
 		return entryServiceImpl.getEntryById(id);
 	}
 	
-	@GetMapping("project{id}")
+	@GetMapping("/project{id}")
 	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
 		return entryServiceImpl.getFullProjectById(id);
 	}
 	
+	@DeleteMapping("/entry{id}")
+	public void deleteEntryById(@RequestParam int id) {
+		entryServiceImpl.deleteEntryById(id);
+	}
 }

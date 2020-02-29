@@ -35,4 +35,10 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 				.getResultList();
 	}
 
+	public void removeEntry(Entry entry) {
+		
+		em.remove(em.contains(entry) ? entry : em.merge(entry));
+		
+	}
+	
 }
