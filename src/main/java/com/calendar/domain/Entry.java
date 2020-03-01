@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -53,12 +54,16 @@ public class Entry {
 	
 	private boolean isChild;
 	
+	private boolean isFinished;
+	
+	private boolean isDeleted;
+	
 	@JsonBackReference
 	@JoinColumn(name="entry_id")
 	@ManyToOne
 	private Entry entryConnections;
 	
-	@OneToMany(mappedBy = "entryConnections")
+	@OneToMany(mappedBy = "entryConnections", cascade = CascadeType.REMOVE)
 	private Set<Entry> addEntry;
 	
 	public Entry() {
@@ -77,6 +82,8 @@ public class Entry {
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
 		this.isChild = false;
+		this.isFinished = false;
+		this.isDeleted = false;
 	}
 	
 	
@@ -176,5 +183,21 @@ public class Entry {
 	public void setChild(boolean isChild) {
 		this.isChild = isChild;
 	}
-	
+
+	public boolean isFinished() {
+		return isFinished;
+	}
+
+	public void setFinished(boolean isFinished) {
+		this.isFinished = isFinished;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+		
 }

@@ -2,25 +2,17 @@ package com.calendar.requestdto;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
 
-public class EntryDto {
-
-	@NotNull
-	private Integer addedEntryId;
+public class ProjectDto {
 
 	@NotNull
 	private String title;
 
 	private String description;
-
-	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
-	private LocalDateTime date;
-
-	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
-	private LocalDateTime duration;
-
+	
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime termin;
 
@@ -28,28 +20,17 @@ public class EntryDto {
 
 	private String entryPhase;
 	
-	public EntryDto() {
+	public ProjectDto() {
 		
 	}
 
-	public EntryDto(Integer addedEntryId, String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
+	public ProjectDto(String title, String description, LocalDateTime termin,
 			String entryType, String entryPhase) {
-		this.addedEntryId = addedEntryId;
 		this.title = title;
 		this.description = description;
-		this.date = date;
-		this.duration = duration;
 		this.termin = termin;
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
-	}
-
-	public Integer getAddedEntryId() {
-		return addedEntryId;
-	}
-
-	public void setAddedEntryId(int addedEntryId) {
-		this.addedEntryId = addedEntryId;
 	}
 
 	public String getTitle() {
@@ -66,22 +47,6 @@ public class EntryDto {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public LocalDateTime getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDateTime date) {
-		this.date = date;
-	}
-
-	public LocalDateTime getDuration() {
-		return duration;
-	}
-
-	public void setDuration(LocalDateTime duration) {
-		this.duration = duration;
 	}
 
 	public LocalDateTime getTermin() {
@@ -107,6 +72,5 @@ public class EntryDto {
 	public void setEntryPhase(String entryPhase) {
 		this.entryPhase = entryPhase;
 	}
-	
 	
 }

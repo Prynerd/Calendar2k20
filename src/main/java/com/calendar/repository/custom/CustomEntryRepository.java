@@ -8,4 +8,8 @@ public interface CustomEntryRepository {
 
 	List<Entry> getEntriesByUserId(int userId);
 	
+	List<Entry> getEntriesByUserIdAndStatus(int userId, boolean isFinished);
+	
+	void removeEntry(Entry entry);
+	
 }

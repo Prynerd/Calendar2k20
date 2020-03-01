@@ -1,15 +1,18 @@
 package com.calendar.responsedto;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
+import com.calendar.domain.Entry;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class EntryResponseDto {
+public class FullProjectResponseDto {
 
 	private int id;
 	
@@ -38,8 +41,10 @@ public class EntryResponseDto {
 	
 	private boolean isFinished;
 	
-	public EntryResponseDto(int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished) {
+	private Set<Entry> addEntry = new HashSet<Entry>();
+	
+	public FullProjectResponseDto(int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
+			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished, Set<Entry> addEntry) {
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
@@ -50,7 +55,8 @@ public class EntryResponseDto {
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
 		this.isChild = isChild;
-		this.isFinished = isFinished;		
+		this.isFinished = isFinished;
+		this.addEntry = addEntry;
 	}
 
 	public int getId() {
@@ -141,5 +147,12 @@ public class EntryResponseDto {
 		this.isFinished = isFinished;
 	}
 	
+	public Set<Entry> getAddEntry() {
+		return addEntry;
+	}
+
+	public void AddEntry(Set<Entry> addEntry) {
+		this.addEntry = addEntry;
+	}
 	
 }
