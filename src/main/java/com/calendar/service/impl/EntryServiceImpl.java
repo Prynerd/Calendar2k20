@@ -58,10 +58,29 @@ public class EntryServiceImpl implements EntryService {
 	public void createEntry(EntryDto entryDto) {
 
 		User user = userServiceImpl.getFullUser();
-
-		Entry entry = new Entry(entryDto.getTitle(), entryDto.getDescription(), entryDto.getDate(),
-				entryDto.getDuration(), entryDto.getTermin(), EntryType.valueOf(entryDto.getEntryType()),
-				EntryPhase.valueOf(entryDto.getEntryPhase()));
+		
+		EntryType entryType;
+		EntryPhase entryPhase;
+		
+		if (entryDto.getEntryType() != null) {
+			entryType = EntryType.valueOf(entryDto.getEntryType());
+		} else {
+			entryType = EntryType.NONRELEVANT;
+		}
+		if(entryDto.getEntryPhase() != null) {
+			entryPhase = EntryPhase.valueOf(entryDto.getEntryPhase());
+		} else {
+			entryPhase = EntryPhase.NONRELEVANT;
+		}
+		
+		Entry entry = new Entry(
+				entryDto.getTitle(), 
+				entryDto.getDescription(), 
+				entryDto.getDate(),
+				entryDto.getDuration(), 
+				entryDto.getTermin(), 
+				entryType,
+				entryPhase);
 
 		entry.setUserId(user.getId());
 		entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
