@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,5 +66,15 @@ public class EntryController {
 	@DeleteMapping("/entry{id}")
 	public void deleteEntryById(@RequestParam int id) {
 		entryServiceImpl.deleteEntryById(id);
+	}
+	
+	@PutMapping("/entry{id}")
+	public void ModifyEntryById(@Valid @RequestBody EntryDto eDto, @RequestParam int id) {
+		entryServiceImpl.modifyEntryById(id, eDto);
+	}
+	
+	@PutMapping("/project{id}")
+	public void ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
+		entryServiceImpl.modifyProjectById(id, projectDto);
 	}
 }

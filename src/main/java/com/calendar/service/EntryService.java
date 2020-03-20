@@ -24,4 +24,8 @@ public interface EntryService {
 	public FullProjectResponseDto getFullProjectById(int id);
 	
 	public void deleteEntryById(int id);
+	
+	public void modifyEntryById(int id, EntryDto eDto);
+	
+	public void modifyProjectById(int id, ProjectDto projectDto);
 }
