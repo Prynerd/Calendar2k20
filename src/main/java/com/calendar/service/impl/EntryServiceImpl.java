@@ -153,4 +153,33 @@ public class EntryServiceImpl implements EntryService {
 		
 	}
 
+	@Override
+	@Transactional
+	public void modifyEntryById(int id, EntryDto eDto) {
+
+		Entry entry = entryRepository.findById(id).get();
+		
+		entry.setTitle(eDto.getTitle());
+		entry.setDescription(eDto.getDescription());
+		entry.setDate(eDto.getDate());
+		entry.setDuration(eDto.getDuration());
+		entry.setTermin(eDto.getTermin());
+		entry.setEntryPhase(EntryPhase.valueOf(eDto.getEntryPhase()));
+		entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
+		
+		entryRepository.save(entry);
+	}
+
+	@Override
+	@Transactional
+	public void modifyProjectById(int id, ProjectDto projectDto) {
+
+		Entry project = entryRepository.findById(id).get();
+		
+		project.setTitle(projectDto.getTitle());
+		project.setDescription(projectDto.getDescription());
+		
+		entryRepository.save(project);
+	}
+
 }
