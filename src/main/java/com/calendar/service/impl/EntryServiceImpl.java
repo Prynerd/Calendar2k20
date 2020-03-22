@@ -43,12 +43,29 @@ public class EntryServiceImpl implements EntryService {
 	public void createProject(ProjectDto projectDto) {
 
 		User user = userServiceImpl.getFullUser();
-
+		
+		EntryType entryType;
+		EntryPhase entryPhase;
+		
+		if (projectDto.getEntryType() != null) {
+			entryType = EntryType.valueOf(projectDto.getEntryType());
+		} else {
+			entryType = EntryType.NONRELEVANT;
+		}
+		if(projectDto.getEntryPhase() != null) {
+			entryPhase = EntryPhase.valueOf(projectDto.getEntryPhase());
+		} else {
+			entryPhase = EntryPhase.NONRELEVANT;
+		}
+		
 		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null, projectDto.getTermin(),
-				EntryType.valueOf(projectDto.getEntryType()), EntryPhase.valueOf(projectDto.getEntryPhase()));
-
+				entryType, entryPhase);
+		
 		entry.setUserId(user.getId());
 
+		Integer numberOfProjects = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false).size();
+		entry.setSortNumber((numberOfProjects != null) ?  numberOfProjects : 0);
+		
 		entryRepository.save(entry);
 
 	}
@@ -86,6 +103,9 @@ public class EntryServiceImpl implements EntryService {
 		entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
 		entry.setChild(true);
 
+		Integer numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getAddedEntryId()).get().getAddEntry().size();
+		entry.setSortNumber((numberOfEntriesOnThisLevel != null) ?  numberOfEntriesOnThisLevel : 0);
+		
 		entryRepository.save(entry);
 	}
 
@@ -96,7 +116,7 @@ public class EntryServiceImpl implements EntryService {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
-		entryList = customEntryRepository.getEntriesByUserId(user.getId());
+		entryList = customEntryRepository.getOrderedEntriesByUserId(user.getId());
 		entryResponseDto.setEntryList(entryList);
 
 		return entryResponseDto;
@@ -107,7 +127,7 @@ public class EntryServiceImpl implements EntryService {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
-		entryList = customEntryRepository.getEntriesByUserIdAndStatus(user.getId(), isFinished);
+		entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), isFinished);
 
 		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList<ProjektEntriesResponseDto>();
 		for (int i = 0; i < entryList.size(); i++) {
@@ -127,7 +147,7 @@ public class EntryServiceImpl implements EntryService {
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isFinished());
+				e.isFinished(), e.getSortNumber());
 
 		return erDto;
 	}

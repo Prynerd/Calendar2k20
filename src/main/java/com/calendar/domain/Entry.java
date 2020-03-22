@@ -58,6 +58,8 @@ public class Entry {
 	
 	private boolean isDeleted;
 	
+	private Integer sortNumber;
+	
 	@JsonBackReference
 	@JoinColumn(name="entry_id")
 	@ManyToOne
@@ -198,6 +200,14 @@ public class Entry {
 
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public Integer getSortNumber() {
+		return sortNumber;
+	}
+
+	public void setSortNumber(Integer sortNumber) {
+		this.sortNumber = sortNumber;
 	}
 		
 }
