@@ -86,6 +86,9 @@ public class EntryServiceImpl implements EntryService {
 		entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
 		entry.setChild(true);
 
+		Integer numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getAddedEntryId()).get().getAddEntry().size();
+		entry.setSortNumber((numberOfEntriesOnThisLevel != null) ?  numberOfEntriesOnThisLevel : 0);
+		
 		entryRepository.save(entry);
 	}
 
