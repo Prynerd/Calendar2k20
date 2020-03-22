@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.NotNull;
 
 import com.calendar.data.enums.EntryPhase;
@@ -65,6 +66,7 @@ public class Entry {
 	@ManyToOne
 	private Entry entryConnections;
 	
+	@OrderBy("sortNumber ASC")
 	@OneToMany(mappedBy = "entryConnections", cascade = CascadeType.REMOVE)
 	private Set<Entry> addEntry;
 	
