@@ -1,9 +1,15 @@
 package com.calendar.repository.custom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,7 +32,7 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 	}
 	
 	@Override
-	public List<Entry> getEntriesByUserIdAndStatus(int userId, boolean isFinished) {
+	public List<Entry> getProjectsByUserIdAndStatus(int userId, boolean isFinished) {
 		return em
 				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC AND e.isFinished = :isF", Entry.class)
 				.setParameter("id", userId)
@@ -38,6 +44,28 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 	public void removeEntry(Entry entry) {
 		
 		em.remove(em.contains(entry) ? entry : em.merge(entry));
+		
+	}
+	
+	public List<Entry> getOrderedEntriesByUserId(int userId) {
+		
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Entry> cq = cb.createQuery(Entry.class);
+		Root<Entry> e = cq.from(Entry.class);
+		
+		cq
+			.where(cb.equal(e.get("userId"), userId))
+			.where(cb.equal(e.get("isChild"), false));
+		
+		List<Order> orderList = new ArrayList();
+		orderList.add(cb.asc(e.get("sortNumber")));
+		
+		cq
+			.orderBy(orderList);
+		
+		TypedQuery<Entry> typedQuery = em.createQuery(cq);
+		
+		return typedQuery.getResultList();
 		
 	}
 	
