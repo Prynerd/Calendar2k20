@@ -38,8 +38,10 @@ public class EntryResponseDto {
 	
 	private boolean isFinished;
 	
+	private Integer sortNumber;
+	
 	public EntryResponseDto(int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished) {
+			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished, Integer sortNumber) {
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
@@ -51,6 +53,7 @@ public class EntryResponseDto {
 		this.entryPhase = entryPhase;
 		this.isChild = isChild;
 		this.isFinished = isFinished;		
+		this.setSortNumber(sortNumber);
 	}
 
 	public int getId() {
@@ -139,6 +142,14 @@ public class EntryResponseDto {
 
 	public void setFinished(boolean isFinished) {
 		this.isFinished = isFinished;
+	}
+
+	public Integer getSortNumber() {
+		return sortNumber;
+	}
+
+	public void setSortNumber(Integer sortNumber) {
+		this.sortNumber = sortNumber;
 	}
 	
 	

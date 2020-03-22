@@ -147,7 +147,7 @@ public class EntryServiceImpl implements EntryService {
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isFinished());
+				e.isFinished(), e.getSortNumber());
 
 		return erDto;
 	}
