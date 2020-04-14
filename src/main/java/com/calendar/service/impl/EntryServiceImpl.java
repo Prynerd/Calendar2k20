@@ -44,22 +44,8 @@ public class EntryServiceImpl implements EntryService {
 
 		User user = userServiceImpl.getFullUser();
 		
-		EntryType entryType;
-		EntryPhase entryPhase;
-		
-		if (projectDto.getEntryType() != null) {
-			entryType = EntryType.valueOf(projectDto.getEntryType());
-		} else {
-			entryType = EntryType.NONRELEVANT;
-		}
-		if(projectDto.getEntryPhase() != null) {
-			entryPhase = EntryPhase.valueOf(projectDto.getEntryPhase());
-		} else {
-			entryPhase = EntryPhase.NONRELEVANT;
-		}
-		
 		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null, projectDto.getTermin(),
-				entryType, entryPhase);
+				EntryType.NONRELEVANT, EntryPhase.NONRELEVANT);
 		
 		entry.setUserId(user.getId());
 
