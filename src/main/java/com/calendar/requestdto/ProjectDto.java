@@ -15,22 +15,15 @@ public class ProjectDto {
 	
 	@JsonFormat(pattern = "yyyy-MM-dd@HH:mm")
 	private LocalDateTime termin;
-
-	private String entryType;
-
-	private String entryPhase;
 	
 	public ProjectDto() {
 		
 	}
 
-	public ProjectDto(String title, String description, LocalDateTime termin,
-			String entryType, String entryPhase) {
+	public ProjectDto(String title, String description, LocalDateTime termin) {
 		this.title = title;
 		this.description = description;
 		this.termin = termin;
-		this.entryType = entryType;
-		this.entryPhase = entryPhase;
 	}
 
 	public String getTitle() {
@@ -55,22 +48,6 @@ public class ProjectDto {
 
 	public void setTermin(LocalDateTime termin) {
 		this.termin = termin;
-	}
-
-	public String getEntryType() {
-		return entryType;
-	}
-
-	public void setEntryType(String entryType) {
-		this.entryType = entryType;
-	}
-
-	public String getEntryPhase() {
-		return entryPhase;
-	}
-
-	public void setEntryPhase(String entryPhase) {
-		this.entryPhase = entryPhase;
 	}
 	
 }
