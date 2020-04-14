@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import com.calendar.data.enums.EntryPhase;
@@ -135,6 +136,11 @@ public class EntryServiceImpl implements EntryService {
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
 				e.isFinished(), e.getSortNumber());
 
+		User user = userServiceImpl.getFullUser();
+		if(user.getId() != erDto.getUserId()) {
+			throw new AccessDeniedException("Access denied");
+		}
+		
 		return erDto;
 	}
 
@@ -143,6 +149,9 @@ public class EntryServiceImpl implements EntryService {
 
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
+		
+		checkUserToEntry(e);
+		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(),
 				e.getAddEntry());
@@ -154,9 +163,10 @@ public class EntryServiceImpl implements EntryService {
 
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
+
+		checkUserToEntry(e);
 		
 		customEntryRepository.removeEntry(e);
-		
 	}
 
 	@Override
@@ -164,6 +174,8 @@ public class EntryServiceImpl implements EntryService {
 	public void modifyEntryById(int id, EntryDto eDto) {
 
 		Entry entry = entryRepository.findById(id).get();
+		
+		checkUserToEntry(entry);
 		
 		entry.setTitle(eDto.getTitle());
 		entry.setDescription(eDto.getDescription());
@@ -182,10 +194,19 @@ public class EntryServiceImpl implements EntryService {
 
 		Entry project = entryRepository.findById(id).get();
 		
+		checkUserToEntry(project);
+		
 		project.setTitle(projectDto.getTitle());
 		project.setDescription(projectDto.getDescription());
 		
 		entryRepository.save(project);
 	}
 
+	public void checkUserToEntry(Entry e) {
+		User user = userServiceImpl.getFullUser();
+		if(user.getId() != e.getUserId()) {
+			throw new AccessDeniedException("Access denied");
+		}
+	}
+	
 }
