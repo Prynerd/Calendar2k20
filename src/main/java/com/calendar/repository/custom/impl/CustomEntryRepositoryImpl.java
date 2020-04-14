@@ -54,8 +54,7 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 		Root<Entry> e = cq.from(Entry.class);
 		
 		cq
-			.where(cb.equal(e.get("userId"), userId))
-			.where(cb.equal(e.get("isChild"), false));
+			.where(cb.equal(e.get("userId"), userId), cb.equal(e.get("isChild"), false));
 		
 		List<Order> orderList = new ArrayList();
 		orderList.add(cb.asc(e.get("sortNumber")));
