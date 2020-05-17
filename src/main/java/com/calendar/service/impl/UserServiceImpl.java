@@ -18,6 +18,7 @@ import com.calendar.exceptions.EmailAlreadyExistsException;
 import com.calendar.exceptions.UserDeletedException;
 import com.calendar.repository.UserRepository;
 import com.calendar.requestdto.RegistrationDto;
+import com.calendar.responsedto.UserResponseDto;
 import com.calendar.service.UserService;
 
 @Service
@@ -73,6 +74,16 @@ public class UserServiceImpl implements UserService {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return user;
 	}
+
+	@Override
+	public UserResponseDto getUser() {
+		User user = getFullUser();
+		UserResponseDto urDto = new UserResponseDto(user.getId(), user.getEmail(), user.isValidated());
+		
+		return urDto;
+	}
+	
+	
 		
 	
 }
