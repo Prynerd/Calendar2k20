@@ -19,7 +19,8 @@ import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjektEntriesResponseDto;
+import com.calendar.responsedto.ProjectEntriesResponseDto;
+import com.calendar.responsedto.ProjectviewResponseDto;
 import com.calendar.service.impl.EntryServiceImpl;
 
 @RestController
@@ -49,18 +50,23 @@ public class EntryController {
 	}
 	
 	@GetMapping("/projects{finished}")
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isFinished){
+	public ArrayList<ProjectEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isFinished){
 		return entryServiceImpl.getProjekts(isFinished);
-	}
-	
-	@GetMapping("/entry{id}")
-	public EntryResponseDto getEntryById(@RequestParam int id) {
-		return entryServiceImpl.getEntryById(id);
 	}
 	
 	@GetMapping("/project{id}")
 	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
 		return entryServiceImpl.getFullProjectById(id);
+	}
+	
+	@GetMapping("/projectview{id}{isFinished}")
+	public ProjectviewResponseDto getProjectview(@RequestParam int id, boolean isFinished) {
+		return entryServiceImpl.getProjectview(id, isFinished);
+	}
+	
+	@GetMapping("/entry{id}")
+	public EntryResponseDto getEntryById(@RequestParam int id) {
+		return entryServiceImpl.getEntryById(id);
 	}
 	
 	@DeleteMapping("/entry{id}")

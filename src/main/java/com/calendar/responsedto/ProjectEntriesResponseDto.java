@@ -2,7 +2,7 @@ package com.calendar.responsedto;
 
 import com.calendar.data.enums.EntryPhase;
 
-public class ProjektEntriesResponseDto {
+public class ProjectEntriesResponseDto {
 	
 	private int entryId;
 	
@@ -10,7 +10,7 @@ public class ProjektEntriesResponseDto {
 	
 	private EntryPhase entryPhase;
 	
-	public ProjektEntriesResponseDto(int entryId, String title, EntryPhase entryPhase) {
+	public ProjectEntriesResponseDto(int entryId, String title, EntryPhase entryPhase) {
 		this.entryId = entryId;
 		this.title = title;
 		this.entryPhase = entryPhase;
