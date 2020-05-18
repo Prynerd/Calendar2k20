@@ -111,11 +111,16 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean isFinished) {
+	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean status) {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
-		entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), isFinished);
+		
+		if(status) {
+			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
+		} else {
+			entryList = customEntryRepository.getEntriesByUserId(user.getId());
+		}
 
 		ArrayList<ProjectEntriesResponseDto> perDtoList = new ArrayList<ProjectEntriesResponseDto>();
 		for (int i = 0; i < entryList.size(); i++) {
