@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ProjectviewResponseDto {
 
-	private ArrayList<ProjectEntriesResponseDto> projectEntriesResponseDto;
 	private FullProjectResponseDto fullProjectResponseDto;
+	private ArrayList<ProjectEntriesResponseDto> projectEntriesResponseDto;
 	
 	public ProjectviewResponseDto(ArrayList<ProjectEntriesResponseDto> projectEntriesResponseDto, FullProjectResponseDto fullProjectResponseDto) {
 		this.projectEntriesResponseDto = projectEntriesResponseDto;

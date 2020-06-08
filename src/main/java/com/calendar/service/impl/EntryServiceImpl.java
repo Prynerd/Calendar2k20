@@ -147,9 +147,9 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ProjectviewResponseDto getProjectview(int id, boolean finished) {
+	public ProjectviewResponseDto getProjectview(int id, boolean status) {
 		
-		return new ProjectviewResponseDto(getProjekts(finished), getFullProjectById(id));
+		return new ProjectviewResponseDto(getProjekts(status), getFullProjectById(id));
 	}
 	
 	@Override

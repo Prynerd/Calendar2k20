@@ -59,9 +59,9 @@ public class EntryController {
 		return entryServiceImpl.getFullProjectById(id);
 	}
 	
-	@GetMapping("/projectview{id}{isFinished}")
-	public ProjectviewResponseDto getProjectview(@RequestParam int id, boolean isFinished) {
-		return entryServiceImpl.getProjectview(id, isFinished);
+	@GetMapping("/projectview{id}{status}")
+	public ProjectviewResponseDto getProjectview(@RequestParam int id, boolean status) {
+		return entryServiceImpl.getProjectview(id, status);
 	}
 	
 	@GetMapping("/entry{id}")
