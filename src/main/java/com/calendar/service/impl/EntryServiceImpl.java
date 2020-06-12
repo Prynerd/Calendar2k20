@@ -208,5 +208,17 @@ public class EntryServiceImpl implements EntryService {
 			throw new AccessDeniedException("Access denied");
 		}
 	}
+
+	@Transactional
+	@Override
+	public void expandEntry(int id) {
+		Entry entry = entryRepository.findById(id).get();
+
+		checkUserToEntry(entry);
+
+		entry.toggleExpand();
+
+		entryRepository.save(entry);
+	}
 	
 }

@@ -77,4 +77,9 @@ public class EntryController {
 	public void ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
 		entryServiceImpl.modifyProjectById(id, projectDto);
 	}
+
+	@PostMapping("/expand{id}")
+	public void toggleExpand(@RequestParam int id) {
+		entryServiceImpl.expandEntry(id);
+	}
 }
