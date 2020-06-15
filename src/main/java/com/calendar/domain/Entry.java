@@ -54,7 +54,7 @@ public class Entry {
 	private EntryPhase entryPhase;
 	
 	private boolean isChild;
-	
+
 	private boolean isFinished;
 	
 	private boolean isDeleted;
@@ -219,17 +219,9 @@ public class Entry {
 		return isExpanded;
 	}
 
-	private void setExpanded(boolean expanded) {
-		isExpanded = expanded;
+	public void setExpanded(boolean expanded) {
+		this.isExpanded = expanded;
 	}
 
-	public boolean toggleExpand() {
-		if (isExpanded) {
-			this.setExpanded(false);
-		} else {
-			this.setExpanded(true);
-		}
 
-		return isExpanded();
-	}
 }

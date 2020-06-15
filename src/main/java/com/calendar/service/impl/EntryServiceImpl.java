@@ -2,10 +2,12 @@ package com.calendar.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.calendar.exceptions.EntryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -211,12 +213,18 @@ public class EntryServiceImpl implements EntryService {
 
 	@Transactional
 	@Override
-	public void expandEntry(int id) {
-		Entry entry = entryRepository.findById(id).get();
+	public void expandEntry(int id, boolean isExpanded) {
+		Entry entry;
+
+		try {
+			entry = entryRepository.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new EntryNotFoundException("Entry doesn't exist!");
+		}
 
 		checkUserToEntry(entry);
 
-		entry.toggleExpand();
+		entry.setExpanded(isExpanded);
 
 		entryRepository.save(entry);
 	}

@@ -29,5 +29,5 @@ public interface EntryService {
 	
 	public void modifyProjectById(int id, ProjectDto projectDto);
 
-	public void expandEntry(int id);
+	public void expandEntry(int id, boolean isExpanded);
 }
