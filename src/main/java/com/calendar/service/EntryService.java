@@ -28,4 +28,6 @@ public interface EntryService {
 	public void modifyEntryById(int id, EntryDto eDto);
 	
 	public void modifyProjectById(int id, ProjectDto projectDto);
+
+	public void expandEntry(int id, boolean isExpanded);
 }

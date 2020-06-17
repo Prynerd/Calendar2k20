@@ -54,12 +54,14 @@ public class Entry {
 	private EntryPhase entryPhase;
 	
 	private boolean isChild;
-	
+
 	private boolean isFinished;
 	
 	private boolean isDeleted;
 	
 	private Integer sortNumber;
+
+	private boolean isExpanded;
 	
 	@JsonBackReference
 	@JoinColumn(name="entry_id")
@@ -88,6 +90,7 @@ public class Entry {
 		this.isChild = false;
 		this.isFinished = false;
 		this.isDeleted = false;
+		this.isExpanded = true;
 	}
 	
 	
@@ -211,5 +214,14 @@ public class Entry {
 	public void setSortNumber(Integer sortNumber) {
 		this.sortNumber = sortNumber;
 	}
-		
+
+	public boolean isExpanded() {
+		return isExpanded;
+	}
+
+	public void setExpanded(boolean expanded) {
+		this.isExpanded = expanded;
+	}
+
+
 }
