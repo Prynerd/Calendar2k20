@@ -7,7 +7,8 @@ import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjektEntriesResponseDto;
+import com.calendar.responsedto.ProjectEntriesResponseDto;
+import com.calendar.responsedto.ProjectviewResponseDto;
 
 public interface EntryService {
 
@@ -15,7 +16,7 @@ public interface EntryService {
 	
 	public void createProject(ProjectDto projectDto);
 	
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isFinished);
+	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean isFinished);
 	
 	public EntryListResponseDto getEntries();
 	
@@ -28,4 +29,8 @@ public interface EntryService {
 	public void modifyEntryById(int id, EntryDto eDto);
 	
 	public void modifyProjectById(int id, ProjectDto projectDto);
+
+	public void expandEntry(int id, boolean isExpanded);
+	
+	public ProjectviewResponseDto getProjectview(int id, boolean finished);
 }
