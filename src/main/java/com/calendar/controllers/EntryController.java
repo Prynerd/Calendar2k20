@@ -55,12 +55,12 @@ public class EntryController {
 	}
 	
 	@GetMapping("/project{id}")
-	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
+	public FullProjectResponseDto getFullProjectById(@Valid @RequestParam int id) {
 		return entryServiceImpl.getFullProjectById(id);
 	}
 	
-	@GetMapping("/projectview{id}{status}")
-	public ProjectviewResponseDto getProjectview(@RequestParam int id, boolean status) {
+	@GetMapping("/projectview{id, status}")
+	public ProjectviewResponseDto getProjectview(@Valid @RequestParam int id, boolean status) {
 		return entryServiceImpl.getProjectview(id, status);
 	}
 	
