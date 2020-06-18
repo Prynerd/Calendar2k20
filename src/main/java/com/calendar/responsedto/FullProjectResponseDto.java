@@ -41,10 +41,18 @@ public class FullProjectResponseDto {
 	
 	private boolean isFinished;
 	
+	private boolean isDeleted;
+	
+	private Integer sortNumber;
+
+	private boolean isExpanded;
+	
 	private Set<Entry> addEntry = new HashSet<Entry>();
 	
-	public FullProjectResponseDto(int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished, Set<Entry> addEntry) {
+	public FullProjectResponseDto(
+			int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
+			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished,
+			boolean isDeleted, Integer sortNumber, boolean isExpanded, Set<Entry> addEntry) {
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
@@ -56,6 +64,38 @@ public class FullProjectResponseDto {
 		this.entryPhase = entryPhase;
 		this.isChild = isChild;
 		this.isFinished = isFinished;
+		this.isDeleted = isDeleted;
+		this.sortNumber = sortNumber;
+		this.isExpanded = isExpanded;
+		this.addEntry = addEntry;
+	}
+	
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Integer getSortNumber() {
+		return sortNumber;
+	}
+
+	public void setSortNumber(Integer sortNumber) {
+		this.sortNumber = sortNumber;
+	}
+
+	public boolean isExpanded() {
+		return isExpanded;
+	}
+
+	public void setExpanded(boolean isExpanded) {
+		this.isExpanded = isExpanded;
+	}
+
+	public void setAddEntry(Set<Entry> addEntry) {
 		this.addEntry = addEntry;
 	}
 
