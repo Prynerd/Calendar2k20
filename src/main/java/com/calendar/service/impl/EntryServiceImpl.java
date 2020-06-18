@@ -128,7 +128,7 @@ public class EntryServiceImpl implements EntryService {
 		for (int i = 0; i < entryList.size(); i++) {
 			Entry entry = entryList.get(i);
 			ProjectEntriesResponseDto perDto = new ProjectEntriesResponseDto(entry.getId(), entry.getTitle(),
-					entry.getEntryPhase());
+					entry.getEntryPhase(), entry.getSortNumber());
 			perDtoList.add(perDto);
 		}
 
@@ -145,7 +145,7 @@ public class EntryServiceImpl implements EntryService {
 		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(),
-				e.getAddEntry());
+				e.isDeleted(), e.getSortNumber(), e.isExpanded(), e.getAddEntry());
 	}
 
 	@Override
@@ -161,7 +161,7 @@ public class EntryServiceImpl implements EntryService {
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isFinished(), e.getSortNumber());
+				e.isFinished(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
 
 		User user = userServiceImpl.getFullUser();
 		if(user.getId() != erDto.getUserId()) {
