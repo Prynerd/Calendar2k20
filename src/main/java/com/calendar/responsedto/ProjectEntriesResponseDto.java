@@ -10,10 +10,23 @@ public class ProjectEntriesResponseDto {
 	
 	private EntryPhase entryPhase;
 	
-	public ProjectEntriesResponseDto(int entryId, String title, EntryPhase entryPhase) {
+	private Integer sortNumber;
+	
+	public ProjectEntriesResponseDto(int entryId, String title, EntryPhase entryPhase, Integer sortNumber) {
 		this.entryId = entryId;
 		this.title = title;
 		this.entryPhase = entryPhase;
+		this.sortNumber = sortNumber;
+	}
+	
+	
+
+	public Integer getSortNumber() {
+		return sortNumber;
+	}
+
+	public void setSortNumber(Integer sortNumber) {
+		this.sortNumber = sortNumber;
 	}
 
 	public int getEntryId() {
