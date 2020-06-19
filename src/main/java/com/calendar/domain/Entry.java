@@ -55,7 +55,7 @@ public class Entry {
 	
 	private boolean isChild;
 
-	private boolean isFinished;
+	private boolean isClosed;
 	
 	private boolean isDeleted;
 	
@@ -88,7 +88,7 @@ public class Entry {
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
 		this.isChild = false;
-		this.isFinished = false;
+		this.isClosed = false;
 		this.isDeleted = false;
 		this.isExpanded = true;
 	}
@@ -168,6 +168,9 @@ public class Entry {
 	}
 
 	public void setEntryPhase(EntryPhase entryPhase) {
+	    if (entryPhase == EntryPhase.COMPLETED) {
+	        this.isClosed = true;
+        }
 		this.entryPhase = entryPhase;
 	}
 	
@@ -191,12 +194,12 @@ public class Entry {
 		this.isChild = isChild;
 	}
 
-	public boolean isFinished() {
-		return isFinished;
+	public boolean isClosed() {
+		return isClosed;
 	}
 
-	public void setFinished(boolean isFinished) {
-		this.isFinished = isFinished;
+	public void setClosed(boolean isFinished) {
+		this.isClosed = isFinished;
 	}
 
 	public boolean isDeleted() {

@@ -48,9 +48,9 @@ public class EntryController {
 		entryServiceImpl.createProject(projectDto);
 	}
 	
-	@GetMapping("/projects{finished}")
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isFinished){
-		return entryServiceImpl.getProjekts(isFinished);
+	@GetMapping("/projects{isClosed}")
+	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isClosed){
+		return entryServiceImpl.getProjekts(isClosed);
 	}
 	
 	@GetMapping("/entry{id}")

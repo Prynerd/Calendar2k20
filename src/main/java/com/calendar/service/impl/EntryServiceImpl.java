@@ -136,7 +136,7 @@ public class EntryServiceImpl implements EntryService {
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isFinished(), e.getSortNumber());
+				e.isClosed(), e.getSortNumber());
 
 		User user = userServiceImpl.getFullUser();
 		if(user.getId() != erDto.getUserId()) {
@@ -155,7 +155,7 @@ public class EntryServiceImpl implements EntryService {
 		checkUserToEntry(e);
 		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
-				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(),
+				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isClosed(),
 				e.getAddEntry());
 	}
 
