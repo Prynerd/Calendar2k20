@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.validation.Valid;
 
+import com.calendar.responsedto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.calendar.requestdto.EntryDto;
 import com.calendar.requestdto.ProjectDto;
-import com.calendar.responsedto.EntryListResponseDto;
-import com.calendar.responsedto.EntryResponseDto;
-import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjektEntriesResponseDto;
 import com.calendar.service.impl.EntryServiceImpl;
 
 @RestController
@@ -49,18 +46,23 @@ public class EntryController {
 	}
 	
 	@GetMapping("/projects{isClosed}")
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isClosed){
+	public ArrayList<ProjectEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isClosed){
 		return entryServiceImpl.getProjekts(isClosed);
+	}
+	
+	@GetMapping("/project{id}")
+	public FullProjectResponseDto getFullProjectById(@Valid @RequestParam int id) {
+		return entryServiceImpl.getFullProjectById(id);
+	}
+	
+	@GetMapping("/projectview{id, status}")
+	public ProjectviewResponseDto getProjectview(@Valid @RequestParam int id, boolean status) {
+		return entryServiceImpl.getProjectview(id, status);
 	}
 	
 	@GetMapping("/entry{id}")
 	public EntryResponseDto getEntryById(@RequestParam int id) {
 		return entryServiceImpl.getEntryById(id);
-	}
-	
-	@GetMapping("/project{id}")
-	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
-		return entryServiceImpl.getFullProjectById(id);
 	}
 	
 	@DeleteMapping("/entry{id}")

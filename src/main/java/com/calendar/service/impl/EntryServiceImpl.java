@@ -1,30 +1,24 @@
 package com.calendar.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
-
-import com.calendar.exceptions.EntryNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.stereotype.Service;
-
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
 import com.calendar.domain.Entry;
 import com.calendar.domain.User;
+import com.calendar.exceptions.EntryNotFoundException;
 import com.calendar.repository.EntryRepository;
 import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
 import com.calendar.requestdto.ProjectDto;
-import com.calendar.responsedto.EntryListResponseDto;
-import com.calendar.responsedto.EntryResponseDto;
-import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjektEntriesResponseDto;
+import com.calendar.responsedto.*;
 import com.calendar.service.EntryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.stereotype.Service;
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class EntryServiceImpl implements EntryService {
@@ -112,38 +106,21 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isFinished) {
+	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean isFinished) {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
 		entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), isFinished);
 
-		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList<ProjektEntriesResponseDto>();
+		ArrayList<ProjectEntriesResponseDto> perDtoList = new ArrayList<ProjectEntriesResponseDto>();
 		for (int i = 0; i < entryList.size(); i++) {
 			Entry entry = entryList.get(i);
-			ProjektEntriesResponseDto perDto = new ProjektEntriesResponseDto(entry.getId(), entry.getTitle(),
-					entry.getEntryPhase());
+			ProjectEntriesResponseDto perDto = new ProjectEntriesResponseDto(entry.getId(), entry.getTitle(),
+					entry.getEntryPhase(), entry.getSortNumber());
 			perDtoList.add(perDto);
 		}
 
 		return perDtoList;
-	}
-
-	@Override
-	public EntryResponseDto getEntryById(int id) {
-
-		Optional<Entry> entry = entryRepository.findById(id);
-		Entry e = entry.get();
-		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
-				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isClosed(), e.getSortNumber());
-
-		User user = userServiceImpl.getFullUser();
-		if(user.getId() != erDto.getUserId()) {
-			throw new AccessDeniedException("Access denied");
-		}
-		
-		return erDto;
 	}
 
 	@Override
@@ -156,9 +133,31 @@ public class EntryServiceImpl implements EntryService {
 		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isClosed(),
-				e.getAddEntry());
+				e.isDeleted(), e.getSortNumber(), e.isExpanded(), e.getAddEntry());
 	}
 
+	@Override
+	public ProjectviewResponseDto getProjectview(int id, boolean status) {
+		
+		return new ProjectviewResponseDto(getProjekts(status), getFullProjectById(id));
+	}
+	
+	@Override
+	public EntryResponseDto getEntryById(int id) {
+
+		Optional<Entry> entry = entryRepository.findById(id);
+		Entry e = entry.get();
+		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
+				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
+				e.isClosed(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
+
+		User user = userServiceImpl.getFullUser();
+		if(user.getId() != erDto.getUserId()) {
+			throw new AccessDeniedException("Access denied");
+		}
+		
+		return erDto;
+	}
 	@Override
 	@Transactional
 	public void deleteEntryById(int id) {

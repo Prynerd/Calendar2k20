@@ -41,16 +41,6 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 				.getResultList();
 	}
 
-//	@Override
-//	public List<Entry> getProjectsByUserIdAndStatus(int userId, boolean isFinished) {
-//		return em
-//				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC AND e.isFinished = :isF", Entry.class)
-//				.setParameter("id", userId)
-//				.setParameter("isC", false)
-//				.setParameter("isF", isFinished)
-//				.getResultList();
-//	}
-
 	public void removeEntry(Entry entry) {
 		
 		em.remove(em.contains(entry) ? entry : em.merge(entry));
