@@ -2,10 +2,12 @@ package com.calendar.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.calendar.exceptions.EntryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -126,7 +128,7 @@ public class EntryServiceImpl implements EntryService {
 		for (int i = 0; i < entryList.size(); i++) {
 			Entry entry = entryList.get(i);
 			ProjectEntriesResponseDto perDto = new ProjectEntriesResponseDto(entry.getId(), entry.getTitle(),
-					entry.getEntryPhase());
+					entry.getEntryPhase(), entry.getSortNumber());
 			perDtoList.add(perDto);
 		}
 
@@ -143,7 +145,7 @@ public class EntryServiceImpl implements EntryService {
 		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(),
-				e.getAddEntry());
+				e.isDeleted(), e.getSortNumber(), e.isExpanded(), e.getAddEntry());
 	}
 
 	@Override
@@ -159,7 +161,7 @@ public class EntryServiceImpl implements EntryService {
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isFinished(), e.getSortNumber());
+				e.isFinished(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
 
 		User user = userServiceImpl.getFullUser();
 		if(user.getId() != erDto.getUserId()) {
@@ -219,6 +221,24 @@ public class EntryServiceImpl implements EntryService {
 		if(user.getId() != e.getUserId()) {
 			throw new AccessDeniedException("Access denied");
 		}
+	}
+
+	@Transactional
+	@Override
+	public void expandEntry(int id, boolean isExpanded) {
+		Entry entry;
+
+		try {
+			entry = entryRepository.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new EntryNotFoundException("Entry doesn't exist!");
+		}
+
+		checkUserToEntry(entry);
+
+		entry.setExpanded(isExpanded);
+
+		entryRepository.save(entry);
 	}
 	
 }
