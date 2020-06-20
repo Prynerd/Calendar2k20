@@ -15,4 +15,6 @@ public interface UserService extends UserDetailsService{
 	public User getFullUser();
 	
 	public UserResponseDto getUser();
+	
+	public void setProjectsVisibilityStatus(boolean status);
 }

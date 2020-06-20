@@ -198,8 +198,8 @@ public class Entry {
 		return isClosed;
 	}
 
-	public void setClosed(boolean isFinished) {
-		this.isClosed = isFinished;
+	public void setClosed(boolean isCompleted) {
+		this.isClosed = isCompleted;
 	}
 
 	public boolean isDeleted() {

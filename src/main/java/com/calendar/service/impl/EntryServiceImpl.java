@@ -23,7 +23,8 @@ import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjektEntriesResponseDto;
+import com.calendar.responsedto.ProjectEntriesResponseDto;
+import com.calendar.responsedto.ProjectviewResponseDto;
 import com.calendar.service.EntryService;
 
 @Service
@@ -61,7 +62,7 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	@Transactional
-	public void createEntry(EntryDto entryDto) {
+	public ProjectviewResponseDto createEntry(EntryDto entryDto) {
 
 		User user = userServiceImpl.getFullUser();
 		
@@ -96,6 +97,8 @@ public class EntryServiceImpl implements EntryService {
 		entry.setSortNumber((numberOfEntriesOnThisLevel != null) ?  numberOfEntriesOnThisLevel : 0);
 		
 		entryRepository.save(entry);
+		
+		return getProjectview(entryDto.getAddedEntryId());
 	}
 
 	@Override
@@ -112,38 +115,26 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(boolean isFinished) {
+	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean isClosed) {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
-		entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), isFinished);
+		
+		if(isClosed) {
+			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
+		} else {
+			entryList = customEntryRepository.getEntriesByUserId(user.getId());
+		}
 
-		ArrayList<ProjektEntriesResponseDto> perDtoList = new ArrayList<ProjektEntriesResponseDto>();
+		ArrayList<ProjectEntriesResponseDto> perDtoList = new ArrayList<ProjectEntriesResponseDto>();
 		for (int i = 0; i < entryList.size(); i++) {
 			Entry entry = entryList.get(i);
-			ProjektEntriesResponseDto perDto = new ProjektEntriesResponseDto(entry.getId(), entry.getTitle(),
-					entry.getEntryPhase());
+			ProjectEntriesResponseDto perDto = new ProjectEntriesResponseDto(entry.getId(), entry.getTitle(),
+					entry.getEntryPhase(), entry.getSortNumber());
 			perDtoList.add(perDto);
 		}
 
 		return perDtoList;
-	}
-
-	@Override
-	public EntryResponseDto getEntryById(int id) {
-
-		Optional<Entry> entry = entryRepository.findById(id);
-		Entry e = entry.get();
-		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
-				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isClosed(), e.getSortNumber());
-
-		User user = userServiceImpl.getFullUser();
-		if(user.getId() != erDto.getUserId()) {
-			throw new AccessDeniedException("Access denied");
-		}
-		
-		return erDto;
 	}
 
 	@Override
@@ -156,12 +147,42 @@ public class EntryServiceImpl implements EntryService {
 		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isClosed(),
-				e.getAddEntry());
+				e.isDeleted(), e.getSortNumber(), e.isExpanded(), e.getAddEntry());
 	}
 
 	@Override
+	public ProjectviewResponseDto getProjectview(Integer id) {
+		
+		User user = userServiceImpl.getFullUser();
+		
+		if(id != null) {
+			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), getFullProjectById(id));
+		} else {
+			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), null);
+		}
+		
+	}
+	
+	@Override
+	public EntryResponseDto getEntryById(int id) {
+
+		Optional<Entry> entry = entryRepository.findById(id);
+		Entry e = entry.get();
+		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
+				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
+				e.isClosed(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
+
+		User user = userServiceImpl.getFullUser();
+		if(user.getId() != erDto.getUserId()) {
+			throw new AccessDeniedException("Access denied");
+		}
+		
+		return erDto;
+	}
+	
+	@Override
 	@Transactional
-	public void deleteEntryById(int id) {
+	public ProjectviewResponseDto deleteEntryById(int id) {
 
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
@@ -169,11 +190,21 @@ public class EntryServiceImpl implements EntryService {
 		checkUserToEntry(e);
 		
 		customEntryRepository.removeEntry(e);
+		
+		
+		try {
+			int parentId = e.getEntryConnections().getId();
+			return getProjectview(parentId);
+			
+		} catch(NullPointerException exception) {
+			return getProjectview(null);
+		}
+		
 	}
 
 	@Override
 	@Transactional
-	public void modifyEntryById(int id, EntryDto eDto) {
+	public ProjectviewResponseDto modifyEntryById(int id, EntryDto eDto) {
 
 		Entry entry = entryRepository.findById(id).get();
 		
@@ -188,11 +219,13 @@ public class EntryServiceImpl implements EntryService {
 		entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
 		
 		entryRepository.save(entry);
+		
+		return getProjectview(eDto.getAddedEntryId());
 	}
 
 	@Override
 	@Transactional
-	public void modifyProjectById(int id, ProjectDto projectDto) {
+	public ProjectviewResponseDto modifyProjectById(int id, ProjectDto projectDto) {
 
 		Entry project = entryRepository.findById(id).get();
 		
@@ -202,6 +235,8 @@ public class EntryServiceImpl implements EntryService {
 		project.setDescription(projectDto.getDescription());
 		
 		entryRepository.save(project);
+		
+		return getProjectview(id);
 	}
 
 	public void checkUserToEntry(Entry e) {
