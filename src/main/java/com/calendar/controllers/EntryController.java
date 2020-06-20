@@ -40,8 +40,8 @@ public class EntryController {
 	}
 
 	@PostMapping("/entry")
-	public void makeFirstEntry(@Valid @RequestBody EntryDto entryDto) {
-		entryServiceImpl.createEntry(entryDto);
+	public ProjectviewResponseDto addEntryOnProjectview(@Valid @RequestBody EntryDto entryDto) {
+		return entryServiceImpl.createEntry(entryDto);
 	}
 	
 	@PostMapping("/project")
@@ -59,9 +59,9 @@ public class EntryController {
 		return entryServiceImpl.getFullProjectById(id);
 	}
 	
-	@GetMapping("/projectview{id, status}")
-	public ProjectviewResponseDto getProjectview(@Valid @RequestParam int id, boolean status) {
-		return entryServiceImpl.getProjectview(id, status);
+	@GetMapping("/projectview{id}")
+	public ProjectviewResponseDto getProjectview(@Valid @RequestParam int id) {
+		return entryServiceImpl.getProjectview(id);
 	}
 	
 	@GetMapping("/entry{id}")
@@ -70,18 +70,18 @@ public class EntryController {
 	}
 	
 	@DeleteMapping("/entry{id}")
-	public void deleteEntryById(@RequestParam int id) {
-		entryServiceImpl.deleteEntryById(id);
+	public ProjectviewResponseDto deleteEntryById(@RequestParam int id) {
+		return entryServiceImpl.deleteEntryById(id);
 	}
 	
 	@PutMapping("/entry{id}")
-	public void ModifyEntryById(@Valid @RequestBody EntryDto eDto, @RequestParam int id) {
-		entryServiceImpl.modifyEntryById(id, eDto);
+	public ProjectviewResponseDto ModifyEntryById(@Valid @RequestBody EntryDto eDto, @RequestParam int id) {
+		return entryServiceImpl.modifyEntryById(id, eDto);
 	}
 	
 	@PutMapping("/project{id}")
-	public void ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
-		entryServiceImpl.modifyProjectById(id, projectDto);
+	public ProjectviewResponseDto ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
+		return entryServiceImpl.modifyProjectById(id, projectDto);
 	}
 
 	@PostMapping("/expand{id, isExpanded}")
