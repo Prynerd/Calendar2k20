@@ -18,6 +18,7 @@ import com.calendar.domain.User;
 import com.calendar.exceptions.EmailAlreadyExistsException;
 import com.calendar.exceptions.UserDeletedException;
 import com.calendar.repository.UserRepository;
+import com.calendar.repository.custom.CustomUserRepository;
 import com.calendar.requestdto.RegistrationDto;
 import com.calendar.responsedto.UserResponseDto;
 import com.calendar.service.UserService;
@@ -26,14 +27,16 @@ import com.calendar.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	private UserRepository userRepository;
+	private CustomUserRepository customUserRepository;
 	private PasswordEncoder passwordEncoder;
 
 	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class.getName());
 
 	@Autowired
-	public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+	public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomUserRepository customUserRepository) {
 		this.userRepository = userRepository;
 		this.passwordEncoder = passwordEncoder;
+		this.customUserRepository = customUserRepository;
 	}
 
 	@Override
@@ -89,7 +92,15 @@ public class UserServiceImpl implements UserService {
 		return urDto;
 	}
 
-
+	@Override
+	@Transactional
+	public void setProjectsVisibilityStatus(boolean status) {
+		
+		User user = getFullUser();
+		user.setOnlyActiveProjects(status);
+		
+		customUserRepository.setOnlyActiveProjectById(user.getId(), status);
+	}
 
 
 }
