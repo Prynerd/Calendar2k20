@@ -62,7 +62,7 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	@Transactional
-	public void createEntry(EntryDto entryDto) {
+	public ProjectviewResponseDto createEntry(EntryDto entryDto) {
 
 		User user = userServiceImpl.getFullUser();
 		
@@ -97,6 +97,8 @@ public class EntryServiceImpl implements EntryService {
 		entry.setSortNumber((numberOfEntriesOnThisLevel != null) ?  numberOfEntriesOnThisLevel : 0);
 		
 		entryRepository.save(entry);
+		
+		return getProjectview(entryDto.getAddedEntryId());
 	}
 
 	@Override
@@ -149,9 +151,16 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ProjectviewResponseDto getProjectview(int id, boolean status) {
+	public ProjectviewResponseDto getProjectview(Integer id) {
 		
-		return new ProjectviewResponseDto(getProjekts(status), getFullProjectById(id));
+		User user = userServiceImpl.getFullUser();
+		
+		if(id != null) {
+			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), getFullProjectById(id));
+		} else {
+			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), null);
+		}
+		
 	}
 	
 	@Override
@@ -173,7 +182,7 @@ public class EntryServiceImpl implements EntryService {
 	
 	@Override
 	@Transactional
-	public void deleteEntryById(int id) {
+	public ProjectviewResponseDto deleteEntryById(int id) {
 
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
@@ -181,11 +190,21 @@ public class EntryServiceImpl implements EntryService {
 		checkUserToEntry(e);
 		
 		customEntryRepository.removeEntry(e);
+		
+		
+		try {
+			int parentId = e.getEntryConnections().getId();
+			return getProjectview(parentId);
+			
+		} catch(NullPointerException exception) {
+			return getProjectview(null);
+		}
+		
 	}
 
 	@Override
 	@Transactional
-	public void modifyEntryById(int id, EntryDto eDto) {
+	public ProjectviewResponseDto modifyEntryById(int id, EntryDto eDto) {
 
 		Entry entry = entryRepository.findById(id).get();
 		
@@ -200,11 +219,13 @@ public class EntryServiceImpl implements EntryService {
 		entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
 		
 		entryRepository.save(entry);
+		
+		return getProjectview(eDto.getAddedEntryId());
 	}
 
 	@Override
 	@Transactional
-	public void modifyProjectById(int id, ProjectDto projectDto) {
+	public ProjectviewResponseDto modifyProjectById(int id, ProjectDto projectDto) {
 
 		Entry project = entryRepository.findById(id).get();
 		
@@ -214,6 +235,8 @@ public class EntryServiceImpl implements EntryService {
 		project.setDescription(projectDto.getDescription());
 		
 		entryRepository.save(project);
+		
+		return getProjectview(id);
 	}
 
 	public void checkUserToEntry(Entry e) {
