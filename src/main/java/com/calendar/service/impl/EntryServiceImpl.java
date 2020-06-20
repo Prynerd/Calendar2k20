@@ -121,7 +121,7 @@ public class EntryServiceImpl implements EntryService {
 		List<Entry> entryList = new ArrayList<Entry>();
 		
 		if(isClosed) {
-			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
+			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), isClosed);
 		} else {
 			entryList = customEntryRepository.getEntriesByUserId(user.getId());
 		}
