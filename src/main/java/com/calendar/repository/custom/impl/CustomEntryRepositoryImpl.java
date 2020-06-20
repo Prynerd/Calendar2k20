@@ -38,6 +38,7 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 				.setParameter("id", userId)
 				.setParameter("isC", false)
 				.setParameter("isCl", isClosed)
+
 				.getResultList();
 	}
 

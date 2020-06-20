@@ -47,6 +47,12 @@ public class FullProjectResponseDto {
 
 	private boolean isExpanded;
 	
+	private boolean isDeleted;
+	
+	private Integer sortNumber;
+
+	private boolean isExpanded;
+	
 	private Set<Entry> addEntry = new HashSet<Entry>();
 	
 	public FullProjectResponseDto(
