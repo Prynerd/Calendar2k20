@@ -32,12 +32,12 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 	}
 	
 	@Override
-	public List<Entry> getProjectsByUserIdAndStatus(int userId, boolean status) {
+	public List<Entry> getProjectsByUserIdAndStatus(int userId, boolean isClosed) {
 		return em
-				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC AND e.isFinished = :isF", Entry.class)
+				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC AND e.isClosed = :isCl", Entry.class)
 				.setParameter("id", userId)
 				.setParameter("isC", false)
-				.setParameter("isF", status)
+				.setParameter("isCl", isClosed)
 				.getResultList();
 	}
 

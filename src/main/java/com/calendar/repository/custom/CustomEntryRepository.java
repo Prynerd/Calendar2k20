@@ -8,7 +8,7 @@ public interface CustomEntryRepository {
 
 	List<Entry> getEntriesByUserId(int userId);
 	
-	List<Entry> getProjectsByUserIdAndStatus(int userId, boolean isFinished);
+	List<Entry> getProjectsByUserIdAndStatus(int userId, boolean isClosed);
 	
 	List<Entry> getOrderedEntriesByUserId(int userId);
 	

@@ -39,7 +39,7 @@ public class FullProjectResponseDto {
 	
 	private boolean isChild;
 	
-	private boolean isFinished;
+	private boolean isClosed;
 	
 	private boolean isDeleted;
 	
@@ -51,7 +51,7 @@ public class FullProjectResponseDto {
 	
 	public FullProjectResponseDto(
 			int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished,
+			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isClosed,
 			boolean isDeleted, Integer sortNumber, boolean isExpanded, Set<Entry> addEntry) {
 		this.id = id;
 		this.userId = userId;
@@ -63,7 +63,7 @@ public class FullProjectResponseDto {
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
 		this.isChild = isChild;
-		this.isFinished = isFinished;
+		this.isClosed = isClosed;
 		this.isDeleted = isDeleted;
 		this.sortNumber = sortNumber;
 		this.isExpanded = isExpanded;
@@ -179,12 +179,12 @@ public class FullProjectResponseDto {
 		this.isChild = isChild;
 	}
 
-	public boolean isFinished() {
-		return isFinished;
+	public boolean isClosed() {
+		return isClosed;
 	}
 
-	public void setFinished(boolean isFinished) {
-		this.isFinished = isFinished;
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
 	}
 	
 	public Set<Entry> getAddEntry() {
