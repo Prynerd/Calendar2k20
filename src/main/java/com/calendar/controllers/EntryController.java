@@ -19,7 +19,8 @@ import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjektEntriesResponseDto;
+import com.calendar.responsedto.ProjectEntriesResponseDto;
+import com.calendar.responsedto.ProjectviewResponseDto;
 import com.calendar.service.impl.EntryServiceImpl;
 
 @RestController
@@ -39,8 +40,8 @@ public class EntryController {
 	}
 
 	@PostMapping("/entry")
-	public void makeFirstEntry(@Valid @RequestBody EntryDto entryDto) {
-		entryServiceImpl.createEntry(entryDto);
+	public ProjectviewResponseDto addEntryOnProjectview(@Valid @RequestBody EntryDto entryDto) {
+		return entryServiceImpl.createEntry(entryDto);
 	}
 	
 	@PostMapping("/project")
@@ -48,9 +49,19 @@ public class EntryController {
 		entryServiceImpl.createProject(projectDto);
 	}
 	
-	@GetMapping("/projects{isClosed}")
-	public ArrayList<ProjektEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isClosed){
-		return entryServiceImpl.getProjekts(isClosed);
+	@GetMapping("/projects{openOnly}")
+	public ArrayList<ProjectEntriesResponseDto> getProjects(@Valid @RequestParam boolean openOnly){
+		return entryServiceImpl.getProjects(openOnly);
+	}
+	
+	@GetMapping("/project{id}")
+	public FullProjectResponseDto getFullProjectById(@Valid @RequestParam int id) {
+		return entryServiceImpl.getFullProjectById(id);
+	}
+	
+	@GetMapping("/projectview{id}")
+	public ProjectviewResponseDto getProjectview(@Valid @RequestParam int id) {
+		return entryServiceImpl.getProjectview(id);
 	}
 	
 	@GetMapping("/entry{id}")
@@ -58,24 +69,19 @@ public class EntryController {
 		return entryServiceImpl.getEntryById(id);
 	}
 	
-	@GetMapping("/project{id}")
-	public FullProjectResponseDto getFullProjectById(@RequestParam int id) {
-		return entryServiceImpl.getFullProjectById(id);
-	}
-	
 	@DeleteMapping("/entry{id}")
-	public void deleteEntryById(@RequestParam int id) {
-		entryServiceImpl.deleteEntryById(id);
+	public ProjectviewResponseDto deleteEntryById(@RequestParam int id) {
+		return entryServiceImpl.deleteEntryById(id);
 	}
 	
 	@PutMapping("/entry{id}")
-	public void ModifyEntryById(@Valid @RequestBody EntryDto eDto, @RequestParam int id) {
-		entryServiceImpl.modifyEntryById(id, eDto);
+	public ProjectviewResponseDto ModifyEntryById(@Valid @RequestBody EntryDto eDto, @RequestParam int id) {
+		return entryServiceImpl.modifyEntryById(id, eDto);
 	}
 	
 	@PutMapping("/project{id}")
-	public void ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
-		entryServiceImpl.modifyProjectById(id, projectDto);
+	public ProjectviewResponseDto ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
+		return entryServiceImpl.modifyProjectById(id, projectDto);
 	}
 
 	@PostMapping("/expand{id, isExpanded}")

@@ -36,12 +36,17 @@ public class EntryResponseDto {
 	
 	private boolean isChild;
 	
-	private boolean isFinished;
+	private boolean isClosed;
 	
 	private Integer sortNumber;
 	
+	private boolean isDeleted;
+
+	private boolean isExpanded;
+	
 	public EntryResponseDto(int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isFinished, Integer sortNumber) {
+			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isClosed, Integer sortNumber,
+			boolean isDeleted, boolean isExpanded) {
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
@@ -52,8 +57,26 @@ public class EntryResponseDto {
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
 		this.isChild = isChild;
-		this.isFinished = isFinished;		
+		this.isClosed = isClosed;
 		this.setSortNumber(sortNumber);
+		this.isDeleted = isDeleted;
+		this.isExpanded = isExpanded;
+	}
+	
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public boolean isExpanded() {
+		return isExpanded;
+	}
+
+	public void setExpanded(boolean isExpanded) {
+		this.isExpanded = isExpanded;
 	}
 
 	public int getId() {
@@ -136,12 +159,12 @@ public class EntryResponseDto {
 		this.isChild = isChild;
 	}
 
-	public boolean isFinished() {
-		return isFinished;
+	public boolean isClosed() {
+		return isClosed;
 	}
 
-	public void setFinished(boolean isFinished) {
-		this.isFinished = isFinished;
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
 	}
 
 	public Integer getSortNumber() {

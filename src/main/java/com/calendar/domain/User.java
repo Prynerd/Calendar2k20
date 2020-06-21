@@ -32,6 +32,8 @@ public class User implements UserDetails {
 	private String password;
 
 	private LocalDateTime registrationTime;
+	
+	private boolean onlyActiveProjects;
 
 	private String validateToken;
 
@@ -50,8 +52,17 @@ public class User implements UserDetails {
 
 		this.registrationTime = LocalDateTime.now();
 		
+		this.onlyActiveProjects = false;
 		isValidated = false;
 		isDeleted = false;
+	}
+	
+	public boolean isOnlyActiveProjects() {
+		return onlyActiveProjects;
+	}
+
+	public void setOnlyActiveProjects(boolean onlyActiveProjects) {
+		this.onlyActiveProjects = onlyActiveProjects;
 	}
 
 	public boolean isValidated() {
