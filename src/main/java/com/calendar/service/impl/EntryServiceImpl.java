@@ -115,12 +115,12 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean status) {
+	public ArrayList<ProjectEntriesResponseDto> getProjects(boolean openOnly) {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
 		
-		if(status) {
+		if(openOnly) {
 			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
 		} else {
 			entryList = customEntryRepository.getEntriesByUserId(user.getId());
@@ -146,7 +146,7 @@ public class EntryServiceImpl implements EntryService {
 		checkUserToEntry(e);
 		
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
-				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isFinished(),
+				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isClosed(),
 				e.isDeleted(), e.getSortNumber(), e.isExpanded(), e.getAddEntry());
 	}
 
@@ -156,9 +156,9 @@ public class EntryServiceImpl implements EntryService {
 		User user = userServiceImpl.getFullUser();
 		
 		if(id != null) {
-			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), getFullProjectById(id));
+			return new ProjectviewResponseDto(getProjects(user.isOnlyActiveProjects()), getFullProjectById(id));
 		} else {
-			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), null);
+			return new ProjectviewResponseDto(getProjects(user.isOnlyActiveProjects()), null);
 		}
 		
 	}
@@ -170,7 +170,7 @@ public class EntryServiceImpl implements EntryService {
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
 				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isFinished(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
+				e.isClosed(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
 
 		User user = userServiceImpl.getFullUser();
 		if(user.getId() != erDto.getUserId()) {
