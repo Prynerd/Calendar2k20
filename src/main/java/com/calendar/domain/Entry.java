@@ -169,7 +169,7 @@ public class Entry {
 
 	public void setEntryPhase(EntryPhase entryPhase) {
 	    if (entryPhase == EntryPhase.COMPLETED) {
-	        this.isClosed = true;
+	        setClosed(true);
         }
 		this.entryPhase = entryPhase;
 	}
@@ -198,8 +198,8 @@ public class Entry {
 		return isClosed;
 	}
 
-	public void setClosed(boolean isCompleted) {
-		this.isClosed = isCompleted;
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
 	}
 
 	public boolean isDeleted() {

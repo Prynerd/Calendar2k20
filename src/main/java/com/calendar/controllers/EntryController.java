@@ -49,9 +49,9 @@ public class EntryController {
 		entryServiceImpl.createProject(projectDto);
 	}
 	
-	@GetMapping("/projects{isClosed}")
-	public ArrayList<ProjectEntriesResponseDto> getProjekts(@Valid @RequestParam boolean isClosed){
-		return entryServiceImpl.getProjekts(isClosed);
+	@GetMapping("/projects{openOnly}")
+	public ArrayList<ProjectEntriesResponseDto> getProjects(@Valid @RequestParam boolean openOnly){
+		return entryServiceImpl.getProjects(openOnly);
 	}
 	
 	@GetMapping("/project{id}")

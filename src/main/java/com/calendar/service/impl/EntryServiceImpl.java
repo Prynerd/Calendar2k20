@@ -115,13 +115,13 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Override
-	public ArrayList<ProjectEntriesResponseDto> getProjekts(boolean isClosed) {
+	public ArrayList<ProjectEntriesResponseDto> getProjects(boolean openOnly) {
 
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
 		
-		if(isClosed) {
-			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), isClosed);
+		if(openOnly) {
+			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
 		} else {
 			entryList = customEntryRepository.getEntriesByUserId(user.getId());
 		}
@@ -156,9 +156,9 @@ public class EntryServiceImpl implements EntryService {
 		User user = userServiceImpl.getFullUser();
 		
 		if(id != null) {
-			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), getFullProjectById(id));
+			return new ProjectviewResponseDto(getProjects(user.isOnlyActiveProjects()), getFullProjectById(id));
 		} else {
-			return new ProjectviewResponseDto(getProjekts(user.isOnlyActiveProjects()), null);
+			return new ProjectviewResponseDto(getProjects(user.isOnlyActiveProjects()), null);
 		}
 		
 	}
