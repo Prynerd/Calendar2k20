@@ -88,4 +88,9 @@ public class EntryController {
 	public void expand(@RequestParam int id, boolean isExpanded) {
 		entryServiceImpl.expandEntry(id, isExpanded);
 	}
+
+	@GetMapping("/parents")
+	public String getParents(@RequestParam int id) throws Exception {
+		return entryServiceImpl.getParents(id);
+	}
 }

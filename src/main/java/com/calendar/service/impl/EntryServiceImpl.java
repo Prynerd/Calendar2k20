@@ -1,5 +1,6 @@
 package com.calendar.service.impl;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -263,5 +264,44 @@ public class EntryServiceImpl implements EntryService {
 
 		entryRepository.save(entry);
 	}
-	
+
+	public String getParents(int entryId) throws Exception {
+		//Create result obj
+		String result = "";
+
+		try (Connection connection = DriverManager
+				.getConnection("jdbc:mysql://eu-cdbr-west-03.cleardb.net:3306/heroku_de33372b91785f0", "b9e92473e9a7e2", "fafe343c");
+
+			 // Step 2:Create a statement using connection object
+			 PreparedStatement preparedStatement = connection.prepareStatement("WITH RECURSIVE Entry_path(id, entry_id) AS(\n" +
+					 "    SELECT id,entry_id\n" +
+					 "    FROM entry\n" +
+					 "    WHERE id = (?)\n" +
+					 "    UNION ALL\n" +
+					 "    SELECT e.id, e.entry_id\n" +
+					 "    FROM Entry_path AS cp JOIN entry AS e\n" +
+					 "                                  ON cp.entry_id = e.id\n" +
+					 ")\n" +
+					 "SELECT * FROM Entry_path ORDER by entry_id ASC;");) {
+
+			preparedStatement.setInt(1, entryId);
+
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Step 4: Process the ResultSet object.
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String parentId = rs.getString("entry_id");
+				result.concat(id + "," + parentId + " ** ");
+				System.out.println(id + "," + parentId);
+			}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		return result;
+	}
 }
+
+
+//"jdbc:mysql://localhost/calendar2k20?serverTimezone=CET", "root", "The@peOfNaples01"
