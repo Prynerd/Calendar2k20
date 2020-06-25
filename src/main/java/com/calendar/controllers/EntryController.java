@@ -91,7 +91,7 @@ public class EntryController {
 	}
 
 	@GetMapping("/parents")
-	public ProjectviewResponseDto getParents(@RequestParam int id) throws SQLException {
-		return entryServiceImpl.getParents(id);
+	public ArrayList<EntryResponseDto> getParents(@RequestParam int id, boolean ASC) throws SQLException {
+		return entryServiceImpl.getParents(id, ASC);
 	}
 }

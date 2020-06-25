@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-//@Profile({"mysql"})
+@Profile({"mysql", "default"})
 public class HomeConnection extends DBConnection {
 
     public HomeConnection() {

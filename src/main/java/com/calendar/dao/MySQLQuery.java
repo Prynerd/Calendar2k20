@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-//@Profile({"mysql"})
+@Profile({"mysql", "default"})
 public class MySQLQuery extends SQLQuery {
 
     public MySQLQuery() {
