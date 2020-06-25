@@ -1,61 +1,50 @@
-//package com.calendar.dao;
-//
-//import com.calendar.domain.Entry;
-//import org.springframework.dao.DataAccessException;
-//import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.jdbc.core.PreparedStatementCallback;
-//
-//import java.sql.PreparedStatement;
-//import java.sql.SQLException;
-//import java.util.List;
-//
-//public class EntryDao {
-//
-//    private JdbcTemplate jdbcTemplate;
-//
-//    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-//        this.jdbcTemplate = jdbcTemplate;
-//    }
-//
-//    public List<Entry> getParent(final Entry e){
-//
-//        String query = "WITH RECURSIVE Entry_path(id, entry_id) AS(\n" +
-//                "    SELECT id,entry_id\n" +
-//                "    FROM entry\n" +
-//                "    WHERE id = (9)\n" +
-//                "    UNION ALL\n" +
-//                "    SELECT e.id, e.entry_id\n" +
-//                "    FROM Entry_path AS cp JOIN entry AS e\n" +
-//                "                                  ON cp.entry_id = e.id\n" +
-//                ")\n" +
-//                "SELECT * FROM Entry_path ORDER by entry_id ASC;";
-//
-//        return jdbcTemplate.execute(query,new PreparedStatementCallback<List<Entry>>(){
-//
-//            public List<Entry> doInPreparedStatement(PreparedStatement ps)
-//                    throws SQLException, DataAccessException {
-//
-//                ps.setInt(1,e.getId());
-//
-//                return ps.execute();
-//
-//            }
-//        });
-//    }
-//}
-//
-//
-///*
-//
-//WITH RECURSIVE Entry_path(id, entry_id) AS(
-//    SELECT id,entry_id
-//    FROM entry
-//    WHERE id = 5
-//    UNION ALL
-//    SELECT e.id, e.entry_id
-//    FROM Entry_path AS cp JOIN entry AS e
-//                                  ON cp.entry_id = e.id
-//)
-//SELECT * FROM Entry_path ORDER by entry_id ASC;
-//
-//* */
+package com.calendar.dao;
+
+import com.calendar.Connection.DBConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
+public class EntryDao {
+
+    private SQLQuery sqlQuery;
+    private DBConnection dbConnection;
+
+    public EntryDao() {
+    }
+
+    @Autowired
+    public EntryDao(SQLQuery sqlQuery, DBConnection dbConnection) {
+        this.sqlQuery = sqlQuery;
+        this.dbConnection = dbConnection;
+    }
+
+
+    public List<Integer> getParents(int entryId) throws SQLException {
+
+        List<Integer> resultList = new ArrayList<>();
+
+        try (Connection connection = DriverManager
+//                .getConnection("localhost/calendar2k20", "root", "The@peOfNaples01");
+             .getConnection(dbConnection.getUrl(), dbConnection.getUser(), dbConnection.getPassword());
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery.getQuery());) {
+
+            preparedStatement.setInt(1, entryId);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                resultList.add(id);
+            }
+        } catch (SQLException e) {
+            throw new SQLException(e.getMessage());
+        }
+
+        return resultList;
+    }
+}
