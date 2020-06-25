@@ -1,5 +1,6 @@
 package com.calendar.controllers;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.validation.Valid;
@@ -90,7 +91,7 @@ public class EntryController {
 	}
 
 	@GetMapping("/parents")
-	public String getParents(@RequestParam int id) throws Exception {
+	public ProjectviewResponseDto getParents(@RequestParam int id) throws SQLException {
 		return entryServiceImpl.getParents(id);
 	}
 }
