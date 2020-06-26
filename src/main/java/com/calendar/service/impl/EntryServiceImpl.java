@@ -1,10 +1,7 @@
 package com.calendar.service.impl;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
@@ -183,7 +180,7 @@ public class EntryServiceImpl implements EntryService {
 		
 		return erDto;
 	}
-	
+
 	@Override
 	@Transactional
 	public ProjectviewResponseDto deleteEntryById(int id) {
@@ -268,8 +265,15 @@ public class EntryServiceImpl implements EntryService {
 		entryRepository.save(entry);
 	}
 
-	public ProjectviewResponseDto getParents(int entryId) throws SQLException {
+	@Override
+	public int getProjectIdOfEntry(int entryId) throws SQLException {
 
-		return getProjectview(entryDao.getParents(entryId).get(0));
+		Entry entry = entryRepository.findById(entryId).get();
+
+		checkUserToEntry(entry);
+
+		int parentId = entryDao.getProjectIdOfEntry(entryId);
+
+		return parentId;
 	}
 }

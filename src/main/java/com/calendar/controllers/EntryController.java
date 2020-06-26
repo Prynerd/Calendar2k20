@@ -89,9 +89,4 @@ public class EntryController {
 	public void expand(@RequestParam int id, boolean isExpanded) {
 		entryServiceImpl.expandEntry(id, isExpanded);
 	}
-
-	@GetMapping("/parents")
-	public ArrayList<EntryResponseDto> getParents(@RequestParam int id, boolean ASC) throws SQLException {
-		return entryServiceImpl.getParents(id, ASC);
-	}
 }
