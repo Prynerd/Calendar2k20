@@ -10,6 +10,6 @@ public class HomeConnection extends DBConnection {
     public HomeConnection() {
         this.url ="jdbc:mysql://localhost/calendar2k20?serverTimezone=CET";
         this.user = "root";
-        this.password = "The@peOfNaples01";
+        this.password = "root";
     }
 }
