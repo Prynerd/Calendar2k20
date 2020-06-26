@@ -17,6 +17,6 @@ public class MySQLQuery extends SQLQuery {
                 "    FROM Entry_path AS cp JOIN entry AS e\n" +
                 "                                  ON cp.entry_id = e.id\n" +
                 ")\n" +
-                "SELECT id FROM Entry_path ORDER by entry_id ASC;");
+                "SELECT id FROM Entry_path WHERE entry_id is null;");
     }
 }

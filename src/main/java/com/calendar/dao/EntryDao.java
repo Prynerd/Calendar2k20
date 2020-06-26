@@ -18,8 +18,7 @@ public class EntryDao {
         this.dbConnection = dbConnection;
     }
 
-
-    public ArrayList<Integer> getParents(int entryId) throws SQLException {
+    public int getProjectIdOfEntry(int entryId) throws SQLException {
 
         ArrayList<Integer> resultList = new ArrayList<>();
 
@@ -40,6 +39,6 @@ public class EntryDao {
             throw new SQLException(e.getMessage());
         }
 
-        return resultList;
+        return resultList.size() == 1 ? resultList.get(0) : -1;
     }
 }

@@ -24,6 +24,6 @@ public class PostgreSQLQuery extends SQLQuery {
                 "             entry e\n" +
                 "        INNER JOIN entries entr ON entr.entry_id = e.id\n" +
                 ")\n" +
-                "SELECT id FROM entries ORDER by id ASC;");
+                "SELECT id FROM entries WHERE entry_id is null;");
     }
 }
