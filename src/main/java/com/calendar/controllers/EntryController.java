@@ -1,6 +1,5 @@
 package com.calendar.controllers;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.validation.Valid;
