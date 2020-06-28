@@ -1,12 +1,11 @@
 package com.calendar.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.sql.*;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
+import com.calendar.dao.EntryDao;
 import com.calendar.exceptions.EntryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -33,13 +32,15 @@ public class EntryServiceImpl implements EntryService {
 	private EntryRepository entryRepository;
 	private CustomEntryRepository customEntryRepository;
 	private UserServiceImpl userServiceImpl;
+	private EntryDao entryDao;
 
 	@Autowired
 	public EntryServiceImpl(EntryRepository entryRepository, UserServiceImpl userServiceImpl,
-			CustomEntryRepository customEntryRepository) {
+			CustomEntryRepository customEntryRepository, EntryDao entryDao) {
 		this.entryRepository = entryRepository;
 		this.userServiceImpl = userServiceImpl;
 		this.customEntryRepository = customEntryRepository;
+		this.entryDao = entryDao;
 	}
 
 	@Override
@@ -179,7 +180,7 @@ public class EntryServiceImpl implements EntryService {
 		
 		return erDto;
 	}
-	
+
 	@Override
 	@Transactional
 	public ProjectviewResponseDto deleteEntryById(int id) {
@@ -263,5 +264,16 @@ public class EntryServiceImpl implements EntryService {
 
 		entryRepository.save(entry);
 	}
-	
+
+	@Override
+	public int getProjectIdOfEntry(int entryId) throws SQLException {
+
+		Entry entry = entryRepository.findById(entryId).get();
+
+		checkUserToEntry(entry);
+
+		int parentId = entryDao.getProjectIdOfEntry(entryId);
+
+		return parentId;
+	}
 }

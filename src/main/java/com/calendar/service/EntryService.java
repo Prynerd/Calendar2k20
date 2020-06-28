@@ -1,5 +1,6 @@
 package com.calendar.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.calendar.requestdto.EntryDto;
@@ -33,4 +34,6 @@ public interface EntryService {
 	public void expandEntry(int id, boolean isExpanded);
 	
 	public ProjectviewResponseDto getProjectview(Integer id);
+
+	public int getProjectIdOfEntry(int id) throws SQLException;
 }
