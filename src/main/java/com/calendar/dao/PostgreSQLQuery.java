@@ -15,7 +15,7 @@ public class PostgreSQLQuery extends SQLQuery {
                 "                    FROM\n" +
                 "                        entry\n" +
                 "                    WHERE\n" +
-                "                        id = 11\n" +
+                "                        id = (?)\n" +
                 "                    UNION ALL\n" +
                 "                        SELECT\n" +
                 "                            e.id,\n" +
