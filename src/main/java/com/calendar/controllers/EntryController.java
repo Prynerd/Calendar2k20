@@ -1,30 +1,17 @@
 package com.calendar.controllers;
 
-import java.util.ArrayList;
+import com.calendar.requestdto.EntryDto;
+import com.calendar.requestdto.EntryDtoForModification;
+import com.calendar.requestdto.ProjectDto;
+import com.calendar.responsedto.*;
+import com.calendar.service.impl.EntryServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.calendar.requestdto.EntryDto;
-import com.calendar.requestdto.ProjectDto;
-import com.calendar.responsedto.EntryListResponseDto;
-import com.calendar.responsedto.EntryResponseDto;
-import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjectEntriesResponseDto;
-import com.calendar.responsedto.ProjectviewResponseDto;
-import com.calendar.service.impl.EntryServiceImpl;
+import java.util.ArrayList;
 
 @RestController
-@RequestMapping
 public class EntryController {
 	
 	private EntryServiceImpl entryServiceImpl;
@@ -40,7 +27,7 @@ public class EntryController {
 	}
 
 	@PostMapping("/entry")
-	public ProjectviewResponseDto addEntryOnProjectview(@Valid @RequestBody EntryDto entryDto) {
+	public ProjectViewResponseDto addEntryOnProjectview(@Valid @RequestBody EntryDto entryDto) {
 		return entryServiceImpl.createEntry(entryDto);
 	}
 	
@@ -60,8 +47,8 @@ public class EntryController {
 	}
 	
 	@GetMapping("/projectview{id}")
-	public ProjectviewResponseDto getProjectview(@Valid @RequestParam int id) {
-		return entryServiceImpl.getProjectview(id);
+	public ProjectViewResponseDto getProjectview(@Valid @RequestParam int id) {
+		return entryServiceImpl.getProjectView(id);
 	}
 	
 	@GetMapping("/entry{id}")
@@ -70,17 +57,17 @@ public class EntryController {
 	}
 	
 	@DeleteMapping("/entry{id}")
-	public ProjectviewResponseDto deleteEntryById(@RequestParam int id) {
+	public ProjectViewResponseDto deleteEntryById(@RequestParam int id) {
 		return entryServiceImpl.deleteEntryById(id);
 	}
 	
 	@PutMapping("/entry{id}")
-	public ProjectviewResponseDto ModifyEntryById(@Valid @RequestBody EntryDto eDto, @RequestParam int id) {
+	public ProjectViewResponseDto modifyEntryById(@Valid @RequestBody EntryDtoForModification eDto, @RequestParam int id) {
 		return entryServiceImpl.modifyEntryById(id, eDto);
 	}
 	
 	@PutMapping("/project{id}")
-	public ProjectviewResponseDto ModifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
+	public ProjectViewResponseDto modifyProjectById(@Valid @RequestBody ProjectDto projectDto, @RequestParam int id) {
 		return entryServiceImpl.modifyProjectById(id, projectDto);
 	}
 

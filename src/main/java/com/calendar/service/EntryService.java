@@ -4,16 +4,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.calendar.requestdto.EntryDto;
+import com.calendar.requestdto.EntryDtoForModification;
 import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.EntryListResponseDto;
 import com.calendar.responsedto.EntryResponseDto;
 import com.calendar.responsedto.FullProjectResponseDto;
 import com.calendar.responsedto.ProjectEntriesResponseDto;
-import com.calendar.responsedto.ProjectviewResponseDto;
+import com.calendar.responsedto.ProjectViewResponseDto;
 
 public interface EntryService {
 
-	public ProjectviewResponseDto createEntry(EntryDto entryDto);
+	public ProjectViewResponseDto createEntry(EntryDto entryDto);
 	
 	public void createProject(ProjectDto projectDto);
 	
@@ -25,15 +26,15 @@ public interface EntryService {
 	
 	public FullProjectResponseDto getFullProjectById(int id);
 	
-	public ProjectviewResponseDto deleteEntryById(int id);
+	public ProjectViewResponseDto deleteEntryById(int id);
 	
-	public ProjectviewResponseDto modifyEntryById(int id, EntryDto eDto);
+	public ProjectViewResponseDto modifyEntryById(int id, EntryDtoForModification eDto);
 	
-	public ProjectviewResponseDto modifyProjectById(int id, ProjectDto projectDto);
+	public ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto);
 
 	public void expandEntry(int id, boolean isExpanded);
 	
-	public ProjectviewResponseDto getProjectview(Integer id);
+	public ProjectViewResponseDto getProjectView(Integer id);
 
-	public int getProjectIdOfEntry(int id) throws SQLException;
+	public int getProjectIdOfEntry(int id);
 }

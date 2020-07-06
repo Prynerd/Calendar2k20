@@ -1,31 +1,19 @@
 package com.calendar.domain;
 
+import com.calendar.data.enums.EntryPhase;
+import com.calendar.data.enums.EntryType;
+import com.fasterxml.jackson.annotation.*;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.validation.constraints.NotNull;
-
-import com.calendar.data.enums.EntryPhase;
-import com.calendar.data.enums.EntryType;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-
 
 @Entity
-public class Entry {
+public class Entry implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,7 +55,8 @@ public class Entry {
 	@JoinColumn(name="entry_id")
 	@ManyToOne
 	private Entry entryConnections;
-	
+
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@OrderBy("sortNumber ASC")
 	@OneToMany(mappedBy = "entryConnections", cascade = CascadeType.REMOVE)
 	private Set<Entry> addEntry;
