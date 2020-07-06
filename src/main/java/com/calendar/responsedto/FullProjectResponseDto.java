@@ -46,7 +46,7 @@ public class FullProjectResponseDto {
 	private Integer sortNumber;
 
 	private boolean isExpanded;
-	
+
 	private Set<Entry> addEntry = new HashSet<Entry>();
 	
 	public FullProjectResponseDto(
