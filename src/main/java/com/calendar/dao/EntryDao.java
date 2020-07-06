@@ -1,6 +1,7 @@
 package com.calendar.dao;
 
 import com.calendar.Connection.DBConnection;
+import com.calendar.exceptions.SQLError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.sql.*;
@@ -18,7 +19,7 @@ public class EntryDao {
         this.dbConnection = dbConnection;
     }
 
-    public int getProjectIdOfEntry(int entryId) throws SQLException {
+    public int getProjectIdOfEntry(int entryId) {
 
         ArrayList<Integer> resultList = new ArrayList<>();
 
@@ -36,7 +37,7 @@ public class EntryDao {
                 resultList.add(id);
             }
         } catch (SQLException e) {
-            throw new SQLException(e.getMessage());
+           throw new SQLError("Ooops! Something went wrong with our Database!");
         }
 
         return resultList.size() == 1 ? resultList.get(0) : -1;
