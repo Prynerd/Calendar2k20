@@ -13,7 +13,7 @@ import java.util.Set;
 
 
 @Entity
-public class Entry implements Serializable{
+public class Entry {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,7 @@
 package com.calendar.controllers;
 
 import com.calendar.exceptions.EntryNotFoundException;
-import com.calendar.exceptions.SQLError;
+import com.calendar.exceptions.SQLException;
 import com.calendar.exceptions.UserNotLoggedInException;
 import com.calendar.responsedto.ApiError;
 import org.springframework.http.HttpStatus;
@@ -25,8 +25,8 @@ public class ErrorControllerAdvice {
                 HttpStatus.NOT_FOUND.getReasonPhrase(), ex.getMessage()));
     }
 
-    @ExceptionHandler(SQLError.class)
-    public ResponseEntity<ApiError> handleGenericSqlError(SQLError ex) {
+    @ExceptionHandler(SQLException.class)
+    public ResponseEntity<ApiError> handleGenericSqlError(SQLException ex) {
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(new ApiError(
                 HttpStatus.SERVICE_UNAVAILABLE.value(), HttpStatus.SERVICE_UNAVAILABLE.getReasonPhrase(),
                 ex.getMessage()));
