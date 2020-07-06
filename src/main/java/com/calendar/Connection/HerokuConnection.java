@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 public class HerokuConnection extends DBConnection {
 
     public HerokuConnection() {
-        this.url ="jdbc:postgres://ec2-54-217-225-16.eu-west-1.compute.amazonaws.com:5432/d3o1d5kf321dvj";
-        this.user = "xeuawbcnsogepg";
-        this.password = "d208c8ba3d208859d0aee1e30e5bb6a640a846eda52c844d94bd04e61cbcaa57";
+        this.url ="jdbc:postgres://ec2-54-228-250-82.eu-west-1.compute.amazonaws.com:5432/d6981inv0knfbm";
+        this.user = "aywfgexrcvohxc";
+        this.password = "a31ceef08451da1c37651478c56b94711b57f140c7c553770a4c1a065aa9c29c";
     }
 }
