@@ -1,8 +1,6 @@
 package com.calendar.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import com.calendar.requestdto.EntryDto;
 import com.calendar.requestdto.EntryDtoForModification;
 import com.calendar.requestdto.ProjectDto;
