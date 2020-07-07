@@ -1,14 +1,16 @@
 package com.calendar.responsedto;
 
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
 import com.calendar.domain.Entry;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 public class FullProjectResponseDto {
 

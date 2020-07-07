@@ -3,17 +3,15 @@ package com.calendar.domain;
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
 import com.fasterxml.jackson.annotation.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Entity
-public class Entry implements Serializable{
+public class Entry {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

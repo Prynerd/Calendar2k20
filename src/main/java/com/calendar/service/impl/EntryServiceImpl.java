@@ -32,7 +32,7 @@ public class EntryServiceImpl implements EntryService {
 
 	@Autowired
 	public EntryServiceImpl(EntryRepository entryRepository, UserServiceImpl userServiceImpl,
-							CustomEntryRepository customEntryRepository, EntryDao entryDao) {
+			CustomEntryRepository customEntryRepository, EntryDao entryDao) {
 		this.entryRepository = entryRepository;
 		this.userServiceImpl = userServiceImpl;
 		this.customEntryRepository = customEntryRepository;
