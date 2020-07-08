@@ -1238,6 +1238,7 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2020-07-07 09:15:08.326  INFO 12125 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2020-07-07 09:15:08.330  INFO 12125 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2020-07-07 09:15:08.337  INFO 12125 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+<<<<<<< HEAD
 2020-07-07 10:04:10.202  INFO 13940 --- [restartedMain] com.calendar.Calendar2k20                : Starting Calendar2k20 on pop-os with PID 13940 (/home/danielvarga/Work/Projects/Calendar2k20/target/classes started by danielvarga in /home/danielvarga/Work/Projects/Calendar2k20)
 2020-07-07 10:04:10.213 DEBUG 13940 --- [restartedMain] com.calendar.Calendar2k20                : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
 2020-07-07 10:04:10.214  INFO 13940 --- [restartedMain] com.calendar.Calendar2k20                : No active profile set, falling back to default profiles: default
@@ -1277,3 +1278,5 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2020-07-07 10:04:15.695  INFO 13940 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2020-07-07 10:04:15.699  INFO 13940 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2020-07-07 10:04:15.707  INFO 13940 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+=======
+>>>>>>> PMD-157
