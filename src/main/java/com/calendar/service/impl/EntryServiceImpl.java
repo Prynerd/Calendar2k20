@@ -152,12 +152,10 @@ public class EntryServiceImpl implements EntryService {
 
 		User user = userServiceImpl.getFullUser();
 
-		int projectId = getProjectIdOfEntry(id);
-
 		if(id != null) {
-			return new ProjectViewResponseDto(getFullProjectById(projectId), getProjects(user.isOnlyActiveProjects()));
+			return new ProjectViewResponseDto(getFullProjectById(getProjectIdOfEntry(id)), getProjects(user.isOnlyActiveProjects()));
 		} else {
-			return new ProjectViewResponseDto(null,getProjects(user.isOnlyActiveProjects()));
+			return new ProjectViewResponseDto(null, getProjects(user.isOnlyActiveProjects()));
 		}
 
 	}
@@ -189,7 +187,6 @@ public class EntryServiceImpl implements EntryService {
 		checkUserToEntry(e);
 
 		customEntryRepository.removeEntry(e);
-
 
 		try {
 			int parentId = e.getEntryConnections().getId();
