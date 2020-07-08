@@ -11,6 +11,7 @@ import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
 import com.calendar.domain.Entry;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class FullProjectResponseDto {
 
@@ -47,6 +48,7 @@ public class FullProjectResponseDto {
 
 	private boolean isExpanded;
 
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Set<Entry> addEntry = new HashSet<Entry>();
 	
 	public FullProjectResponseDto(
