@@ -72,3 +72,5 @@ pom.xml.tag
 
 ### Sensitive Data ###
 src/main/resources/application-default.properties
+
+*.log

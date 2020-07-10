@@ -16,11 +16,10 @@ import com.calendar.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class EntryServiceImpl implements EntryService {
@@ -30,13 +29,17 @@ public class EntryServiceImpl implements EntryService {
 	private UserServiceImpl userServiceImpl;
 	private EntryDao entryDao;
 
+	@PersistenceContext
+	EntityManager em;
+
 	@Autowired
 	public EntryServiceImpl(EntryRepository entryRepository, UserServiceImpl userServiceImpl,
-			CustomEntryRepository customEntryRepository, EntryDao entryDao) {
+			CustomEntryRepository customEntryRepository, EntryDao entryDao, EntityManager em) {
 		this.entryRepository = entryRepository;
 		this.userServiceImpl = userServiceImpl;
 		this.customEntryRepository = customEntryRepository;
 		this.entryDao = entryDao;
+		this.em = em;
 	}
 
 	@Override
@@ -94,8 +97,11 @@ public class EntryServiceImpl implements EntryService {
 		entry.setSortNumber((numberOfEntriesOnThisLevel != null) ?  numberOfEntriesOnThisLevel : 0);
 
 		entryRepository.save(entry);
-		
-		return getProjectView(entryDto.getAddedEntryId());
+
+		Entry parentOfEntry = entryRepository.findById(entry.getEntryConnections().getId()).get();
+		parentOfEntry.getAddEntry().add(entry);
+
+		return getProjectView(parentOfEntry.getId());
 	}
 
 	@Override
