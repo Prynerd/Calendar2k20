@@ -1880,4 +1880,7 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2020-07-10 07:02:32.022  INFO 8953 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2020-07-10 07:02:32.025  INFO 8953 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2020-07-10 07:02:32.032  INFO 8953 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+<<<<<<< HEAD
 >>>>>>> PMD-157
+=======
+>>>>>>> PMD-164
