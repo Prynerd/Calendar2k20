@@ -1,21 +1,19 @@
 package com.calendar.responsedto;
 
-import com.calendar.data.enums.EntryPhase;
-
 public class ProjectEntriesResponseDto {
 	
 	private int entryId;
 	
 	private String title;
 	
-	private EntryPhase entryPhase;
+	private boolean isClosed;
 	
 	private Integer sortNumber;
 	
-	public ProjectEntriesResponseDto(int entryId, String title, EntryPhase entryPhase, Integer sortNumber) {
+	public ProjectEntriesResponseDto(int entryId, String title, boolean isClosed, Integer sortNumber) {
 		this.entryId = entryId;
 		this.title = title;
-		this.entryPhase = entryPhase;
+		this.isClosed = isClosed;
 		this.sortNumber = sortNumber;
 	}
 	
@@ -45,12 +43,11 @@ public class ProjectEntriesResponseDto {
 		this.title = title;
 	}
 
-	public EntryPhase getEntryPhase() {
-		return entryPhase;
+	public boolean isClosed() {
+		return isClosed;
 	}
 
-	public void setEntryPhase(EntryPhase entryPhase) {
-		this.entryPhase = entryPhase;
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
 	}
-	
 }

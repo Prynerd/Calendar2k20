@@ -1,13 +1,13 @@
 package com.calendar.controllers;
 
 import com.calendar.exceptions.EntryNotFoundException;
+import com.calendar.exceptions.SQLError;
 import com.calendar.exceptions.UserNotLoggedInException;
 import com.calendar.responsedto.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import java.util.NoSuchElementException;
 
 
 @ControllerAdvice
@@ -23,6 +23,13 @@ public class ErrorControllerAdvice {
     public ResponseEntity<ApiError> handleEntryNotFound(EntryNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiError(HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(SQLError.class)
+    public ResponseEntity<ApiError> handleGenericSqlError(SQLError ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(new ApiError(
+                HttpStatus.SERVICE_UNAVAILABLE.value(), HttpStatus.SERVICE_UNAVAILABLE.getReasonPhrase(),
+                ex.getMessage()));
     }
 
 }
