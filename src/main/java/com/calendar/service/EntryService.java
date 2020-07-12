@@ -14,7 +14,7 @@ public interface EntryService {
 
 	public ProjectViewResponseDto createEntry(EntryDto entryDto);
 	
-	public void createProject(ProjectDto projectDto);
+	public ProjectViewResponseDto createProject(ProjectDto projectDto);
 	
 	public ArrayList<ProjectEntriesResponseDto> getProjects(boolean isClosed);
 	

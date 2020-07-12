@@ -31,8 +31,8 @@ public class EntryController {
 	}
 	
 	@PostMapping("/project")
-	public void makeProjectEntry(@Valid @RequestBody ProjectDto projectDto) {
-		entryServiceImpl.createProject(projectDto);
+	public ProjectViewResponseDto makeProjectEntry(@Valid @RequestBody ProjectDto projectDto) {
+		return entryServiceImpl.createProject(projectDto);
 	}
 	
 	@GetMapping("/projects{openOnly}")

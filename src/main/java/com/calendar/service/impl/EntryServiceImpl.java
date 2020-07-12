@@ -44,20 +44,24 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	@Transactional
-	public void createProject(ProjectDto projectDto) {
+	public ProjectViewResponseDto createProject(ProjectDto projectDto) {
 
 		User user = userServiceImpl.getFullUser();
 		
-		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null, projectDto.getTermin(),
+		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null,
+				projectDto.getTermin(),
 				EntryType.NONRELEVANT, EntryPhase.NONRELEVANT);
 		
 		entry.setUserId(user.getId());
 
-		Integer numberOfProjects = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false).size();
+		Integer numberOfProjects = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false)
+				.size();
 		entry.setSortNumber((numberOfProjects != null) ?  numberOfProjects : 0);
 		
 		entryRepository.save(entry);
 
+		//Need to create the response object here in order to avoid the recursive query() --> getProjectIdOfEntry
+		return new ProjectViewResponseDto(getFullProjectById(entry.getId()), getProjects(user.isOnlyActiveProjects()));
 	}
 
 	@Override
@@ -93,11 +97,15 @@ public class EntryServiceImpl implements EntryService {
 		entry.addEntryConnection(entryRepository.getOne(entryDto.getAddedEntryId()));
 		entry.setChild(true);
 
-		Integer numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getAddedEntryId()).get().getAddEntry().size();
+		Integer numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getAddedEntryId())
+				.get().getAddEntry().size();
 		entry.setSortNumber((numberOfEntriesOnThisLevel != null) ?  numberOfEntriesOnThisLevel : 0);
 
 		entryRepository.save(entry);
 
+		/* Need to manually add the currently created entry to it's parent's children, otherwise it would not be
+		visible in the response. --> Recursive query
+		*/
 		Entry parentOfEntry = entryRepository.findById(entry.getEntryConnections().getId()).get();
 		parentOfEntry.getAddEntry().add(entry);
 
@@ -159,7 +167,8 @@ public class EntryServiceImpl implements EntryService {
 		User user = userServiceImpl.getFullUser();
 
 		if(id != null) {
-			return new ProjectViewResponseDto(getFullProjectById(getProjectIdOfEntry(id)), getProjects(user.isOnlyActiveProjects()));
+			return new ProjectViewResponseDto(getFullProjectById(getProjectIdOfEntry(id)),
+					getProjects(user.isOnlyActiveProjects()));
 		} else {
 			return new ProjectViewResponseDto(null, getProjects(user.isOnlyActiveProjects()));
 		}
