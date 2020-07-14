@@ -228,6 +228,7 @@ public class EntryServiceImpl implements EntryService {
 		entry.setTermin(eDto.getTermin());
 		entry.setEntryPhase(EntryPhase.valueOf(eDto.getEntryPhase()));
 		entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
+		entry.setClosed(eDto.isClosed());
 
 		entryRepository.save(entry);
 
