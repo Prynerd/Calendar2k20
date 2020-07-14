@@ -27,12 +27,14 @@ public class EntryDtoForModification {
 
 	private String entryPhase;
 
+	private boolean closed;
+
 	public EntryDtoForModification() {
 
 	}
 
 	public EntryDtoForModification(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
-                                   String entryType, String entryPhase) {
+								   String entryType, String entryPhase, boolean closed) {
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -40,6 +42,7 @@ public class EntryDtoForModification {
 		this.termin = termin;
 		this.entryType = entryType;
 		this.entryPhase = entryPhase;
+		this.closed = closed;
 	}
 
 	public String getTitle() {
@@ -97,6 +100,12 @@ public class EntryDtoForModification {
 	public void setEntryPhase(String entryPhase) {
 		this.entryPhase = entryPhase;
 	}
-	
-	
+
+	public boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(boolean closed) {
+		this.closed = closed;
+	}
 }
