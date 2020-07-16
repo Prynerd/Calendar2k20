@@ -34,7 +34,7 @@ public class EntryForModificationDto {
 	}
 
 	public EntryForModificationDto(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
-                                   String entryType, String entryPhase, Boolean closed) {
+								   String entryType, String entryPhase, Boolean closed) {
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -101,19 +101,11 @@ public class EntryForModificationDto {
 		this.entryPhase = entryPhase;
 	}
 
-<<<<<<< HEAD:src/main/java/com/calendar/requestdto/EntryDtoForModification.java
-	public boolean isClosed() {
-		return closed;
-	}
-
-	public void setClosed(boolean closed) {
-=======
 	public Boolean isClosed() {
 		return closed;
 	}
 
 	public void setClosed(Boolean closed) {
->>>>>>> PMD-138:src/main/java/com/calendar/requestdto/EntryForModificationDto.java
 		this.closed = closed;
 	}
 }
