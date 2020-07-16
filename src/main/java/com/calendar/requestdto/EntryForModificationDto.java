@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 
 import java.time.LocalDateTime;
 
-public class EntryDtoForModification {
+public class EntryForModificationDto {
 
 
 
@@ -27,14 +27,14 @@ public class EntryDtoForModification {
 
 	private String entryPhase;
 
-	private boolean closed;
+	private Boolean closed;
 
-	public EntryDtoForModification() {
+	public EntryForModificationDto() {
 
 	}
 
-	public EntryDtoForModification(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
-								   String entryType, String entryPhase, boolean closed) {
+	public EntryForModificationDto(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
+                                   String entryType, String entryPhase, Boolean closed) {
 		this.title = title;
 		this.description = description;
 		this.date = date;
@@ -101,11 +101,19 @@ public class EntryDtoForModification {
 		this.entryPhase = entryPhase;
 	}
 
+<<<<<<< HEAD:src/main/java/com/calendar/requestdto/EntryDtoForModification.java
 	public boolean isClosed() {
 		return closed;
 	}
 
 	public void setClosed(boolean closed) {
+=======
+	public Boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(Boolean closed) {
+>>>>>>> PMD-138:src/main/java/com/calendar/requestdto/EntryForModificationDto.java
 		this.closed = closed;
 	}
 }
