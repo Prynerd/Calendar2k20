@@ -1,7 +1,7 @@
 package com.calendar.controllers;
 
 import com.calendar.requestdto.EntryDto;
-import com.calendar.requestdto.EntryDtoForModification;
+import com.calendar.requestdto.EntryForModificationDto;
 import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.*;
 import com.calendar.service.impl.EntryServiceImpl;
@@ -61,8 +61,9 @@ public class EntryController {
 	}
 	
 	@PutMapping("/entry{id}")
-	public ProjectViewResponseDto modifyEntryById(@Valid @RequestBody EntryDtoForModification eDto, @RequestParam int id) {
-		return entryServiceImpl.modifyEntryById(id, eDto);
+	public ProjectViewResponseForModificationDto modifyEntryById(@Valid @RequestBody EntryForModificationDto eDto,
+																 @RequestParam int id, @RequestParam boolean checkIfAllChildrenAreClosed) {
+		return entryServiceImpl.modifyEntryById(id, eDto, checkIfAllChildrenAreClosed);
 	}
 	
 	@PutMapping("/project{id}")
