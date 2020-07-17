@@ -219,41 +219,57 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	@Transactional
-	public ProjectViewResponseForModificationDto modifyEntry(int id, EntryForModificationDto eDto,
+	public ProjectViewResponseForModificationDto modifyEntry(Entry entry, EntryForModificationDto eDto,
 															 boolean checkIfAllChildrenAreClosed) {
-
-		Entry entry = entryRepository.findById(id).get();
-
-		checkUserToEntry(entry);
-
 		entry.setTitle(eDto.getTitle());
-		entry.setDescription(eDto.getDescription());
-		entry.setDate(eDto.getDate());
-		entry.setDuration(eDto.getDuration());
-		entry.setTermin(eDto.getTermin());
-		entry.setEntryPhase(EntryPhase.valueOf(eDto.getEntryPhase()));
-		entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
-		entry.setClosed(eDto.isClosed());
+
+		if(eDto.getDescription() != null) {
+			entry.setDescription(eDto.getDescription());
+		}
+
+		if(eDto.getDate() != null) {
+			entry.setDate(eDto.getDate());
+		}
+
+		if(eDto.getDuration() != null) {
+			entry.setDuration(eDto.getDuration());
+		}
+
+		if(eDto.getTermin() != null) {
+			entry.setTermin(eDto.getTermin());
+		}
+
+		if(eDto.getEntryPhase() != null) {
+			entry.setEntryPhase(EntryPhase.valueOf(eDto.getEntryPhase()));
+		}
+
+		if(eDto.getEntryType() != null) {
+			entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
+		}
+
+		if(eDto.isClosed() != null) {
+			entry.setClosed(eDto.isClosed());
+		}
 
 		entryRepository.save(entry);
 
-		return getProjectViewWithChildrenClosedStatus(id,checkIfAllChildrenAreClosed);
+		return getProjectViewWithChildrenClosedStatus(entry.getId(),checkIfAllChildrenAreClosed);
 	}
 
 	@Override
 	public ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
 																 boolean checkIfAllChildrenAreClosed) {
-		Entry project = entryRepository.findById(id).get();
+		Entry entry = entryRepository.findById(id).get();
 
-		checkUserToEntry(project);
+		checkUserToEntry(entry);
 
 		if (!checkIfAllChildrenAreClosed) {
-			return modifyEntry(id, eDto, false);
+			return modifyEntry(entry, eDto, false);
 		} else {
 			if (hasOpenChildren(id)) {
 				return getProjectViewWithChildrenClosedStatus(id,true);
 			} else {
-				return modifyEntry(id, eDto, false);
+				return modifyEntry(entry, eDto, false);
 			}
 		}
 	}
