@@ -75,4 +75,9 @@ public class EntryController {
 	public void expand(@RequestParam int id, boolean isExpanded) {
 		entryServiceImpl.expandEntry(id, isExpanded);
 	}
+
+	@GetMapping("/childrenclosed")
+	public boolean areAllChildrenClosed(@RequestParam int id) {
+		return entryServiceImpl.areAllChildrenClosed(id);
+	}
 }

@@ -34,7 +34,7 @@ public class EntryForModificationDto {
 	}
 
 	public EntryForModificationDto(String title, String description, LocalDateTime date, LocalDateTime duration, LocalDateTime termin,
-								   String entryType, String entryPhase, Boolean closed) {
+                                   String entryType, String entryPhase, Boolean closed) {
 		this.title = title;
 		this.description = description;
 		this.date = date;

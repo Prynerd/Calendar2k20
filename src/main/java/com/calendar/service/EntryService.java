@@ -8,28 +8,30 @@ import com.calendar.responsedto.*;
 
 public interface EntryService {
 
-	public ProjectViewResponseDto createEntry(EntryDto entryDto);
+	ProjectViewResponseDto createEntry(EntryDto entryDto);
 	
-	public ProjectViewResponseDto createProject(ProjectDto projectDto);
+	ProjectViewResponseDto createProject(ProjectDto projectDto);
 	
-	public ArrayList<ProjectEntriesResponseDto> getProjects(boolean isClosed);
+	ArrayList<ProjectEntriesResponseDto> getProjects(boolean isClosed);
 	
-	public EntryListResponseDto getEntries();
+	EntryListResponseDto getEntries();
 	
-	public EntryResponseDto getEntryById(int id);
+	EntryResponseDto getEntryById(int id);
 	
-	public FullProjectResponseDto getFullProjectById(int id);
+	FullProjectResponseDto getFullProjectById(int id);
 	
-	public ProjectViewResponseDto deleteEntryById(int id);
+	ProjectViewResponseDto deleteEntryById(int id);
 	
-	public ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
+	ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
 																 boolean checkIfAllChildrenAreClosed);
 	
-	public ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto);
+	ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto);
 
-	public void expandEntry(int id, boolean isExpanded);
+	void expandEntry(int id, boolean isExpanded);
 	
-	public ProjectViewResponseDto getProjectView(Integer id);
+	ProjectViewResponseDto getProjectView(Integer id);
+
+	boolean areAllChildrenClosed(int id);
 
 
 }
