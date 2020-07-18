@@ -41,17 +41,17 @@ public class EntryServiceImpl implements EntryService {
 	@Transactional
 	public ProjectViewResponseDto createProject(ProjectDto projectDto) {
 		User user = userServiceImpl.getFullUser();
-		
+
 		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null,
 				projectDto.getTermin(),
 				EntryType.NONRELEVANT, EntryPhase.NONRELEVANT);
-		
+
 		entry.setUserId(user.getId());
 
 		Integer numberOfProjects = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false)
 				.size();
 		entry.setSortNumber((numberOfProjects != null) ?  numberOfProjects : 0);
-		
+
 		entryRepository.save(entry);
 
 		//Need to create the response object here in order to avoid the recursive query() --> getProjectIdOfEntry
@@ -62,10 +62,10 @@ public class EntryServiceImpl implements EntryService {
 	@Transactional
 	public ProjectViewResponseDto createEntry(EntryDto entryDto) {
 		User user = userServiceImpl.getFullUser();
-		
+
 		EntryType entryType;
 		EntryPhase entryPhase;
-		
+
 		if (entryDto.getEntryType() != null) {
 			entryType = EntryType.valueOf(entryDto.getEntryType());
 		} else {
@@ -76,13 +76,13 @@ public class EntryServiceImpl implements EntryService {
 		} else {
 			entryPhase = EntryPhase.NONRELEVANT;
 		}
-		
+
 		Entry entry = new Entry(
-				entryDto.getTitle(), 
-				entryDto.getDescription(), 
+				entryDto.getTitle(),
+				entryDto.getDescription(),
 				entryDto.getDate(),
-				entryDto.getDuration(), 
-				entryDto.getTermin(), 
+				entryDto.getDuration(),
+				entryDto.getTermin(),
 				entryType,
 				entryPhase);
 
@@ -121,7 +121,7 @@ public class EntryServiceImpl implements EntryService {
 	public ArrayList<ProjectEntriesResponseDto> getProjects(boolean openOnly) {
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
-		
+
 		if(openOnly) {
 			entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
 		} else {
@@ -143,9 +143,9 @@ public class EntryServiceImpl implements EntryService {
 	public FullProjectResponseDto getFullProjectById(int id) {
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
-		
+
 		checkUserToEntry(e);
-		
+
 		return new FullProjectResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(), e.getDate(),
 				e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(), e.isClosed(),
 				e.isDeleted(), e.getSortNumber(), e.isExpanded(), e.getAddEntry());
@@ -278,14 +278,14 @@ public class EntryServiceImpl implements EntryService {
 	@Transactional
 	public ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto) {
 		Entry project = entryRepository.findById(id).get();
-		
+
 		checkUserToEntry(project);
-		
+
 		project.setTitle(projectDto.getTitle());
 		project.setDescription(projectDto.getDescription());
-		
+
 		entryRepository.save(project);
-		
+
 		return getProjectView(id);
 	}
 
@@ -331,5 +331,20 @@ public class EntryServiceImpl implements EntryService {
         return entry.getAddEntry().stream().anyMatch(child -> !child.isClosed());
     }
 
+    @Override
+    public boolean areAllChildrenClosed(int id) {
+		Entry entry;
+
+		try {
+			entry = entryRepository.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new EntryNotFoundException("Entry doesn't exist!");
+		}
+
+		checkUserToEntry(entry);
+
+		return entry.getEntryConnections().getAddEntry().stream()
+				.noneMatch(child -> !child.isClosed() && child.getId() != entry.getId());
+	}
 
 }
