@@ -343,8 +343,12 @@ public class EntryServiceImpl implements EntryService {
 
 		checkUserToEntry(entry);
 
-		return entry.getEntryConnections().getAddEntry().stream()
-				.noneMatch(child -> !child.isClosed() && child.getId() != entry.getId());
+		try {
+			return entry.getEntryConnections().getAddEntry().stream()
+					.noneMatch(child -> !child.isClosed() && child.getId() != entry.getId());
+		} catch (NullPointerException e) {
+			return true;
+		}
 	}
 
 }
