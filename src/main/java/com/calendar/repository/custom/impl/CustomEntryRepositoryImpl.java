@@ -1,7 +1,10 @@
 package com.calendar.repository.custom.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,20 +28,32 @@ public class CustomEntryRepositoryImpl implements CustomEntryRepository{
 	@Override
 	public List<Entry> getEntriesByUserId(int userId) {
 		return em
-        	.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC", Entry.class)
-        	.setParameter("id", userId)
-        	.setParameter("isC", false)
-        	.getResultList();
+				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC", Entry.class)
+				.setParameter("id", userId)
+				.setParameter("isC", false)
+				.getResultStream().sorted(new Comparator<Entry>() {
+					@Override
+					public int compare(Entry e1, Entry e2) {
+						return e1.getTitle().compareToIgnoreCase(e2.getTitle());
+					}
+				}).collect(Collectors.toList());
 	}
 	
 	@Override
 	public List<Entry> getProjectsByUserIdAndStatus(int userId, boolean isClosed) {
 		return em
-				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC AND e.isClosed = :isCl", Entry.class)
+				.createQuery("SELECT e FROM Entry e WHERE e.userId = :id AND e.isChild = :isC " +
+						"AND e.isClosed = :isCl", Entry.class)
 				.setParameter("id", userId)
 				.setParameter("isC", false)
 				.setParameter("isCl", isClosed)
-				.getResultList();
+				.getResultStream().sorted(new Comparator<Entry>() {
+					@Override
+					public int compare(Entry e1, Entry e2) {
+						return e1.getTitle().compareToIgnoreCase(e2.getTitle());
+					}
+				}).collect(Collectors.toList());
+
 	}
 
 	public void removeEntry(Entry entry) {
