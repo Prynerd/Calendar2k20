@@ -2,13 +2,9 @@ package com.calendar.service;
 
 import java.util.ArrayList;
 import com.calendar.requestdto.EntryDto;
-import com.calendar.requestdto.EntryDtoForModification;
+import com.calendar.requestdto.EntryForModificationDto;
 import com.calendar.requestdto.ProjectDto;
-import com.calendar.responsedto.EntryListResponseDto;
-import com.calendar.responsedto.EntryResponseDto;
-import com.calendar.responsedto.FullProjectResponseDto;
-import com.calendar.responsedto.ProjectEntriesResponseDto;
-import com.calendar.responsedto.ProjectViewResponseDto;
+import com.calendar.responsedto.*;
 
 public interface EntryService {
 
@@ -26,7 +22,8 @@ public interface EntryService {
 	
 	public ProjectViewResponseDto deleteEntryById(int id);
 	
-	public ProjectViewResponseDto modifyEntryById(int id, EntryDtoForModification eDto);
+	public ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
+																 boolean checkIfAllChildrenAreClosed);
 	
 	public ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto);
 
@@ -34,5 +31,5 @@ public interface EntryService {
 	
 	public ProjectViewResponseDto getProjectView(Integer id);
 
-	public int getProjectIdOfEntry(int id);
+
 }
