@@ -9,7 +9,7 @@ import com.calendar.exceptions.EntryNotFoundException;
 import com.calendar.repository.EntryRepository;
 import com.calendar.repository.custom.CustomEntryRepository;
 import com.calendar.requestdto.EntryDto;
-import com.calendar.requestdto.EntryDtoForModification;
+import com.calendar.requestdto.EntryForModificationDto;
 import com.calendar.requestdto.ProjectDto;
 import com.calendar.responsedto.*;
 import com.calendar.service.EntryService;
@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.*;
 
@@ -29,9 +28,6 @@ public class EntryServiceImpl implements EntryService {
 	private UserServiceImpl userServiceImpl;
 	private EntryDao entryDao;
 
-	@PersistenceContext
-	EntityManager em;
-
 	@Autowired
 	public EntryServiceImpl(EntryRepository entryRepository, UserServiceImpl userServiceImpl,
 			CustomEntryRepository customEntryRepository, EntryDao entryDao, EntityManager em) {
@@ -39,13 +35,11 @@ public class EntryServiceImpl implements EntryService {
 		this.userServiceImpl = userServiceImpl;
 		this.customEntryRepository = customEntryRepository;
 		this.entryDao = entryDao;
-		this.em = em;
 	}
 
 	@Override
 	@Transactional
 	public ProjectViewResponseDto createProject(ProjectDto projectDto) {
-
 		User user = userServiceImpl.getFullUser();
 		
 		Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null,
@@ -67,7 +61,6 @@ public class EntryServiceImpl implements EntryService {
 	@Override
 	@Transactional
 	public ProjectViewResponseDto createEntry(EntryDto entryDto) {
-
 		User user = userServiceImpl.getFullUser();
 		
 		EntryType entryType;
@@ -114,7 +107,6 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	public EntryListResponseDto getEntries() {
-
 		EntryListResponseDto entryResponseDto = new EntryListResponseDto();
 
 		User user = userServiceImpl.getFullUser();
@@ -127,7 +119,6 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	public ArrayList<ProjectEntriesResponseDto> getProjects(boolean openOnly) {
-
 		User user = userServiceImpl.getFullUser();
 		List<Entry> entryList = new ArrayList<Entry>();
 		
@@ -150,7 +141,6 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	public FullProjectResponseDto getFullProjectById(int id) {
-
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
 		
@@ -163,7 +153,6 @@ public class EntryServiceImpl implements EntryService {
 
 	@Override
 	public ProjectViewResponseDto getProjectView(Integer id) {
-
 		User user = userServiceImpl.getFullUser();
 
 		if(id != null) {
@@ -172,12 +161,29 @@ public class EntryServiceImpl implements EntryService {
 		} else {
 			return new ProjectViewResponseDto(null, getProjects(user.isOnlyActiveProjects()));
 		}
+	}
+
+	public ProjectViewResponseForModificationDto getProjectViewWithChildrenClosedStatus(Integer id,
+																						boolean hasOpenChildren) {
+		User user = userServiceImpl.getFullUser();
+
+		if(id != null) {
+			if (hasOpenChildren) {
+				return new ProjectViewResponseForModificationDto(null, null,
+						true);
+			} else {
+				return new ProjectViewResponseForModificationDto(getFullProjectById(getProjectIdOfEntry(id)),
+						getProjects(user.isOnlyActiveProjects()), null);
+			}
+		} else {
+			return new ProjectViewResponseForModificationDto(null,
+					getProjects(user.isOnlyActiveProjects()), null);
+		}
 
 	}
 
 	@Override
 	public EntryResponseDto getEntryById(int id) {
-
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
 		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
@@ -195,7 +201,6 @@ public class EntryServiceImpl implements EntryService {
 	@Override
 	@Transactional
 	public ProjectViewResponseDto deleteEntryById(int id) {
-
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
 
@@ -213,32 +218,65 @@ public class EntryServiceImpl implements EntryService {
 
 	}
 
-	@Override
 	@Transactional
-	public ProjectViewResponseDto modifyEntryById(int id, EntryDtoForModification eDto) {
+	public ProjectViewResponseForModificationDto modifyEntry(Entry entry, EntryForModificationDto eDto,
+															 boolean checkIfAllChildrenAreClosed) {
+		entry.setTitle(eDto.getTitle());
 
+		if(eDto.getDescription() != null) {
+			entry.setDescription(eDto.getDescription());
+		}
+
+		if(eDto.getDate() != null) {
+			entry.setDate(eDto.getDate());
+		}
+
+		if(eDto.getDuration() != null) {
+			entry.setDuration(eDto.getDuration());
+		}
+
+		if(eDto.getTermin() != null) {
+			entry.setTermin(eDto.getTermin());
+		}
+
+		if(eDto.getEntryPhase() != null) {
+			entry.setEntryPhase(EntryPhase.valueOf(eDto.getEntryPhase()));
+		}
+
+		if(eDto.getEntryType() != null) {
+			entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
+		}
+
+		if(eDto.isClosed() != null) {
+			entry.setClosed(eDto.isClosed());
+		}
+
+		entryRepository.save(entry);
+
+		return getProjectViewWithChildrenClosedStatus(entry.getId(),checkIfAllChildrenAreClosed);
+	}
+
+	@Override
+	public ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
+																 boolean checkIfAllChildrenAreClosed) {
 		Entry entry = entryRepository.findById(id).get();
 
 		checkUserToEntry(entry);
 
-		entry.setTitle(eDto.getTitle());
-		entry.setDescription(eDto.getDescription());
-		entry.setDate(eDto.getDate());
-		entry.setDuration(eDto.getDuration());
-		entry.setTermin(eDto.getTermin());
-		entry.setEntryPhase(EntryPhase.valueOf(eDto.getEntryPhase()));
-		entry.setEntryType(EntryType.valueOf(eDto.getEntryType()));
-		entry.setClosed(eDto.isClosed());
-
-		entryRepository.save(entry);
-
-		return getProjectView(id);
+		if (!checkIfAllChildrenAreClosed) {
+			return modifyEntry(entry, eDto, false);
+		} else {
+			if (hasOpenChildren(id)) {
+				return getProjectViewWithChildrenClosedStatus(id,true);
+			} else {
+				return modifyEntry(entry, eDto, false);
+			}
+		}
 	}
 
 	@Override
 	@Transactional
 	public ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto) {
-
 		Entry project = entryRepository.findById(id).get();
 		
 		checkUserToEntry(project);
@@ -251,7 +289,8 @@ public class EntryServiceImpl implements EntryService {
 		return getProjectView(id);
 	}
 
-	public void checkUserToEntry(Entry e) {
+	private void checkUserToEntry(Entry e) {
+
 		User user = userServiceImpl.getFullUser();
 		if(user.getId() != e.getUserId()) {
 			throw new AccessDeniedException("Access denied");
@@ -276,9 +315,7 @@ public class EntryServiceImpl implements EntryService {
 		entryRepository.save(entry);
 	}
 
-	@Override
-	public int getProjectIdOfEntry(int entryId) {
-
+	private int getProjectIdOfEntry(int entryId) {
 		Entry entry = entryRepository.findById(entryId).get();
 
 		checkUserToEntry(entry);
@@ -287,4 +324,12 @@ public class EntryServiceImpl implements EntryService {
 
 		return parentId;
 	}
+
+    private boolean hasOpenChildren(int id) {
+	    Entry entry = entryRepository.findById(id).get();
+
+        return entry.getAddEntry().stream().anyMatch(child -> !child.isClosed());
+    }
+
+
 }
