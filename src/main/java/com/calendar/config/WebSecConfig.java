@@ -50,7 +50,8 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 	    	.authorizeRequests()
 	    		.antMatchers(
                     "/login", 
-                    "/registration"
+                    "/registration",
+						"/logout"
                     )
 	    		.permitAll()
 	    		.and()
