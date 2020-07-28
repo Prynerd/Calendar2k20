@@ -81,6 +81,9 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://localhost:4200",
         		"https://plan-my-day-dev.firebaseapp.com",
+				"http://plan-my-day-dev.firebaseapp.com",
+				"https://plan-my-day-dev.firebaseapp.com/login-registration",
+				"http://plan-my-day-dev.firebaseapp.com/login-registration",
         		"https://plan-my-day-mages-of-code.firebaseapp.com",
         		"http://plan-my-day-mages-of-code.firebaseapp.com",
         		"https://plan-my-day-mages-of-code.firebaseapp.com/login-registration",
