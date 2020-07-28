@@ -64,10 +64,11 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint)
 	    	.and()
 	    	.logout()
+				.logoutUrl("/logut")
 	    		.permitAll()
 	    		.invalidateHttpSession(true)
 	    		.deleteCookies("JSESSIONID")
-	    		.logoutSuccessUrl("https://google.com")
+	    		.logoutSuccessUrl("/registration")
 	    		;
 	}
 	
