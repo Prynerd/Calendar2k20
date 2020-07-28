@@ -70,7 +70,7 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 				.invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID")
 				.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
-				.logoutSuccessUrl("https://plan-my-day-dev.firebaseapp.com/login-registration")
+				.logoutSuccessUrl("/login")
 //	    	.logout()
 //				.logoutUrl("/logout")
 //	    		.permitAll()
