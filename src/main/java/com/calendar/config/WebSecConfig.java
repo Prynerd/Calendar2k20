@@ -67,7 +67,7 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 	    		.permitAll()
 	    		.invalidateHttpSession(true)
 	    		.deleteCookies("JSESSIONID")
-	    		.logoutSuccessUrl("/login-registration")
+	    		.logoutSuccessUrl("https://google.com")
 	    		;
 	}
 	
