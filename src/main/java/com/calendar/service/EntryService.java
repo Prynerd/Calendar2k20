@@ -23,15 +23,14 @@ public interface EntryService {
 	ProjectViewResponseDto deleteEntryById(int id);
 	
 	ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
-																 boolean checkIfAllChildrenAreClosed);
+														  boolean checkIfAllChildrenAreClosed,
+														  boolean checkIfAllSiblingsAreClosed);
 	
 	ProjectViewResponseDto modifyProjectById(int id, ProjectDto projectDto);
 
 	void expandEntry(int id, boolean isExpanded);
 	
 	ProjectViewResponseDto getProjectView(Integer id);
-
-	boolean areAllChildrenClosed(int id);
 
 
 }
