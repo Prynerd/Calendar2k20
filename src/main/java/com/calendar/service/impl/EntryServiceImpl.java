@@ -164,20 +164,21 @@ public class EntryServiceImpl implements EntryService {
 	}
 
 	public ProjectViewResponseForModificationDto getProjectViewWithChildrenClosedStatus(Integer id,
-																						boolean hasOpenChildren) {
+																						boolean hasOpenChildren,
+																						Boolean allSiblingsAreClosed) {
 		User user = userServiceImpl.getFullUser();
 
 		if(id != null) {
 			if (hasOpenChildren) {
 				return new ProjectViewResponseForModificationDto(null, null,
-						true);
+						true, allSiblingsAreClosed);
 			} else {
 				return new ProjectViewResponseForModificationDto(getFullProjectById(getProjectIdOfEntry(id)),
-						getProjects(user.isOnlyActiveProjects()), null);
+						getProjects(user.isOnlyActiveProjects()), null, allSiblingsAreClosed);
 			}
 		} else {
 			return new ProjectViewResponseForModificationDto(null,
-					getProjects(user.isOnlyActiveProjects()), null);
+					getProjects(user.isOnlyActiveProjects()), null, allSiblingsAreClosed);
 		}
 
 	}
@@ -220,7 +221,8 @@ public class EntryServiceImpl implements EntryService {
 
 	@Transactional
 	public ProjectViewResponseForModificationDto modifyEntry(Entry entry, EntryForModificationDto eDto,
-															 boolean checkIfAllChildrenAreClosed) {
+															 boolean checkIfAllChildrenAreClosed,
+															 Boolean areAllSiblingsClosed) {
 		entry.setTitle(eDto.getTitle());
 
 		if(eDto.getDescription() != null) {
@@ -253,23 +255,30 @@ public class EntryServiceImpl implements EntryService {
 
 		entryRepository.save(entry);
 
-		return getProjectViewWithChildrenClosedStatus(entry.getId(),checkIfAllChildrenAreClosed);
+		return getProjectViewWithChildrenClosedStatus(entry.getId(),checkIfAllChildrenAreClosed, areAllSiblingsClosed);
 	}
 
 	@Override
 	public ProjectViewResponseForModificationDto modifyEntryById(int id, EntryForModificationDto eDto,
-																 boolean checkIfAllChildrenAreClosed) {
+																 boolean checkIfAllChildrenAreClosed,
+																 boolean checkIfAllSiblingsAreClosed) {
 		Entry entry = entryRepository.findById(id).get();
 
 		checkUserToEntry(entry);
 
+		Boolean areAllSiblingsClosed = null;
+
+		if (checkIfAllSiblingsAreClosed) {
+			areAllSiblingsClosed = areAllSiblingEntriesClosed(entry);
+		}
+
 		if (!checkIfAllChildrenAreClosed) {
-			return modifyEntry(entry, eDto, false);
+			return modifyEntry(entry, eDto, false, areAllSiblingsClosed);
 		} else {
 			if (hasOpenChildren(id)) {
-				return getProjectViewWithChildrenClosedStatus(id,true);
+				return getProjectViewWithChildrenClosedStatus(id,true, areAllSiblingsClosed);
 			} else {
-				return modifyEntry(entry, eDto, false);
+				return modifyEntry(entry, eDto, false, areAllSiblingsClosed);
 			}
 		}
 	}
@@ -331,23 +340,12 @@ public class EntryServiceImpl implements EntryService {
         return entry.getAddEntry().stream().anyMatch(child -> !child.isClosed());
     }
 
-    @Override
-    public boolean areAllChildrenClosed(int id) {
-		Entry entry;
-
+    private boolean areAllSiblingEntriesClosed(Entry aEntry) {
 		try {
-			entry = entryRepository.findById(id).get();
-		} catch (NoSuchElementException e) {
-			throw new EntryNotFoundException("Entry doesn't exist!");
-		}
-
-		checkUserToEntry(entry);
-
-		try {
-			return entry.getEntryConnections().getAddEntry().stream()
-					.noneMatch(child -> !child.isClosed() && child.getId() != entry.getId());
+			return aEntry.getEntryConnections().getAddEntry().stream()
+					.noneMatch(child -> !child.isClosed() && child.getId() != aEntry.getId());
 		} catch (NullPointerException e) {
-			return true;
+			return false;
 		}
 	}
 

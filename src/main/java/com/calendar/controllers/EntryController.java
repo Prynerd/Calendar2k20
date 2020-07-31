@@ -62,8 +62,10 @@ public class EntryController {
 	
 	@PutMapping("/entry{id}")
 	public ProjectViewResponseForModificationDto modifyEntryById(@Valid @RequestBody EntryForModificationDto eDto,
-																 @RequestParam int id, @RequestParam boolean checkIfAllChildrenAreClosed) {
-		return entryServiceImpl.modifyEntryById(id, eDto, checkIfAllChildrenAreClosed);
+																 @RequestParam int id,
+																 @RequestParam boolean checkIfAllChildrenAreClosed,
+																 @RequestParam boolean checkIfAllSiblingsAreClosed) {
+		return entryServiceImpl.modifyEntryById(id, eDto, checkIfAllChildrenAreClosed, checkIfAllSiblingsAreClosed);
 	}
 	
 	@PutMapping("/project{id}")
@@ -74,10 +76,5 @@ public class EntryController {
 	@PostMapping("/expand{id, isExpanded}")
 	public void expand(@RequestParam int id, boolean isExpanded) {
 		entryServiceImpl.expandEntry(id, isExpanded);
-	}
-
-	@GetMapping("/areAllChildrenClosed")
-	public boolean areAllChildrenClosed(@RequestParam int id) {
-		return entryServiceImpl.areAllChildrenClosed(id);
 	}
 }

@@ -8,13 +8,15 @@ public class ProjectViewResponseForModificationDto {
 	private FullProjectResponseDto projectsEntries;
 	private ArrayList<ProjectEntriesResponseDto> projectList;
 	private Boolean hasNotClosedChildren;
+	private Boolean allSiblingsAreClosed;
 
 	public ProjectViewResponseForModificationDto(FullProjectResponseDto projectsEntries,
 												 ArrayList<ProjectEntriesResponseDto> projectList,
-												 Boolean hasNotClosedChildren) {
+												 Boolean hasNotClosedChildren, Boolean allSiblingsAreClosed) {
 		this.projectsEntries = projectsEntries;
 		this.projectList = projectList;
 		this.hasNotClosedChildren = hasNotClosedChildren;
+		this.allSiblingsAreClosed = allSiblingsAreClosed;
 	}
 
 	public ArrayList<ProjectEntriesResponseDto> getProjectList() {
@@ -33,11 +35,19 @@ public class ProjectViewResponseForModificationDto {
 		this.projectsEntries = projectsEntries;
 	}
 
-	public Boolean isHasNotClosedChildren() {
+	public Boolean getHasNotClosedChildren() {
 		return hasNotClosedChildren;
 	}
 
 	public void setHasNotClosedChildren(Boolean hasNotClosedChildren) {
 		this.hasNotClosedChildren = hasNotClosedChildren;
+	}
+
+	public Boolean getAllSiblingsAreClosed() {
+		return allSiblingsAreClosed;
+	}
+
+	public void setAllSiblingsAreClosed(Boolean allSiblingsAreClosed) {
+		this.allSiblingsAreClosed = allSiblingsAreClosed;
 	}
 }
