@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserResponseDto getUser() {
 		User user = getFullUser();
-		UserResponseDto urDto = new UserResponseDto(user.getId(), user.getEmail(), user.isValidated());
+		UserResponseDto urDto = new UserResponseDto(user.getId(), user.getEmail(), user.isValidated(), user.isOnlyActiveProjects());
 
 		return urDto;
 	}
