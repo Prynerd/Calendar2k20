@@ -9,7 +9,6 @@ public class EntryForModificationDto {
 
 
 
-	@NotNull
 	private String title;
 
 	private String description;
