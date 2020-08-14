@@ -223,7 +223,9 @@ public class EntryServiceImpl implements EntryService {
 	public ProjectViewResponseForModificationDto modifyEntry(Entry entry, EntryForModificationDto eDto,
 															 boolean checkIfAllChildrenAreClosed,
 															 Boolean areAllSiblingsClosed) {
-		entry.setTitle(eDto.getTitle());
+		if(eDto.getTitle() != null) {
+			entry.setTitle(eDto.getTitle());
+		}
 
 		if(eDto.getDescription() != null) {
 			entry.setDescription(eDto.getDescription());
