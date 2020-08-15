@@ -18,7 +18,6 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint{
         HttpServletResponse response, 
         AuthenticationException authException) throws IOException {
 
-	    response.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=Secure");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, 
           "Unauthorized");
     }
