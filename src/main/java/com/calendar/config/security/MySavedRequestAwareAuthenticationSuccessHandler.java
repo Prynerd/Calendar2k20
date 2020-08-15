@@ -46,6 +46,8 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
                 user.isOnlyActiveProjects()));
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=strict");
+
 
         writer.append(writeValueAsString);
         writer.flush();
