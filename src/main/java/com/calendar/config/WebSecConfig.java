@@ -66,11 +66,11 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint)
 	    	.and()
 				.logout()
-	    		.permitAll()
-	    		.invalidateHttpSession(true)
-	    		.deleteCookies("JSESSIONID")
-	    		.logoutSuccessUrl("/login?logout")
-	    		;
+				.permitAll()
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
+				.logoutSuccessUrl("https://plan-my-day-dev.firebaseapp.com/login-registration")
+		;
 	}
 	
 	@Bean
