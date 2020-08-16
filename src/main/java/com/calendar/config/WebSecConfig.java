@@ -1,7 +1,8 @@
 package com.calendar.config;
 
-import java.util.Arrays;
-
+import com.calendar.config.error.CustomAccessDeniedHandler;
+import com.calendar.config.security.MySavedRequestAwareAuthenticationSuccessHandler;
+import com.calendar.config.security.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,14 +13,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.session.web.http.CookieSerializer;
+import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.calendar.config.error.CustomAccessDeniedHandler;
-import com.calendar.config.security.MySavedRequestAwareAuthenticationSuccessHandler;
-import com.calendar.config.security.RestAuthenticationEntryPoint;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -102,4 +102,11 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+	@Bean
+	public CookieSerializer cookieSerializer() {
+		DefaultCookieSerializer serializer = new DefaultCookieSerializer();
+		serializer.setSameSite("none");
+		return serializer;
+	}
 }
