@@ -19,7 +19,7 @@ public class SameSiteInjector {
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
         DefaultCookieSerializer cookieSerializer = applicationContext.getBean(DefaultCookieSerializer.class);
-        cookieSerializer.setSameSite("strict");
+        cookieSerializer.setSameSite("Strict");
 
     }
 }
