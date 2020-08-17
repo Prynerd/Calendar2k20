@@ -1,13 +1,12 @@
 package com.calendar.responsedto;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 import com.calendar.data.enums.EntryPhase;
 import com.calendar.data.enums.EntryType;
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.time.LocalDateTime;
 
 public class EntryResponseDto {
 
@@ -43,10 +42,12 @@ public class EntryResponseDto {
 	private boolean isDeleted;
 
 	private boolean isExpanded;
+
+	private Integer parentId;
 	
 	public EntryResponseDto(int id, int userId, String title, String description, LocalDateTime date, LocalDateTime duration,
-			LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isClosed, Integer sortNumber,
-			boolean isDeleted, boolean isExpanded) {
+							LocalDateTime termin, EntryType entryType, EntryPhase entryPhase, boolean isChild, boolean isClosed, Integer sortNumber,
+							boolean isDeleted, boolean isExpanded, Integer parentId) {
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
@@ -61,6 +62,7 @@ public class EntryResponseDto {
 		this.setSortNumber(sortNumber);
 		this.isDeleted = isDeleted;
 		this.isExpanded = isExpanded;
+		this.parentId = parentId;
 	}
 	
 	public boolean isDeleted() {
@@ -174,6 +176,12 @@ public class EntryResponseDto {
 	public void setSortNumber(Integer sortNumber) {
 		this.sortNumber = sortNumber;
 	}
-	
-	
+
+	public Integer getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
 }

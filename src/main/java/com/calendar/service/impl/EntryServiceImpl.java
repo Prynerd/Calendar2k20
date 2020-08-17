@@ -187,9 +187,18 @@ public class EntryServiceImpl implements EntryService {
 	public EntryResponseDto getEntryById(int id) {
 		Optional<Entry> entry = entryRepository.findById(id);
 		Entry e = entry.get();
-		EntryResponseDto erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
-				e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
-				e.isClosed(), e.getSortNumber(), e.isDeleted(), e.isExpanded());
+
+		EntryResponseDto erDto;
+
+		try {
+			erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
+					e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
+					e.isClosed(), e.getSortNumber(), e.isDeleted(), e.isExpanded(), e.getEntryConnections().getId());
+		} catch (NullPointerException ex) {
+			erDto = new EntryResponseDto(e.getId(), e.getUserId(), e.getTitle(), e.getDescription(),
+					e.getDate(), e.getDuration(), e.getTermin(), e.getEntryType(), e.getEntryPhase(), e.isChild(),
+					e.isClosed(), e.getSortNumber(), e.isDeleted(), e.isExpanded(), null);
+		}
 
 		User user = userServiceImpl.getFullUser();
 		if(user.getId() != erDto.getUserId()) {
