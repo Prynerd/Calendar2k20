@@ -21,8 +21,5 @@ public class MvcConfig implements WebMvcConfigurer {
             context.setCookieProcessor(cookieProcessor);
         };
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> PMD-174
+
