@@ -9,7 +9,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-
+    /**
+    Sets the SameSite attribute on all cookies to "None" with Secured, as is required by the Chrome-browser.
+     2020.08.16"
+    */
     @Bean
     public TomcatContextCustomizer sameSiteCookiesConfig() {
         return context -> {
