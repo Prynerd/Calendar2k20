@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 @Profile({"heroku", "heroku-dev"})
 public class DatabaseConfig {
 
-    @Value("${spring.datasource.url}")
+    @Value("${JDBC_DATABASE_URL}")
     private String fullDbUrl;
 
     @Bean
@@ -26,8 +26,8 @@ public class DatabaseConfig {
 
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(dbUrl);
-        config.setUsername("${spring.datasource.user}");
-        config.setPassword("${spring.datasource.password}");
+        config.setUsername("${JDBC_DATABASE_USERNAME}");
+        config.setPassword("${JDBC_DATABASE_PASSWORD}");
         config.setDriverClassName("org.postgresql.Driver");
 
         return new HikariDataSource(config);
