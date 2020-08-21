@@ -290,6 +290,10 @@ public class EntryServiceImpl implements EntryService {
             entry.setClosed(eDto.getClosed().get());
         }
 
+        if (eDto.getExpanded() != null) {
+            entry.setExpanded(eDto.getExpanded().get());
+        }
+
         entryRepository.save(entry);
 
         return getProjectViewWithChildrenClosedStatus(entry.getId(), checkIfAllChildrenAreClosed, areAllSiblingsClosed);
