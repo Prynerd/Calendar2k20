@@ -27,13 +27,15 @@ public class EntryForModificationDto {
 
     private Optional<Boolean> closed;
 
+    private Optional<Boolean> expanded;
+
     public EntryForModificationDto() {
 
     }
 
     public EntryForModificationDto(Optional<String> title, Optional<String> description, Optional<LocalDateTime> date,
 								   Optional<LocalDateTime> duration, Optional<LocalDateTime> termin,
-								   Optional<String> entryType, Optional<String> entryPhase, Optional<Boolean> closed) {
+								   Optional<String> entryType, Optional<String> entryPhase, Optional<Boolean> closed, Optional<Boolean> expanded) {
         this.title = title;
         this.description = description;
         this.date = date;
@@ -42,7 +44,8 @@ public class EntryForModificationDto {
         this.entryType = entryType;
         this.entryPhase = entryPhase;
         this.closed = closed;
-    }
+		this.expanded = expanded;
+	}
 
 	public Optional<String> getTitle() {
 		return title;
@@ -106,5 +109,13 @@ public class EntryForModificationDto {
 
 	public void setClosed(Optional<Boolean> closed) {
 		this.closed = closed;
+	}
+
+	public Optional<Boolean> getExpanded() {
+		return expanded;
+	}
+
+	public void setExpanded(Optional<Boolean> expanded) {
+		this.expanded = expanded;
 	}
 }
