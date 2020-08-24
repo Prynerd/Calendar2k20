@@ -65,7 +65,6 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint)
 	    	.and()
 	    	.logout()
-				.logoutSuccessUrl("redirect:/login?logout")
 			.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
 //	    		.permitAll()
 //	    		.invalidateHttpSession(true)
