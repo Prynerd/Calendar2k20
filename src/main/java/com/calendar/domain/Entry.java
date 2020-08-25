@@ -50,7 +50,7 @@ public class Entry {
 	private boolean expanded;
 
 	@JsonBackReference
-	@JoinColumn(name="entry_id")
+	@JoinColumn(name="parent_id")
 	@ManyToOne
 	private Entry parentEntry;
 

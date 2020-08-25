@@ -1,10 +1,14 @@
 package com.calendar.service.impl;
 
-import java.security.SecureRandom;
-
-import javax.transaction.Transactional;
-
+import com.calendar.domain.User;
+import com.calendar.exceptions.EmailAlreadyExistsException;
+import com.calendar.exceptions.UserDeletedException;
 import com.calendar.exceptions.UserNotLoggedInException;
+import com.calendar.repository.UserRepository;
+import com.calendar.repository.custom.CustomUserRepository;
+import com.calendar.requestdto.RegistrationDto;
+import com.calendar.responsedto.UserResponseDto;
+import com.calendar.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +18,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.calendar.domain.User;
-import com.calendar.exceptions.EmailAlreadyExistsException;
-import com.calendar.exceptions.UserDeletedException;
-import com.calendar.repository.UserRepository;
-import com.calendar.repository.custom.CustomUserRepository;
-import com.calendar.requestdto.RegistrationDto;
-import com.calendar.responsedto.UserResponseDto;
-import com.calendar.service.UserService;
+import javax.transaction.Transactional;
+import java.security.SecureRandom;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -43,7 +41,7 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(email).orElseThrow(()
 				-> new UsernameNotFoundException("User not found"));
-		if (user.isDeleted() == false) {
+		if (!user.isDeleted()) {
 			return user;
 		} else {
 			throw new UserDeletedException("accountDeleted");
