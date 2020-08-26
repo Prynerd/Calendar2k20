@@ -293,10 +293,7 @@ public class EntryServiceImpl implements EntryService {
         if (eDto.isExpanded() != null) {
             entry.setExpanded(eDto.isExpanded().get());
         }
-
-        if (eDto.getExpanded() != null) {
-            entry.setExpanded(eDto.getExpanded().get());
-        }
+        
 
         entryRepository.save(entry);
 
