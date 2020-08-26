@@ -7,15 +7,18 @@ public class UserResponseDto {
     private String email;
     
     private boolean isValidated;
+
+    private boolean onlyActiveProjects;
     
     public UserResponseDto() {
     	
     }
 
-    public UserResponseDto(int id, String email, boolean isValidated) {
+    public UserResponseDto(int id, String email, boolean isValidated, boolean onlyActiveProjects) {
         this.id = id;
         this.email = email;
         this.isValidated = isValidated;
+        this.onlyActiveProjects = onlyActiveProjects;
     }
     
     public int getId() {
@@ -42,4 +45,11 @@ public class UserResponseDto {
         this.isValidated = isValidated;
     }
 
+    public boolean isOnlyActiveProjects() {
+        return onlyActiveProjects;
+    }
+
+    public void setOnlyActiveProjects(boolean onlyActiveProjects) {
+        this.onlyActiveProjects = onlyActiveProjects;
+    }
 }
