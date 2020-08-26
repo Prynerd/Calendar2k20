@@ -33,7 +33,7 @@ public class UserController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
-	@PostMapping("/userSettings/onlyActiveProjects{status}")
+	@PostMapping("/userSettings/onlyActiveProjects")
 	public void setProjectsVisibilityStatus(@RequestParam boolean status) {
 		userService.setProjectsVisibilityStatus(status);
 	}

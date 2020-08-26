@@ -49,8 +49,7 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 	    	.authorizeRequests()
 	    		.antMatchers(
                     "/login", 
-                    "/registration",
-						"/logout"
+                    "/registration"
                     )
 	    		.permitAll()
 	    		.and()
@@ -65,11 +64,10 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restAuthenticationEntryPoint)
 	    	.and()
 	    	.logout()
-			.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
-//	    		.permitAll()
-//	    		.invalidateHttpSession(true)
-//	    		.deleteCookies("JSESSIONID")
-//	    		.logoutSuccessUrl("https://plan-my-day-dev.firebaseapp.com/login-registration")
+	    		.permitAll()
+	    		.invalidateHttpSession(true)
+	    		.deleteCookies("JSESSIONID")
+//	    		.logoutSuccessUrl("https://plan-my-day-mages-of-code.firebaseapp.com/login-registration")
 	    		;
 	}
 	
@@ -82,7 +80,11 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://localhost:4200",
-        		"https://plan-my-day-dev.firebaseapp.com",
+				"https://plan-my-day-dev.web.app/",
+				"http://plan-my-day-dev.web.app/",
+				"https://plan-my-day-dev.web.app/login-registration",
+				"http://plan-my-day-dev.web.app/login-registration",
+				"https://plan-my-day-dev.firebaseapp.com",
 				"http://plan-my-day-dev.firebaseapp.com",
 				"https://plan-my-day-dev.firebaseapp.com/login-registration",
 				"http://plan-my-day-dev.firebaseapp.com/login-registration",
