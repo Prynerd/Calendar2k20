@@ -2,5 +2,5 @@ package com.calendar.data.enums;
 
 public enum EntryType {
 
-		TASK, EVENT, MEMO, PARENT, PROJECT, NONRELEVANT;
+		TASK, EVENT, MEMO, PARENT, PROJECT;
 }

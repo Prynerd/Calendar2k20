@@ -49,7 +49,7 @@ public class EntryServiceImpl implements EntryService {
 
         Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null,
                 projectDto.getDeadline(),
-                EntryType.NONRELEVANT, EntryPhase.NONRELEVANT);
+                EntryType.PROJECT, EntryPhase.NONRELEVANT);
 
         entry.setUserId(user.getId());
 
@@ -74,7 +74,7 @@ public class EntryServiceImpl implements EntryService {
         if (entryDto.getEntryType() != null) {
             entryType = EntryType.valueOf(entryDto.getEntryType());
         } else {
-            entryType = EntryType.NONRELEVANT;
+            entryType = EntryType.TASK;
         }
         if (entryDto.getEntryPhase() != null) {
             entryPhase = EntryPhase.valueOf(entryDto.getEntryPhase());
