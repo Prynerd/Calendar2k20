@@ -37,7 +37,7 @@ public class EntryDao {
                 resultList.add(id);
             }
         } catch (SQLException e) {
-           throw new SQLError("Ooops! Something went wrong with our Database!");
+           throw new SQLError("Oops! Something went wrong with our Database!");
         }
 
         return resultList.size() == 1 ? resultList.get(0) : -1;

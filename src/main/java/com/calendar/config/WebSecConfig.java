@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -78,7 +79,15 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://localhost:4200", 
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://localhost:4200",
+				"https://plan-my-day-dev.web.app/",
+				"http://plan-my-day-dev.web.app/",
+				"https://plan-my-day-dev.web.app/login-registration",
+				"http://plan-my-day-dev.web.app/login-registration",
+				"https://plan-my-day-dev.firebaseapp.com",
+				"http://plan-my-day-dev.firebaseapp.com",
+				"https://plan-my-day-dev.firebaseapp.com/login-registration",
+				"http://plan-my-day-dev.firebaseapp.com/login-registration",
         		"https://plan-my-day-mages-of-code.firebaseapp.com",
         		"http://plan-my-day-mages-of-code.firebaseapp.com",
         		"https://plan-my-day-mages-of-code.firebaseapp.com/login-registration",
@@ -95,4 +104,6 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+
 }

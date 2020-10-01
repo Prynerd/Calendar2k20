@@ -38,4 +38,10 @@ public class UserController {
 		userService.setProjectsVisibilityStatus(status);
 	}
 
+//	@PostMapping(value = "/logout")
+//	public String logout() {
+//		SecurityContextHolder.getContext().setAuthentication(null);
+//		return "redirect:https://plan-my-day-dev.firebaseapp.com/login-registration";
+//	}
+
 }
