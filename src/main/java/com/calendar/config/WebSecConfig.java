@@ -78,11 +78,19 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://localhost:4200", 
-        		"https://plan-my-day-mages-of-code.firebaseapp.com",
-        		"http://plan-my-day-mages-of-code.firebaseapp.com",
-        		"https://plan-my-day-mages-of-code.firebaseapp.com/login-registration",
-        		"http://plan-my-day-mages-of-code.firebaseapp.com/login-registration"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://localhost:4200",
+				"https://plan-my-day-dev.web.app/",
+				"http://plan-my-day-dev.web.app/",
+				"https://plan-my-day-dev.web.app/login-registration",
+				"http://plan-my-day-dev.web.app/login-registration",
+				"https://plan-my-day-dev.firebaseapp.com",
+				"http://plan-my-day-dev.firebaseapp.com",
+				"https://plan-my-day-dev.firebaseapp.com/login-registration",
+				"http://plan-my-day-dev.firebaseapp.com/login-registration",
+				"https://plan-my-day-mages-of-code.firebaseapp.com",
+				"http://plan-my-day-mages-of-code.firebaseapp.com",
+				"https://plan-my-day-mages-of-code.firebaseapp.com/login-registration",
+				"http://plan-my-day-mages-of-code.firebaseapp.com/login-registration"));
         configuration.setAllowedMethods(Arrays.asList("HEAD",
                 "GET", "POST", "PUT", "DELETE", "PATCH"));
         // setAllowCredentials(true) is important, otherwise:
