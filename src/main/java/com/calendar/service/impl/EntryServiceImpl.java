@@ -95,15 +95,9 @@ public class EntryServiceImpl implements EntryService {
         entry.setParentEntry(entryRepository.getOne(entryDto.getParentId()));
         entry.setChild(true);
 
-<<<<<<< HEAD
-        Integer numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getParentId())
-                .get().getChildEntries().size();
-        entry.setSortNumber((numberOfEntriesOnThisLevel != null) ? numberOfEntriesOnThisLevel : 0);
-=======
         int numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getParentId())
                 .get().getChildEntries().size();
         entry.setSortNumber(numberOfEntriesOnThisLevel);
->>>>>>> HEROKU-DEV
 
         entryRepository.save(entry);
 
@@ -299,7 +293,7 @@ public class EntryServiceImpl implements EntryService {
         if (eDto.isExpanded() != null) {
             entry.setExpanded(eDto.isExpanded().get());
         }
-        
+
 
         entryRepository.save(entry);
 
