@@ -1,7 +1,8 @@
 package com.calendar.config;
 
-import java.util.Arrays;
-
+import com.calendar.config.error.CustomAccessDeniedHandler;
+import com.calendar.config.security.MySavedRequestAwareAuthenticationSuccessHandler;
+import com.calendar.config.security.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +17,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.calendar.config.error.CustomAccessDeniedHandler;
-import com.calendar.config.security.MySavedRequestAwareAuthenticationSuccessHandler;
-import com.calendar.config.security.RestAuthenticationEntryPoint;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -67,7 +66,7 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 	    		.permitAll()
 	    		.invalidateHttpSession(true)
 	    		.deleteCookies("JSESSIONID")
-	    		.logoutSuccessUrl("https://plan-my-day-mages-of-code.firebaseapp.com/login-registration")
+//	    		.logoutSuccessUrl("https://plan-my-day-mages-of-code.firebaseapp.com/login-registration")
 	    		;
 	}
 	

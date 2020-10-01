@@ -42,8 +42,8 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
         String writeValueAsString = om.writeValueAsString(new UserResponseDto(
                 user.getId(),
                 user.getEmail(),
-                user.isValidated()
-        ));
+                user.isValidated(),
+                user.isOnlyActiveProjects()));
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
