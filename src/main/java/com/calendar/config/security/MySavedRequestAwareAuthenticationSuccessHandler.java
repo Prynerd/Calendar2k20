@@ -1,12 +1,8 @@
 package com.calendar.config.security;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.calendar.domain.User;
+import com.calendar.responsedto.UserResponseDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,9 +13,11 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.calendar.domain.User;
-import com.calendar.responsedto.UserResponseDto;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
@@ -46,6 +44,7 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
                 user.isOnlyActiveProjects()));
 
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+
 
         writer.append(writeValueAsString);
         writer.flush();
