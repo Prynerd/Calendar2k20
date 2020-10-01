@@ -49,18 +49,18 @@ public class EntryServiceImpl implements EntryService {
 
         Entry entry = new Entry(projectDto.getTitle(), projectDto.getDescription(), null, null,
                 projectDto.getDeadline(),
-                EntryType.NONRELEVANT, EntryPhase.NONRELEVANT);
+                EntryType.PROJECT, EntryPhase.NONRELEVANT);
 
         entry.setUserId(user.getId());
 
-        Integer numberOfProjects = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false)
+        int numberOfProjects = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false)
                 .size();
-        entry.setSortNumber((numberOfProjects != null) ? numberOfProjects : 0);
+        entry.setSortNumber(numberOfProjects);
 
         entryRepository.save(entry);
 
         //Need to create the response object here in order to avoid the recursive query() --> getProjectIdOfEntry
-        return new ProjectViewResponseDto(getFullProjectById(entry.getId()), getProjects(user.isOnlyActiveProjects()));
+        return new ProjectViewResponseDto(getFullProjectById(entry.getId()), getProjects());
     }
 
     @Override
@@ -74,7 +74,7 @@ public class EntryServiceImpl implements EntryService {
         if (entryDto.getEntryType() != null) {
             entryType = EntryType.valueOf(entryDto.getEntryType());
         } else {
-            entryType = EntryType.NONRELEVANT;
+            entryType = EntryType.TASK;
         }
         if (entryDto.getEntryPhase() != null) {
             entryPhase = EntryPhase.valueOf(entryDto.getEntryPhase());
@@ -95,9 +95,15 @@ public class EntryServiceImpl implements EntryService {
         entry.setParentEntry(entryRepository.getOne(entryDto.getParentId()));
         entry.setChild(true);
 
+<<<<<<< HEAD
         Integer numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getParentId())
                 .get().getChildEntries().size();
         entry.setSortNumber((numberOfEntriesOnThisLevel != null) ? numberOfEntriesOnThisLevel : 0);
+=======
+        int numberOfEntriesOnThisLevel = entryRepository.findById(entryDto.getParentId())
+                .get().getChildEntries().size();
+        entry.setSortNumber(numberOfEntriesOnThisLevel);
+>>>>>>> HEROKU-DEV
 
         entryRepository.save(entry);
 
@@ -123,11 +129,11 @@ public class EntryServiceImpl implements EntryService {
     }
 
     @Override
-    public ArrayList<ProjectEntriesResponseDto> getProjects(boolean openOnly) {
+    public ArrayList<ProjectEntriesResponseDto> getProjects() {
         User user = userServiceImpl.getFullUser();
         List<Entry> entryList = new ArrayList<Entry>();
 
-        if (openOnly) {
+        if (user.isOnlyActiveProjects()) {
             entryList = customEntryRepository.getProjectsByUserIdAndStatus(user.getId(), false);
         } else {
             entryList = customEntryRepository.getEntriesByUserId(user.getId());
@@ -162,9 +168,9 @@ public class EntryServiceImpl implements EntryService {
 
         if (id != null) {
             return new ProjectViewResponseDto(getFullProjectById(getProjectIdOfEntry(id)),
-                    getProjects(user.isOnlyActiveProjects()));
+                    getProjects());
         } else {
-            return new ProjectViewResponseDto(null, getProjects(user.isOnlyActiveProjects()));
+            return new ProjectViewResponseDto(null, getProjects());
         }
     }
 
@@ -179,11 +185,11 @@ public class EntryServiceImpl implements EntryService {
                         true, allSiblingsAreClosed);
             } else {
                 return new ProjectViewResponseForModificationDto(getFullProjectById(getProjectIdOfEntry(id)),
-                        getProjects(user.isOnlyActiveProjects()), null, allSiblingsAreClosed);
+                        getProjects(), null, allSiblingsAreClosed);
             }
         } else {
             return new ProjectViewResponseForModificationDto(null,
-                    getProjects(user.isOnlyActiveProjects()), null, allSiblingsAreClosed);
+                    getProjects(), null, allSiblingsAreClosed);
         }
 
     }
@@ -293,6 +299,7 @@ public class EntryServiceImpl implements EntryService {
         if (eDto.isExpanded() != null) {
             entry.setExpanded(eDto.isExpanded().get());
         }
+        
 
         entryRepository.save(entry);
 

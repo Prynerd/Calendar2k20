@@ -27,8 +27,8 @@ public class EntryController {
 	}
 
 	@GetMapping("/projects")
-	public ArrayList<ProjectEntriesResponseDto> getProjects(@Valid @RequestParam boolean openOnly){
-		return entryServiceImpl.getProjects(openOnly);
+	public ArrayList<ProjectEntriesResponseDto> getProjects(){
+		return entryServiceImpl.getProjects();
 	}
 
 	@GetMapping("/project")
